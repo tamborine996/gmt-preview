@@ -8,8 +8,8 @@
     "time": "",
     "location": "GMT Ghousia Masjid, 56 Camrose Street, SE2 0JA",
     "poster": "images/eid-announcement.jpg",
-    "buttonText": "View Eid Announcement",
-    "buttonUrl": "prayer-times.html",
+    "buttonText": "",
+    "buttonUrl": "",
     "facebookUrl": ""
   },
   "notificationBar": {
