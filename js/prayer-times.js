@@ -1,7 +1,7 @@
 /**
  * Prayer Times Module
  * Uses official Greenwich Madina Trust prayer times from local JSON
- * Data extracted from mosque's official 2025 timetable PDF
+ * Data from mosque's official 2026 timetable (updated monthly)
  */
 
 const PrayerTimes = (function() {
@@ -24,7 +24,7 @@ const PrayerTimes = (function() {
         }
 
         try {
-            const response = await fetch('data/prayer-times-2025.json');
+            const response = await fetch('data/prayer-times-2026.json');
             if (!response.ok) {
                 throw new Error('Failed to load prayer times data');
             }
@@ -87,9 +87,9 @@ const PrayerTimes = (function() {
      * Get monthly calendar data
      */
     async function getMonthlyCalendar(year, month) {
-        // Currently only have 2025 data
-        if (year !== 2025) {
-            console.warn('Prayer times only available for 2025');
+        // Currently only have 2026 data
+        if (year !== 2026) {
+            console.warn('Prayer times only available for 2026');
             return null;
         }
 
@@ -352,7 +352,7 @@ const PrayerTimes = (function() {
         // Add note about official times
         html += `
             <div class="timetable-footer">
-                <p>Official prayer times from Greenwich Madina Trust's 2025 timetable.</p>
+                <p>Official prayer times from Greenwich Madina Trust's 2026 timetable.</p>
             </div>
         `;
 
