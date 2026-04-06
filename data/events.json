@@ -1,21 +1,21 @@
 {
   "spotlight": {
-    "enabled": false,
-    "badgeText": "Eid Mubarak",
-    "title": "Eid ul-Fitr 1447H / 2026",
-    "date": "Friday 20th March 2026",
-    "description": "1st Jama'at 9:00 AM · 2nd Jama'at 10:00 AM · 3rd Jama'at 10:45 AM. Fitrana: £7 per person.",
-    "time": "",
-    "location": "GMT Ghousia Masjid, 56 Camrose Street, SE2 0JA",
-    "poster": "images/eid-announcement.jpg",
+    "enabled": true,
+    "badgeText": "Upcoming Event",
+    "title": "A Legacy of Courage",
+    "date": "Sunday 12th April 2026",
+    "description": "A gathering in remembrance of the martyrdom and celebrating the legacy of Sayyiduna Ameer Hamzah (RA). Featuring Shaykh Asrar Rashid. Also includes Eithaal & Thawaab gathering for the late beloved wife of Haji Mohammed Ramzan.",
+    "time": "5:30 PM",
+    "location": "Ghousia Masjid, 56 Camrose St, London, SE2 0JA",
+    "poster": "images/event-poster.jpg",
     "buttonText": "",
     "buttonUrl": "",
-    "facebookUrl": ""
+    "facebookUrl": "https://www.facebook.com/GreenwichMadinaTrust/"
   },
   "notificationBar": {
-    "enabled": false,
-    "badgeText": "Eid Mubarak",
-    "linkText": "Eid ul-Fitr is Friday 20th March — Jama'at: 9:00 AM, 10:00 AM & 10:45 AM",
-    "linkUrl": "prayer-times.html"
+    "enabled": true,
+    "badgeText": "Upcoming Event",
+    "linkText": "A Legacy of Courage — Sunday 12th April, 5:30 PM",
+    "linkUrl": "#event-spotlight"
   }
 }
