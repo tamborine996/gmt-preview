@@ -1,6 +1,6 @@
 {
   "spotlight": {
-    "enabled": true,
+    "enabled": false,
     "badgeText": "Upcoming Event",
     "title": "A Legacy of Courage",
     "date": "Sunday 12th April 2026",
@@ -13,7 +13,7 @@
     "facebookUrl": "https://www.facebook.com/GreenwichMadinaTrust/"
   },
   "notificationBar": {
-    "enabled": true,
+    "enabled": false,
     "badgeText": "Upcoming Event",
     "linkText": "A Legacy of Courage — Sunday 12th April, 5:30 PM",
     "linkUrl": "#event-spotlight"
