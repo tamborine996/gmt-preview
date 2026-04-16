@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="description" content="Local-only fuller news page prototype for Greenwich Madina Trust.">
+    <title>Greenwich Madina Trust | News Prototype</title>
+    <link rel="stylesheet" href="css/styles.css?v=20241220b">
+    <style>
+        .prototype-banner {
+            background: rgba(196, 169, 98, 0.18);
+            border-bottom: 1px solid rgba(196, 169, 98, 0.35);
+            color: var(--emerald-deep);
+            text-align: center;
+            padding: 0.65rem 1rem;
+            font-weight: 600;
+        }
+        .news-hero {
+            padding: 3rem 0 2rem;
+            background: linear-gradient(180deg, rgba(13,92,77,0.08), rgba(250,246,240,0));
+        }
+        .news-listing {
+            padding-bottom: 5rem;
+        }
+        .news-stack {
+            display: grid;
+            gap: 2rem;
+        }
+        .news-article {
+            background: var(--ivory);
+            border-radius: 24px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(13,92,77,0.08);
+            overflow: hidden;
+        }
+        .news-article-body {
+            padding: 2rem;
+        }
+        .news-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .news-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(13, 92, 77, 0.1);
+            color: var(--emerald-deep);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.74rem;
+            font-weight: 700;
+        }
+        .news-date {
+            color: var(--stone);
+            font-size: 0.95rem;
+        }
+        .news-prose {
+            display: grid;
+            gap: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .news-prose p {
+            margin: 0;
+            max-width: 72ch;
+        }
+        .news-prose .arabic {
+            font-family: var(--font-arabic);
+            font-size: 1.5rem;
+            line-height: 1.7;
+            direction: rtl;
+            text-align: right;
+            color: var(--emerald-deep);
+        }
+        .news-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .news-detail {
+            background: var(--cream-warm);
+            border: 1px solid rgba(196, 169, 98, 0.25);
+            border-radius: 18px;
+            padding: 1rem;
+        }
+        .news-detail-label {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold-muted);
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+        .news-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .news-gallery img,
+        .news-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            background: var(--cream-warm);
+        }
+        .news-poster {
+            max-width: 440px;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: linear-gradient(180deg, rgba(13,92,77,0.04), rgba(196,169,98,0.08));
+            border-radius: 22px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .news-poster img {
+            width: auto;
+            max-width: 100%;
+            max-height: 36rem;
+            object-fit: contain;
+            background: var(--ivory);
+            box-shadow: var(--shadow-soft);
+        }
+        .news-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .news-top-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
+        }
+        .news-helper {
+            color: var(--stone);
+        }
+        .news-loading,
+        .news-error {
+            padding: 2rem;
+            background: var(--ivory);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+        }
+        @media (max-width: 720px) {
+            .news-gallery {
+                grid-template-columns: 1fr;
+            }
+            .news-article-body {
+                padding: 1.25rem;
+            }
+            .news-prose .arabic {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="prototype-banner">Local-only prototype: fuller News page fed from imported post data. Not deployed.</div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="images/gemini-logo-final.png" alt="" class="logo-symbol">
+                    <span class="logo-text">Greenwich Madina Trust</span>
+                </a>
+                <nav class="nav" id="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="news-home-prototype.html" class="nav-link">Prototype Home</a></li>
+                        <li><a href="prayer-times.html" class="nav-link">Prayer Times</a></li>
+                        <li><a href="what-we-offer.html" class="nav-link">What We Offer</a></li>
+                        <li><a href="resources.html" class="nav-link">Resources</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="news-hero">
+        <div class="container-narrow">
+            <div class="section-header">
+                <span class="overline">News page prototype</span>
+                <h1>News & Updates</h1>
+                <p>This page is where fuller detail belongs. The home page should only surface short previews and one featured spotlight item.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="news-listing">
+        <div class="container-narrow">
+            <div class="news-top-actions">
+                <p class="news-helper">Recommended model: spotlight one item on the home page, then carry fuller text, galleries, and event details here.</p>
+                <a href="news-home-prototype.html" class="btn btn-outline">Back to prototype home</a>
+            </div>
+            <div id="news-root" class="news-loading">Loading news prototype…</div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Why this page exists</h4>
+                    <p>Longer Facebook imports make more sense here than on the homepage. This keeps the homepage fresher and lighter.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function escapeHtml(text) {
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function isArabicLine(text) {
+            return /[\u0600-\u06FF]/.test(text) && text.replace(/[\u0600-\u06FF\s،۔,:;!?.\-]/g, '').length < 8;
+        }
+
+        function renderTextBlocks(blocks) {
+            return (blocks || []).map(block => {
+                if (/^https?:\/\//.test(block)) {
+                    return `<p><a href="${escapeHtml(block)}" target="_blank" rel="noopener">${escapeHtml(block)}</a></p>`;
+                }
+                return `<p class="${isArabicLine(block) ? 'arabic' : ''}">${escapeHtml(block)}</p>`;
+            }).join('');
+        }
+
+        function renderDetails(details) {
+            if (!details || !details.length) return '';
+            return `
+                <div class="news-detail-grid">
+                    ${details.map(detail => `
+                        <div class="news-detail">
+                            <div class="news-detail-label">${escapeHtml(detail.label)}</div>
+                            <div class="news-detail-value">${escapeHtml(detail.value)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderGallery(gallery) {
+            if (!gallery || !gallery.length) return '';
+            return `
+                <div class="news-gallery">
+                    ${gallery.map(image => `<img src="${escapeHtml(image.url)}" alt="${escapeHtml(image.alt || '')}" loading="lazy">`).join('')}
+                </div>
+            `;
+        }
+
+        function renderPoster(poster) {
+            if (!poster) return '';
+            return `<div class="news-poster"><img src="${escapeHtml(poster.url)}" alt="${escapeHtml(poster.alt || '')}" loading="lazy"></div>`;
+        }
+
+        function renderPost(post, index) {
+            return `
+                <article class="news-article" id="post-${index + 1}">
+                    <div class="news-article-body">
+                        <div class="news-meta">
+                            <span class="news-pill">${escapeHtml(post.eyebrow || 'Update')}</span>
+                            <span class="news-date">${escapeHtml(post.published_label || '')}</span>
+                        </div>
+                        <h2>${escapeHtml(post.title)}</h2>
+                        <div class="news-prose">${renderTextBlocks(post.text_blocks || [])}</div>
+                        ${renderDetails(post.key_details || [])}
+                        ${renderPoster(post.poster)}
+                        ${renderGallery(post.gallery || [])}
+                        <div class="news-actions">
+                            <a class="btn btn-primary" href="${escapeHtml(post.source_url)}" target="_blank" rel="noopener">View original Facebook post</a>
+                            <a class="btn btn-outline" href="news-home-prototype.html">Back to prototype home</a>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        async function init() {
+            const root = document.getElementById('news-root');
+            try {
+                const response = await fetch('data/facebook-news-preview.json', { cache: 'no-store' });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                const posts = data.posts || [];
+                if (!posts.length) throw new Error('No posts found');
+                root.className = 'news-stack';
+                root.innerHTML = posts.map(renderPost).join('');
+            } catch (error) {
+                root.className = 'news-error';
+                root.innerHTML = `<strong>Could not load news prototype.</strong><p>${escapeHtml(error.message)}</p>`;
+            }
+        }
+
+        init();
+    </script>
+    <script src="js/main.js?v=20241220"></script>
+</body>
+</html>
