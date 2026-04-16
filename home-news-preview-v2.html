@@ -140,6 +140,16 @@
             display: flex;
             gap: 0.65rem;
             align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .latest-updates-status {
+            min-width: 5.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--emerald-deep);
         }
         .latest-updates-prev,
         .latest-updates-next {
@@ -445,6 +455,7 @@
                     <button class="latest-updates-prev" type="button" aria-label="Show previous Facebook update">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
                     </button>
+                    <span class="latest-updates-status" id="latest-updates-status">1–2 of 3</span>
                     <button class="latest-updates-next" type="button" aria-label="Show next Facebook update">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </button>
@@ -456,7 +467,6 @@
                 </div>
             </div>
             <div class="latest-updates-footer">
-                <p class="spotlight-note">A simple way to show recent activity without changing the main homepage structure too much.</p>
                 <a href="news-preview-list.html" class="btn btn-outline">View all updates</a>
             </div>
         </div>
@@ -722,8 +732,20 @@
                             slidesPerView: 2,
                             spaceBetween: 24
                         }
+                    },
+                    on: {
+                        init: updateLatestStatus,
+                        slideChange: updateLatestStatus
                     }
                 });
+
+                function updateLatestStatus() {
+                    const status = document.getElementById('latest-updates-status');
+                    if (!status || !window.latestUpdatesSwiper) return;
+                    const start = window.latestUpdatesSwiper.activeIndex + 1;
+                    const end = Math.min(start + 1, 3);
+                    status.textContent = `${start}–${end} of 3`;
+                }
             } catch (error) {
                 root.innerHTML = `<div class="swiper-slide"><p>Could not load local updates: ${gmtEscapeHtml(error.message)}</p></div>`;
             }
