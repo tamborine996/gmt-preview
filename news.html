@@ -7,20 +7,11 @@
     <title>News | Greenwich Madina Trust</title>
     <link rel="stylesheet" href="css/styles.css?v=20241220b">
     <style>
-        .prototype-banner {
-            background: rgba(196, 169, 98, 0.18);
-            border-bottom: 1px solid rgba(196, 169, 98, 0.35);
-            color: var(--emerald-deep);
-            text-align: center;
-            padding: 0.65rem 1rem;
-            font-weight: 600;
-        }
-        .news-hero {
-            padding: 3rem 0 2rem;
-            background: linear-gradient(180deg, rgba(13,92,77,0.08), rgba(250,246,240,0));
-        }
         .news-listing {
-            padding-bottom: 5rem;
+            padding: 0 0 5rem;
+        }
+        .news-listing .container {
+            max-width: var(--container-narrow);
         }
         .news-stack {
             display: grid;
@@ -58,6 +49,10 @@
         .news-date {
             color: var(--stone);
             font-size: 0.95rem;
+        }
+        .news-article h2 {
+            text-align: center;
+            margin-bottom: 1.25rem;
         }
         .news-prose {
             display: grid;
@@ -175,12 +170,19 @@
                 </a>
                 <nav class="nav" id="main-nav">
                     <ul class="nav-list">
+
                         <li><a href="index.html" class="nav-link">Home</a></li>
+
                         <li><a href="news.html" class="nav-link active">News</a></li>
+
                         <li><a href="prayer-times.html" class="nav-link">Prayer Times</a></li>
+
                         <li><a href="what-we-offer.html" class="nav-link">What We Offer</a></li>
+
                         <li><a href="resources.html" class="nav-link">Resources</a></li>
+
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
+
                     </ul>
                 </nav>
                 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
@@ -190,20 +192,17 @@
         </div>
     </header>
 
-    <section class="news-hero">
-        <div class="container-narrow">
-            <div class="section-header">
-                <span class="overline">Recent updates</span>
-                <h1>News</h1>
-                <p>Recent announcements, notices, and community updates from Greenwich Madina Trust.</p>
-            </div>
+    <section class="page-hero">
+        <div class="container">
+            <h1>News</h1>
+            <p>Recent announcements, notices, and community updates from Greenwich Madina Trust.</p>
         </div>
     </section>
 
-    <main class="news-listing">
-        <div class="container-narrow">
+    <main class="content-section news-listing">
+        <div class="container">
             <div class="news-top-actions">
-                <p class="news-helper">Home should stay selective. This page carries fuller detail, posters, galleries, and linked updates.</p>
+                <p class="news-helper">Recent announcements, notices, and community updates in fuller detail.</p>
                 <a href="index.html" class="btn btn-outline">Back to home</a>
             </div>
             <div id="news-root" class="news-loading">Loading news…</div>
@@ -215,8 +214,32 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Greenwich Madina Trust</h4>
-                    <p>Recent announcements, notices, and community updates in one place.</p>
+                    <p>Serving the local Muslim community with prayers, education, and services.</p>
+                    <p class="charity-number">Registered UK Charity No. 1129277</p>
                 </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="prayer-times.html">Prayer Times</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="what-we-offer.html">What We Offer</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GreenwichMadinaTrust/" target="_blank" aria-label="Facebook">Facebook</a>
+                        <a href="https://www.instagram.com/greenwichmadinatrust" target="_blank" aria-label="Instagram">Instagram</a>
+                        <a href="https://mobile.twitter.com/TrustMadina/" target="_blank" aria-label="Twitter">Twitter</a>
+                        <a href="https://www.youtube.com/channel/UCTlPBYKq48KKhrdn51A7F5w" target="_blank" aria-label="YouTube">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Greenwich Madina Trust. All rights reserved.</p>
+                <a href="privacy.html">Data & Privacy Policy</a>
             </div>
         </div>
     </footer>
@@ -272,13 +295,14 @@
             return `<div class="news-poster"><img src="${escapeHtml(poster.url)}" alt="${escapeHtml(poster.alt || '')}" loading="lazy"></div>`;
         }
 
-        function renderPost(post, index) {
+        function renderPost(post, index, fallbackDate) {
+            const staticDate = post.published_date || fallbackDate || post.published_label || '';
             return `
                 <article class="news-article" id="post-${index + 1}">
                     <div class="news-article-body">
                         <div class="news-meta">
                             <span class="news-pill">${escapeHtml(post.eyebrow || 'Update')}</span>
-                            <span class="news-date">${escapeHtml(post.published_label || '')}</span>
+                            <span class="news-date">${escapeHtml(staticDate)}</span>
                         </div>
                         <h2>${escapeHtml(post.title)}</h2>
                         <div class="news-prose">${renderTextBlocks(post.text_blocks || [])}</div>
@@ -286,7 +310,7 @@
                         ${renderPoster(post.poster)}
                         ${renderGallery(post.gallery || [])}
                         <div class="news-actions">
-                            <a class="btn btn-primary" href="${escapeHtml(post.source_url)}" target="_blank" rel="noopener">View original Facebook post</a>
+                            <a class="btn btn-primary" href="${escapeHtml(post.source_url)}" target="_blank" rel="noopener">View original post</a>
                         </div>
                     </div>
                 </article>
@@ -300,9 +324,17 @@
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
                 const posts = data.posts || [];
+                const fallbackDate = data.updated_at
+                    ? new Date(`${data.updated_at}T12:00:00Z`).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                        timeZone: 'UTC'
+                    })
+                    : '';
                 if (!posts.length) throw new Error('No posts found');
                 root.className = 'news-stack';
-                root.innerHTML = posts.map(renderPost).join('');
+                root.innerHTML = posts.map((post, index) => renderPost(post, index, fallbackDate)).join('');
             } catch (error) {
                 root.className = 'news-error';
                 root.innerHTML = `<strong>Could not load news.</strong><p>${escapeHtml(error.message)}</p>`;

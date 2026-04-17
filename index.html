@@ -262,12 +262,19 @@
                 </a>
                 <nav class="nav" id="main-nav">
                     <ul class="nav-list">
+
                         <li><a href="index.html" class="nav-link active">Home</a></li>
-                        <li><a href="prayer-times.html" class="nav-link">Prayer Times</a></li>
+
                         <li><a href="news.html" class="nav-link">News</a></li>
+
+                        <li><a href="prayer-times.html" class="nav-link">Prayer Times</a></li>
+
                         <li><a href="what-we-offer.html" class="nav-link">What We Offer</a></li>
+
                         <li><a href="resources.html" class="nav-link">Resources</a></li>
+
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
+
                     </ul>
                     <div class="nav-social">
                         <a href="https://www.facebook.com/GreenwichMadinaTrust/" target="_blank" aria-label="Facebook">
@@ -701,14 +708,24 @@
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
                 const posts = (data.posts || []).slice(0, 3);
-                root.innerHTML = posts.map((post, index) => `
+                const fallbackDate = data.updated_at
+                    ? new Date(`${data.updated_at}T12:00:00Z`).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                        timeZone: 'UTC'
+                    })
+                    : '';
+                root.innerHTML = posts.map((post, index) => {
+                    const staticDate = post.published_date || fallbackDate || post.published_label || '';
+                    return `
                     <div class="swiper-slide">
                         <article class="latest-update-card">
                             ${gmtNewsFirstImage(post) ? `<div class="latest-update-media ${gmtNewsIsPortrait(post) ? 'is-portrait' : ''}"><img src="${gmtEscapeHtml(gmtNewsFirstImage(post))}" alt="${gmtEscapeHtml(post.title)}" loading="lazy"></div>` : ''}
                             <div class="latest-update-body">
                                 <div class="latest-update-meta">
                                     <span class="latest-update-pill">${gmtEscapeHtml(post.eyebrow || 'Update')}</span>
-                                    <span>${gmtEscapeHtml(post.published_label || '')}</span>
+                                    <span>${gmtEscapeHtml(staticDate)}</span>
                                 </div>
                                 <h3 class="latest-update-title">${gmtEscapeHtml(post.title)}</h3>
                                 <p class="latest-update-excerpt">${gmtEscapeHtml(gmtNewsExcerpt(post))}</p>
@@ -719,7 +736,8 @@
                             </div>
                         </article>
                     </div>
-                `).join('');
+                    `;
+                }).join('');
 
                 window.latestUpdatesSwiper = new Swiper('#latest-updates-carousel', {
                     slidesPerView: 2,
