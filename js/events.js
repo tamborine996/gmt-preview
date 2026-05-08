@@ -26,12 +26,41 @@
         }
     }
 
+    function getTodayIsoDateInLondon() {
+        const formatter = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/London',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        });
+        const parts = formatter.formatToParts(new Date()).reduce((dateParts, part) => {
+            if (part.type !== 'literal') {
+                dateParts[part.type] = part.value;
+            }
+            return dateParts;
+        }, {});
+
+        return parts.year + '-' + parts.month + '-' + parts.day;
+    }
+
+    function isEventConfigActive(config) {
+        if (!config || !config.enabled) {
+            return false;
+        }
+
+        if (config.hideFrom && getTodayIsoDateInLondon() >= config.hideFrom) {
+            return false;
+        }
+
+        return true;
+    }
+
     // Update the notification bar
     function updateNotificationBar(config) {
         const bar = document.getElementById('event-notification-bar');
         if (!bar) return;
 
-        if (!config || !config.enabled) {
+        if (!isEventConfigActive(config)) {
             hideNotificationBar();
             return;
         }
@@ -70,7 +99,7 @@
         const section = document.getElementById('event-spotlight');
         if (!section) return;
 
-        if (!config || !config.enabled) {
+        if (!isEventConfigActive(config)) {
             hideSpotlight();
             return;
         }
