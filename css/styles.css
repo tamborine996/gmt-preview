@@ -853,6 +853,28 @@ p {
     gap: var(--space-sm);
 }
 
+.prayer-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-banner-donate {
+    background: var(--gold-bright);
+    color: var(--emerald-deep);
+    border-color: var(--gold-bright);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+.btn-banner-donate:hover {
+    background: var(--ivory);
+    border-color: var(--ivory);
+    color: var(--emerald-deep);
+    transform: translateY(-1px);
+}
+
 .social-icons-banner {
     display: flex;
     gap: var(--space-xs);
@@ -1000,9 +1022,23 @@ p {
         line-height: 0.85rem;
     }
 
-    /* Hide Full Timetable button and social icons on mobile */
+    /* Keep Donate visible on mobile; hide only the social icons */
     .prayer-banner-right {
-        display: none;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .prayer-banner-actions {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xs);
+    }
+
+    .prayer-banner-actions .btn {
+        justify-content: center;
+        padding-inline: 0.85rem;
     }
 
     .social-icons-banner {

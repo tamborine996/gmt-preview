@@ -13,7 +13,7 @@
     </script>
     <meta name="description" content="Greenwich Madina Trust - Serving the local Muslim community with prayers, events, and services in Plumstead, London.">
     <title>Greenwich Madina Trust | Home</title>
-    <link rel="stylesheet" href="css/styles.css?v=20241220b">
+    <link rel="stylesheet" href="css/styles.css?v=20241220c">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="images/gemini-logo-final.png">
@@ -64,66 +64,80 @@
             justify-content: center;
         }
         .latest-update-card {
+            --latest-update-media-row: 500px;
             background: var(--ivory);
             border-radius: 24px;
             border: 1px solid rgba(13,92,77,0.10);
             box-shadow: var(--shadow-soft);
             overflow: hidden;
             display: grid;
-            grid-template-rows: auto 1fr;
+            grid-template-rows: var(--latest-update-media-row) 1fr;
             height: 100%;
-            min-height: 710px;
+            min-height: 790px;
             width: 100%;
             max-width: 500px;
             margin: 0 auto;
         }
         .latest-update-media {
+            height: 100%;
             padding: 1rem 1rem 0.55rem;
         }
         .latest-update-media-stage {
             position: relative;
-            min-height: clamp(300px, 35vw, 380px);
-            border-radius: 20px;
-            background: linear-gradient(180deg, rgba(13,92,77,0.08), rgba(196,169,98,0.18));
+            height: 100%;
+            min-height: 0;
+            border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
             overflow: hidden;
+        }
+        .latest-update-media:not(.is-portrait) .latest-update-media-stage {
+            background: linear-gradient(180deg, rgba(13,92,77,0.10), rgba(196,169,98,0.22));
+            padding: 1.35rem;
+        }
+        .latest-update-media.is-portrait .latest-update-media-stage {
+            padding: 0;
+            background: transparent;
         }
         .latest-update-media:not(.is-portrait) .latest-update-media-stage::before {
             content: '';
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(circle at top left, rgba(255,255,255,0.34), transparent 36%),
-                radial-gradient(circle at bottom right, rgba(13,92,77,0.14), transparent 34%),
-                linear-gradient(135deg, rgba(196,169,98,0.18), rgba(13,92,77,0.04));
-            opacity: 0.95;
+                radial-gradient(circle at top left, rgba(255,255,255,0.38), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(13,92,77,0.16), transparent 36%),
+                linear-gradient(135deg, rgba(196,169,98,0.24), rgba(13,92,77,0.05));
+            opacity: 1;
         }
         .latest-update-media:not(.is-portrait) .latest-update-media-stage::after {
             content: '';
             position: absolute;
-            left: 50%;
-            bottom: 1rem;
-            width: 44%;
-            height: 2px;
-            transform: translateX(-50%);
-            border-radius: 999px;
-            background: linear-gradient(90deg, transparent, rgba(196,169,98,0.88), transparent);
+            inset: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.38);
+            box-shadow: inset 0 0 0 1px rgba(13,92,77,0.05);
         }
         .latest-update-media img {
             position: relative;
             z-index: 1;
-            width: 100%;
-            height: 100%;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 16px;
+            border-radius: 18px;
             background: var(--ivory);
         }
+        .latest-update-media:not(.is-portrait) img {
+            max-width: 86%;
+            max-height: 76%;
+            box-shadow: 0 12px 28px rgba(13, 92, 77, 0.10);
+        }
         .latest-update-media.is-portrait img {
-            max-width: min(74%, 250px);
-            box-shadow: var(--shadow-soft);
+            max-width: min(100%, 360px);
+            max-height: 100%;
+            box-shadow: 0 18px 42px rgba(13, 92, 77, 0.14);
         }
         .latest-update-body {
             padding: 1rem 1.25rem 1.25rem;
@@ -237,7 +251,344 @@
             color: var(--emerald-deep);
             font-weight: 700;
         }
+        .home-donate-section {
+            scroll-margin-top: 135px;
+            position: relative;
+            overflow: hidden;
+            padding: clamp(4.2rem, 8vw, 7rem) 0;
+            background:
+                radial-gradient(circle at 12% 16%, rgba(196, 169, 98, 0.15), transparent 26%),
+                radial-gradient(circle at 88% 14%, rgba(13, 92, 77, 0.08), transparent 32%),
+                linear-gradient(135deg, #fffaf0 0%, #f4ecd8 100%);
+            border-top: 1px solid rgba(196, 169, 98, 0.24);
+            border-bottom: 1px solid rgba(196, 169, 98, 0.24);
+        }
+
+        .home-donate-section::before {
+            content: '';
+            position: absolute;
+            inset: -20% -10% auto auto;
+            width: min(520px, 70vw);
+            height: min(520px, 70vw);
+            background-image:
+                linear-gradient(30deg, rgba(13,92,77,0.035) 12%, transparent 12.5%, transparent 87%, rgba(13,92,77,0.035) 87.5%, rgba(13,92,77,0.035)),
+                linear-gradient(150deg, rgba(13,92,77,0.035) 12%, transparent 12.5%, transparent 87%, rgba(13,92,77,0.035) 87.5%, rgba(13,92,77,0.035));
+            background-size: 70px 122px;
+            border-radius: 50%;
+            opacity: 0.55;
+            pointer-events: none;
+        }
+
+        .home-donate-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .home-donate-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            padding: clamp(1.35rem, 3vw, 2.3rem);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.74), rgba(246,238,214,0.88)),
+                #fbf4e3;
+            border: 1px solid rgba(196, 169, 98, 0.36);
+            box-shadow: 0 28px 70px rgba(13, 92, 77, 0.12);
+        }
+
+        .home-donate-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 82% 18%, rgba(196,169,98,0.18), transparent 28%),
+                linear-gradient(90deg, transparent 0 58%, rgba(255,255,255,0.34) 58% 100%);
+            pointer-events: none;
+        }
+
+        .home-donate-frame::after {
+            content: '';
+            position: absolute;
+            right: -4rem;
+            bottom: -3.6rem;
+            width: min(440px, 52vw);
+            height: 190px;
+            opacity: 0.18;
+            background:
+                radial-gradient(circle at 12% 100%, transparent 0 28px, var(--gold-dark) 29px 31px, transparent 32px),
+                radial-gradient(circle at 36% 100%, transparent 0 42px, var(--gold-dark) 43px 45px, transparent 46px),
+                radial-gradient(circle at 60% 100%, transparent 0 32px, var(--gold-dark) 33px 35px, transparent 36px),
+                radial-gradient(circle at 84% 100%, transparent 0 48px, var(--gold-dark) 49px 51px, transparent 52px);
+            pointer-events: none;
+        }
+
+        .home-donate-layout {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.74fr);
+            gap: clamp(1.5rem, 4vw, 3.6rem);
+            align-items: center;
+        }
+
+        .home-donate-copy {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(0.5rem, 2.4vw, 1.5rem) 0 clamp(0.4rem, 2vw, 1rem) clamp(0.15rem, 1.2vw, 0.75rem);
+        }
+
+        .home-donate-copy .overline {
+            display: block;
+            margin-bottom: 0.9rem;
+            color: var(--gold-dark);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .home-donate-copy h2 {
+            margin: 0;
+            color: var(--emerald-deep);
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 9.5vw, 8.35rem);
+            line-height: 0.88;
+            letter-spacing: -0.055em;
+        }
+
+        .home-donate-ornament {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            width: min(330px, 78vw);
+            margin: clamp(1.05rem, 2.2vw, 1.55rem) 0 clamp(1.1rem, 2.8vw, 1.9rem);
+            color: var(--gold-dark);
+        }
+
+        .home-donate-ornament::before,
+        .home-donate-ornament::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, rgba(196,169,98,0.9), transparent);
+        }
+
+        .home-donate-ornament span {
+            width: 0.72rem;
+            height: 0.72rem;
+            transform: rotate(45deg);
+            border: 1px solid currentColor;
+            box-shadow: 0 0 0 4px rgba(196,169,98,0.10);
+            background: rgba(255,250,240,0.95);
+        }
+
+        .home-donate-copy p {
+            color: #2c3c3a;
+            font-size: clamp(1.04rem, 1.38vw, 1.16rem);
+            line-height: 1.78;
+            max-width: 60ch;
+            margin: 0;
+        }
+
+        .home-donate-action {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            flex-wrap: wrap;
+            margin-top: clamp(1.45rem, 3vw, 2rem);
+        }
+
+        .home-donate-action .btn {
+            min-width: 182px;
+            justify-content: center;
+            border: 1px solid rgba(196, 169, 98, 0.68);
+            border-radius: 999px;
+            background: linear-gradient(135deg, #063f35, #0d5c4d);
+            box-shadow: 0 16px 34px rgba(13, 92, 77, 0.24);
+            font-size: 0.86rem;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .home-donate-action-note {
+            margin: 0;
+            color: #51615e;
+            font-size: 0.92rem;
+            max-width: 20rem;
+        }
+
+        .home-donate-action-note strong {
+            color: var(--emerald-deep);
+        }
+
+        .gift-aid-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 310px;
+            border-radius: 30px;
+            padding: clamp(1.65rem, 3.2vw, 2.45rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                radial-gradient(circle at 50% 4%, rgba(196, 169, 98, 0.18), transparent 30%),
+                linear-gradient(180deg, rgba(255,252,243,0.95), rgba(247,238,213,0.92));
+            border: 1px solid rgba(196, 169, 98, 0.48);
+            box-shadow: 0 18px 45px rgba(13, 92, 77, 0.12);
+            color: var(--emerald-deep);
+        }
+
+        .gift-aid-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(30deg, rgba(13,92,77,0.032) 12%, transparent 12.5%, transparent 87%, rgba(13,92,77,0.032) 87.5%, rgba(13,92,77,0.032)),
+                linear-gradient(150deg, rgba(13,92,77,0.032) 12%, transparent 12.5%, transparent 87%, rgba(13,92,77,0.032) 87.5%, rgba(13,92,77,0.032));
+            background-size: 46px 80px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .gift-aid-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -3px;
+            height: 74px;
+            opacity: 0.22;
+            background:
+                radial-gradient(circle at 11% 100%, transparent 0 27px, var(--gold-dark) 28px 30px, transparent 31px),
+                radial-gradient(circle at 30% 100%, transparent 0 42px, var(--gold-dark) 43px 45px, transparent 46px),
+                radial-gradient(circle at 50% 100%, transparent 0 31px, var(--gold-dark) 32px 34px, transparent 35px),
+                radial-gradient(circle at 70% 100%, transparent 0 42px, var(--gold-dark) 43px 45px, transparent 46px),
+                radial-gradient(circle at 89% 100%, transparent 0 27px, var(--gold-dark) 28px 30px, transparent 31px);
+            pointer-events: none;
+        }
+
+        .gift-aid-card h3 {
+            color: var(--emerald-deep);
+            font-family: var(--font-display);
+            font-size: clamp(1.85rem, 3vw, 2.75rem);
+            line-height: 1.02;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gift-aid-card p {
+            color: #31413e;
+            line-height: 1.68;
+            max-width: 28ch;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gift-aid-mark {
+            position: relative;
+            z-index: 1;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1.15rem;
+            color: var(--gold-light);
+            background: linear-gradient(135deg, #063f35, #0d5c4d);
+            border: 2px solid rgba(196, 169, 98, 0.76);
+            box-shadow: 0 12px 28px rgba(13, 92, 77, 0.20);
+        }
+
+        .gift-aid-divider {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            width: min(210px, 75%);
+            margin: 1rem 0 1.05rem;
+            color: var(--gold-dark);
+        }
+
+        .gift-aid-divider::before,
+        .gift-aid-divider::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: rgba(196,169,98,0.78);
+        }
+
+        .gift-aid-divider span {
+            width: 0.5rem;
+            height: 0.5rem;
+            transform: rotate(45deg);
+            border: 1px solid currentColor;
+            background: rgba(255,250,240,0.95);
+        }
+
+        .gift-aid-mark svg,
+        .home-donate-uses svg {
+            width: 1.45rem;
+            height: 1.45rem;
+            stroke: currentColor;
+        }
+
+        .home-donate-uses {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.9rem;
+            margin: clamp(1.45rem, 3vw, 2.1rem) 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .home-donate-uses li {
+            min-height: 104px;
+            display: flex;
+            align-items: center;
+            gap: 0.78rem;
+            padding: 1rem 0.95rem;
+            border-radius: 22px;
+            background: rgba(255, 253, 246, 0.82);
+            border: 1px solid rgba(196, 169, 98, 0.38);
+            box-shadow: 0 12px 28px rgba(13, 92, 77, 0.075);
+            color: var(--emerald-deep);
+            font-weight: 800;
+            font-size: 0.94rem;
+            line-height: 1.22;
+        }
+
+        .home-donate-uses span {
+            display: grid;
+            place-items: center;
+            width: 2.65rem;
+            height: 2.65rem;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            color: var(--emerald-deep);
+            background: rgba(13, 92, 77, 0.055);
+            border: 1px solid rgba(196, 169, 98, 0.42);
+        }
+
         @media (max-width: 900px) {
+            .home-donate-layout {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .home-donate-uses {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .latest-updates-carousel-wrap {
                 padding: 0 2.75rem;
             }
@@ -246,6 +597,40 @@
             }
         }
         @media (max-width: 680px) {
+            .home-donate-copy,
+            .gift-aid-card {
+                min-height: auto;
+            }
+
+            .home-donate-copy {
+                padding: 1.35rem;
+            }
+
+            .home-donate-uses {
+                grid-template-columns: 1fr;
+            }
+
+            .home-donate-uses li {
+                min-height: auto;
+                flex-direction: row;
+                align-items: center;
+                border-radius: 22px;
+            }
+
+            .home-donate-action .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .gift-aid-flow {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .gift-aid-arrow {
+                transform: rotate(90deg);
+            }
+
             .latest-updates-header-row {
                 gap: 0.75rem;
             }
@@ -260,23 +645,37 @@
                 font-size: 0.9rem;
             }
             .latest-update-card {
+                --latest-update-media-row: 470px;
                 max-width: 100%;
-                min-height: 760px;
+                min-height: 810px;
                 border-radius: 20px;
             }
             .latest-update-media {
                 padding: 0.85rem 0.85rem 0.45rem;
             }
             .latest-update-media-stage {
-                min-height: 360px;
-                padding: 0.9rem;
+                height: 100%;
+                min-height: 0;
+            }
+            .latest-update-media:not(.is-portrait) .latest-update-media-stage {
+                padding: 1rem;
+            }
+            .latest-update-media.is-portrait .latest-update-media-stage {
+                padding: 0;
+            }
+            .latest-update-media:not(.is-portrait) img {
+                max-width: 84%;
+                max-height: 72%;
+            }
+            .latest-update-media.is-portrait img {
+                max-width: min(100%, 340px);
             }
             .latest-update-media:not(.is-portrait) .latest-update-media-stage::after {
                 bottom: 0.85rem;
                 width: 52%;
             }
             .latest-update-media.is-portrait img {
-                max-width: min(64vw, 210px);
+                max-width: min(92vw, 320px);
             }
             .latest-update-body {
                 padding: 0.95rem 1rem 1rem;
@@ -405,7 +804,10 @@
                     </div>
                 </div>
                 <div class="prayer-banner-right">
-                    <a href="prayer-times.html" class="btn btn-outline-light btn-sm">Full Timetable</a>
+                    <div class="prayer-banner-actions">
+                        <a href="prayer-times.html" class="btn btn-outline-light btn-sm">Full Timetable</a>
+                        <a href="#donate" class="btn btn-banner-donate btn-sm">Donate</a>
+                    </div>
                     <div class="social-icons-banner">
                         <a href="https://www.instagram.com/greenwichmadinatrust" target="_blank" class="social-icon-banner" aria-label="Instagram">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -520,6 +922,44 @@
                     </div>
                     <a href="https://www.facebook.com/GreenwichMadinaTrust/" target="_blank" class="btn btn-primary spotlight-fb-link">View on Facebook</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="home-donate-section" id="donate" aria-labelledby="donate-title">
+        <div class="container">
+            <div class="home-donate-frame">
+                <div class="home-donate-layout">
+                    <div class="home-donate-copy">
+                        <span class="overline">Support the Masjid</span>
+                        <h2 id="donate-title">Donate</h2>
+                        <div class="home-donate-ornament" aria-hidden="true"><span></span></div>
+                        <p>Help maintain, improve and develop Ghousia Masjid as a clean, safe and welcoming space for salah, learning and community life.</p>
+                        <div class="home-donate-action">
+                            <a href="https://hibabox.com/greenwich-madina-trust/mosque-maintenance" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Donate Now</a>
+                            <p class="home-donate-action-note">Secure donation via <strong>Hibabox</strong>. Gift Aid available.</p>
+                        </div>
+                    </div>
+                    <aside class="gift-aid-card" aria-labelledby="gift-aid-title">
+                        <div class="gift-aid-mark" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3l2.35 4.75L19.6 8.5l-3.8 3.7.9 5.25L12 15l-4.7 2.45.9-5.25-3.8-3.7 5.25-.75L12 3z"/>
+                                <path d="M12 8.4v4.2"/><path d="M9.9 10.5h4.2"/>
+                            </svg>
+                        </div>
+                        <h3 id="gift-aid-title">Gift Aid can add 25%</h3>
+                        <div class="gift-aid-divider" aria-hidden="true"><span></span></div>
+                        <p>If you are a UK taxpayer, ticking Gift Aid helps the masjid receive more at no extra cost to you.</p>
+                    </aside>
+                </div>
+                <ul class="home-donate-uses" aria-label="How donations support the masjid">
+                    <li><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6 20V9l6-5 6 5v11"/><path d="M10 20v-6h4v6"/></svg></span>Enhancing worshipper facilities</li>
+                    <li><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5 5L4 17v3h3l5.7-5.7a4 4 0 0 0 5-5"/><path d="M16 4l4 4"/></svg></span>Building repairs and upkeep</li>
+                    <li><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16"/><path d="M8 7h8"/><path d="M8 11h6"/></svg></span>Learning spaces and resources</li>
+                    <li><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-2.9 8.6-7 10-4.1-1.4-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-5"/></svg></span>Accessibility and safety improvements</li>
+                    <li><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/><path d="M7.5 7.5l9 9"/><path d="M16.5 7.5l-9 9"/></svg></span>Future community projects</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -796,7 +1236,7 @@
                     return `
                     <div class="swiper-slide">
                         <article class="latest-update-card">
-                            ${gmtNewsFirstImage(post) ? `<div class="latest-update-media ${gmtNewsIsPortrait(post) ? 'is-portrait' : ''}"><div class="latest-update-media-stage"><img src="${gmtEscapeHtml(gmtNewsFirstImage(post))}" alt="${gmtEscapeHtml(post.title)}" loading="lazy"></div></div>` : ''}
+                            ${gmtNewsFirstImage(post) ? `<div class="latest-update-media ${gmtNewsIsPortrait(post) ? 'is-portrait' : ''}"><div class="latest-update-media-stage ${gmtNewsIsPortrait(post) ? 'is-portrait-stage' : ''}"><img src="${gmtEscapeHtml(gmtNewsFirstImage(post))}" alt="${gmtEscapeHtml(post.title)}" loading="lazy"></div></div>` : ''}
                             <div class="latest-update-body">
                                 <div class="latest-update-meta">
                                     <span class="latest-update-pill">${gmtEscapeHtml(post.eyebrow || 'Update')}</span>
