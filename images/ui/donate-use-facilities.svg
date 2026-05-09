@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Masjid icon">
+  <rect width="512" height="512" fill="none"/>
+
+  <g fill="none" stroke="#006653" stroke-width="24" stroke-linejoin="miter" stroke-linecap="square">
+    <!-- Outer arch/building -->
+    <path d="
+      M86 432
+      V187
+      L256 65
+      L426 187
+      V432
+    "/>
+
+    <!-- Inner arch doorway -->
+    <path d="
+      M164 432
+      V308
+      C164 254 206 215 256 215
+      C306 215 348 254 348 308
+      V432
+    "/>
+
+    <!-- Base line -->
+    <path d="M58 432 H454"/>
+
+    <!-- Crescent -->
+    <path d="
+      M259 149
+      C238 149 225 132 225 113
+      C225 96 237 82 254 78
+      C246 88 246 102 254 113
+      C262 124 276 128 288 122
+      C284 138 274 149 259 149
+      Z
+    " fill="#006653" stroke="none"/>
+  </g>
+</svg>

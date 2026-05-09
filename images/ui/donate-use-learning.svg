@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Book icon">
+  <rect width="512" height="512" fill="none"/>
+
+  <g fill="none" stroke="#006653" stroke-width="24" stroke-linejoin="miter" stroke-linecap="square">
+    <!-- Outer book base -->
+    <path d="
+      M58 145
+      H86
+      V122
+      H207
+      C226 122 242 132 256 151
+      C270 132 286 122 305 122
+      H426
+      V145
+      H454
+      V394
+      H302
+      C284 394 269 401 256 416
+      C243 401 228 394 210 394
+      H58
+      Z
+    "/>
+
+    <!-- Left page -->
+    <path d="
+      M86 145
+      V356
+      H206
+      C226 356 242 366 256 384
+      V151
+      C242 132 226 122 207 122
+      H86
+      Z
+    "/>
+
+    <!-- Right page -->
+    <path d="
+      M426 145
+      V356
+      H306
+      C286 356 270 366 256 384
+      V151
+      C270 132 286 122 305 122
+      H426
+      Z
+    "/>
+
+    <!-- Centre spine -->
+    <path d="M256 151 V384"/>
+  </g>
+</svg>

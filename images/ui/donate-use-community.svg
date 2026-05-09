@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Community icon">
+  <rect width="512" height="512" fill="none"/>
+
+  <g fill="none" stroke="#006653" stroke-width="24" stroke-linejoin="miter" stroke-linecap="square">
+    <!-- Centre head -->
+    <circle cx="256" cy="140" r="47"/>
+
+    <!-- Left head -->
+    <circle cx="126" cy="182" r="38"/>
+
+    <!-- Right head -->
+    <circle cx="386" cy="182" r="38"/>
+
+    <!-- Centre body -->
+    <path d="
+      M152 408
+      V337
+      C152 284 196 248 256 248
+      C316 248 360 284 360 337
+      V408
+    "/>
+
+    <!-- Left body -->
+    <path d="
+      M52 408
+      V353
+      C52 312 84 285 126 285
+      C151 285 173 295 188 313
+    "/>
+
+    <!-- Right body -->
+    <path d="
+      M460 408
+      V353
+      C460 312 428 285 386 285
+      C361 285 339 295 324 313
+    "/>
+  </g>
+</svg>
