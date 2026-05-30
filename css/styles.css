@@ -5642,3 +5642,13 @@ td.col-maghrib,
         flex-direction: column;
     }
 }
+
+
+/* Current monthly prayer timetable card */
+.current-timetable-card { max-width: 760px; margin-left: auto; margin-right: auto; }
+.current-timetable-card .section-kicker { margin: 0 0 var(--space-xs); color: var(--emerald); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.timetable-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+.current-timetable-preview { margin: var(--space-xl) auto 0; max-width: 560px; }
+.current-timetable-preview img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: var(--shadow-elevated); background: var(--ivory); }
+.current-timetable-preview figcaption { margin-top: var(--space-xs); color: var(--slate); font-size: 0.85rem; }
+@media (max-width: 640px) { .timetable-actions { align-items: stretch; flex-direction: column; } .timetable-actions .btn { justify-content: center; width: 100%; } .current-timetable-preview { max-width: 100%; } }

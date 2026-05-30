@@ -13,7 +13,7 @@
     </script>
     <meta name="description" content="Prayer times and monthly timetable for Greenwich Madina Trust mosque in London.">
     <title>Prayer Times | Greenwich Madina Trust</title>
-    <link rel="stylesheet" href="css/styles.css?v=20241220">
+    <link rel="stylesheet" href="css/styles.css?v=20260531">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="images/gemini-logo-final.png">
@@ -116,22 +116,34 @@
         </div>
     </section>
 
-    <!-- May 2026 Timetable PDF -->
-    <section class="content-section timetable-section">
+    <!-- Current Monthly Timetable: defaults to May, automatically switches to June from 1 June 2026 (Europe/London). -->
+    <section class="content-section timetable-section" id="monthly-timetable-section">
         <div class="container">
-            <div class="timetable-header" style="text-align: center;">
-                <h2>May 2026 Prayer Timetable</h2>
+            <div class="timetable-header current-timetable-card" style="text-align: center;">
+                <p class="section-kicker">Monthly Prayer Timetable</p>
+                <h2 id="current-timetable-title">May 2026 Prayer Timetable</h2>
                 <p class="jummah-note">Jum'a: <strong>1:30 PM</strong> & <strong>2:15 PM</strong> every Friday. English speech begins 30 minutes before the first prayer.</p>
-                <a href="documents/may-2026-timetable.pdf" target="_blank" class="btn btn-outline pdf-link">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="16" y1="13" x2="8" y2="13"/>
-                        <line x1="16" y1="17" x2="8" y2="17"/>
-                        <polyline points="10 9 9 9 8 9"/>
-                    </svg>
-                    View/Download May 2026 Timetable
-                </a>
+                <div class="timetable-actions">
+                    <a id="current-timetable-download" href="documents/may-2026-timetable.pdf" target="_blank" class="btn btn-outline pdf-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        <span id="current-timetable-download-text">View/Download May 2026 Timetable</span>
+                    </a>
+                    <a id="current-timetable-calendar" href="may-2026-calendar.html" target="_blank" class="btn btn-primary pdf-link">
+                        Open full timetable page
+                    </a>
+                </div>
+                <figure id="current-timetable-preview" class="current-timetable-preview" hidden>
+                    <a id="current-timetable-image-link" href="documents/june-2026-timetable.jpg" target="_blank">
+                        <img id="current-timetable-image" src="" alt="June 2026 Greenwich Madina Trust prayer timetable">
+                    </a>
+                    <figcaption id="current-timetable-caption">June 2026 timetable image</figcaption>
+                </figure>
             </div>
         </div>
     </section>
@@ -172,48 +184,61 @@
         </div>
     </footer>
 
-    <script src="js/prayer-times.js?v=20241220"></script>
+    <script src="js/prayer-times.js?v=20260531"></script>
     <script src="js/main.js?v=20241220"></script>
     <script>
         // Prayer Times Page Specific JS
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize monthly timetable
-            let currentYear = new Date().getFullYear();
-            let currentMonth = new Date().getMonth() + 1;
-
-            loadMonthlyTimetable(currentYear, currentMonth);
-            updateMonthLabel(currentYear, currentMonth);
-
-            // Month navigation
-            document.getElementById('prev-month').addEventListener('click', function() {
-                currentMonth--;
-                if (currentMonth < 1) {
-                    currentMonth = 12;
-                    currentYear--;
-                }
-                loadMonthlyTimetable(currentYear, currentMonth);
-                updateMonthLabel(currentYear, currentMonth);
-            });
-
-            document.getElementById('next-month').addEventListener('click', function() {
-                currentMonth++;
-                if (currentMonth > 12) {
-                    currentMonth = 1;
-                    currentYear++;
-                }
-                loadMonthlyTimetable(currentYear, currentMonth);
-                updateMonthLabel(currentYear, currentMonth);
-            });
+            applyCurrentTimetable();
         });
 
-        function loadMonthlyTimetable(year, month) {
-            PrayerTimes.renderMonthlyTable('monthly-timetable', year, month);
+        function getLondonDateParts(date = new Date()) {
+            const parts = new Intl.DateTimeFormat('en-GB', {
+                timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit'
+            }).formatToParts(date).reduce((acc, part) => {
+                if (part.type !== 'literal') acc[part.type] = part.value;
+                return acc;
+            }, {});
+            return { year: Number(parts.year), month: Number(parts.month), day: Number(parts.day) };
         }
 
-        function updateMonthLabel(year, month) {
-            const months = ['January', 'February', 'March', 'April', 'May', 'June',
-                           'July', 'August', 'September', 'October', 'November', 'December'];
-            document.getElementById('current-month-label').textContent = `${months[month-1]} ${year}`;
+        function isOnOrAfterLondonDate(year, month, day) {
+            const today = getLondonDateParts(window.GMT_TIMETABLE_TEST_DATE ? new Date(window.GMT_TIMETABLE_TEST_DATE) : new Date());
+            if (today.year !== year) return today.year > year;
+            if (today.month !== month) return today.month > month;
+            return today.day >= day;
+        }
+
+        function applyCurrentTimetable() {
+            const juneLive = isOnOrAfterLondonDate(2026, 6, 1);
+            const config = juneLive ? {
+                title: 'June 2026 Prayer Timetable', downloadHref: 'documents/june-2026-timetable.pdf',
+                downloadText: 'View/Download June 2026 Timetable', calendarHref: 'june-2026-calendar.html',
+                imageHref: 'documents/june-2026-timetable.jpg', imageAlt: 'June 2026 Greenwich Madina Trust prayer timetable',
+                imageCaption: 'June 2026 timetable image'
+            } : {
+                title: 'May 2026 Prayer Timetable', downloadHref: 'documents/may-2026-timetable.pdf',
+                downloadText: 'View/Download May 2026 Timetable', calendarHref: 'may-2026-calendar.html',
+                imageHref: '', imageAlt: '', imageCaption: ''
+            };
+            document.getElementById('current-timetable-title').textContent = config.title;
+            document.getElementById('current-timetable-download').href = config.downloadHref;
+            document.getElementById('current-timetable-download-text').textContent = config.downloadText;
+            document.getElementById('current-timetable-calendar').href = config.calendarHref;
+            const preview = document.getElementById('current-timetable-preview');
+            const image = document.getElementById('current-timetable-image');
+            const imageLink = document.getElementById('current-timetable-image-link');
+            const caption = document.getElementById('current-timetable-caption');
+            if (config.imageHref) {
+                image.src = config.imageHref;
+                image.alt = config.imageAlt;
+                imageLink.href = config.imageHref;
+                caption.textContent = config.imageCaption;
+                preview.hidden = false;
+            } else {
+                preview.hidden = true;
+                image.removeAttribute('src');
+            }
         }
     </script>
 </body>
