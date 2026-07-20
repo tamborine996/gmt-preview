@@ -14,10 +14,12 @@
     "facebookUrl": ""
   },
   "notificationBar": {
-    "enabled": false,
+    "enabled": true,
     "hideFrom": "2099-01-01",
-    "badgeText": "Upcoming Event",
-    "linkText": "Monthly Gyarwee Shareef — Saturday 18th July, from Asr",
-    "linkUrl": "#event-spotlight"
+    "badgeText": "Event poster",
+    "linkText": "Gyarwee Shareef — View poster",
+    "linkUrl": "images/event-poster.jpg",
+    "openInNewTab": false,
+    "ariaLabel": "Open the full Gyarwee Shareef event poster"
   }
 }
