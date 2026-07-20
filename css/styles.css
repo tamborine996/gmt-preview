@@ -4,7 +4,7 @@
    Refined elegance meets Islamic geometric tradition
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400&family=Source+Sans+3:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400&family=Cormorant+Garamond:wght@500;600&family=Source+Sans+3:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap');
 
 /* ========== CSS VARIABLES ========== */
 :root {
@@ -434,7 +434,7 @@ p {
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    gap: 1rem;
     text-decoration: none;
     min-width: 0;
 }
@@ -451,17 +451,63 @@ p {
     transform: scale(1.05) rotate(3deg);
 }
 
-.logo-text {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--emerald);
-    letter-spacing: 0.02em;
+.logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     min-width: 0;
+}
+
+.logo-text {
+    font-family: 'Cormorant Garamond', var(--font-display);
+    font-size: 1.72rem;
+    font-weight: 600;
+    line-height: 0.9;
+    color: var(--charcoal);
+    letter-spacing: -0.025em;
+    white-space: nowrap;
     transition: color var(--duration-fast) var(--ease-out-expo);
 }
 
-.logo:hover .logo-text {
+.logo-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0.34rem 0 0.27rem;
+}
+
+.logo-rule::before,
+.logo-rule::after {
+    content: '';
+    height: 1px;
+    background: var(--gold-soft);
+}
+
+.logo-rule::before { width: 6rem; }
+.logo-rule::after { width: 1.6rem; }
+
+.logo-star {
+    width: 0.48rem;
+    height: 0.48rem;
+    flex: 0 0 auto;
+    background: var(--gold);
+    clip-path: polygon(50% 0, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0 50%, 38% 36%);
+}
+
+.logo-subtext {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--emerald);
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+.logo:hover .logo-text,
+.logo:hover .logo-subtext {
     color: var(--gold-muted);
 }
 
@@ -622,7 +668,7 @@ p {
 @media (max-width: 600px) {
     .logo {
         flex: 1 1 auto;
-        gap: var(--space-sm);
+        gap: 0.6rem;
     }
 
     .logo-symbol {
@@ -631,11 +677,26 @@ p {
     }
 
     .logo-text {
-        font-size: clamp(0.95rem, 4.2vw, 1.12rem);
-        line-height: 1.08;
-        max-width: min(14rem, calc(100vw - 120px));
-        white-space: normal;
-        text-wrap: balance;
+        font-size: clamp(0.94rem, 4vw, 1.05rem);
+        line-height: 0.9;
+    }
+
+    .logo-rule {
+        gap: 0.3rem;
+        margin: 0.18rem 0 0.16rem;
+    }
+
+    .logo-rule::before { width: 4.2rem; }
+    .logo-rule::after { width: 1rem; }
+
+    .logo-star {
+        width: 0.3rem;
+        height: 0.3rem;
+    }
+
+    .logo-subtext {
+        font-size: 0.56rem;
+        letter-spacing: 0.16em;
     }
 }
 
@@ -929,18 +990,6 @@ p {
 }
 
 @media (max-width: 600px) {
-    .logo-symbol {
-        height: 28px;
-    }
-
-    .logo-text {
-        font-size: clamp(0.95rem, 4.2vw, 1.08rem);
-        line-height: 1.08;
-        max-width: min(14rem, calc(100vw - 120px));
-        white-space: normal;
-        text-wrap: balance;
-    }
-
     .prayer-banner {
         padding: var(--space-sm) 0;
     }
