@@ -1582,7 +1582,7 @@ p {
 
 @media (max-width: 960px) {
     .hero-combined {
-        padding: var(--space-2xl) 0;
+        padding: var(--space-lg) 0 var(--space-2xl);
     }
 
     .hero-grid {
@@ -1590,7 +1590,13 @@ p {
         gap: var(--space-2xl);
     }
 
+    .hero-carousel-compact {
+        order: 1;
+        animation-delay: 0s;
+    }
+
     .hero-welcome {
+        order: 2;
         text-align: center;
     }
 
