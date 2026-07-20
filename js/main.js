@@ -302,49 +302,14 @@ function isValidEmail(email) {
 }
 
 /**
- * Staging preview markers
+ * Staging submission marker
  *
- * This file is modified only in the gmt-preview repository. It keeps the
- * preview site visibly separate from the public GMT website and labels any
- * Formspree submissions that come from the staging copy.
+ * This file is modified only in the gmt-preview repository. It labels any
+ * Formspree submissions that come from the staging copy without changing
+ * the site's visible presentation.
  */
 function initStagingPreviewMarkers() {
     const markerValue = 'GMT staging preview - tamborine996.github.io/gmt-preview';
-
-    // Visible banner so reviewers know they are not on the live public domain.
-    const banner = document.createElement('div');
-    banner.className = 'staging-preview-banner';
-    banner.setAttribute('role', 'status');
-    banner.innerHTML = '<strong>Preview site</strong> — for review only. Live website: <a href="https://greenwichmadinatrust.org.uk/">greenwichmadinatrust.org.uk</a>';
-
-    const style = document.createElement('style');
-    style.textContent = `
-        .staging-preview-banner {
-            background: #6b4f16;
-            color: #fff7df;
-            font: 600 14px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            letter-spacing: 0.01em;
-            text-align: center;
-            padding: 9px 16px;
-            position: relative;
-            z-index: 9999;
-            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
-        }
-        .staging-preview-banner a {
-            color: #fff;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-        @media (max-width: 640px) {
-            .staging-preview-banner {
-                font-size: 12px;
-                padding: 8px 10px;
-            }
-        }
-    `;
-
-    document.head.appendChild(style);
-    document.body.insertBefore(banner, document.body.firstChild);
 
     // Hidden Formspree field so test submissions are distinguishable from live enquiries.
     const contactForm = document.getElementById('contact-form');
