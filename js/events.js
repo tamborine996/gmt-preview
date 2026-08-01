@@ -173,25 +173,67 @@
             descEl.textContent = config.description;
         }
 
-        // Update time - hide if empty
-        const timeDetail = section.querySelector('.spotlight-time')?.closest('.spotlight-detail');
-        if (timeDetail) {
-            if (config.time) {
-                timeDetail.style.display = '';
-                section.querySelector('.spotlight-time').textContent = config.time;
-            } else {
-                timeDetail.style.display = 'none';
-            }
-        }
+        // Multi-gathering events need complete, self-contained detail cards instead of
+        // shared time and location rows. Older single-event entries keep the legacy rows.
+        const gatheringWrap = section.querySelector('.spotlight-gatherings');
+        const gatheringCards = Array.from(section.querySelectorAll('[data-gathering-index]'));
+        const gatherings = Array.isArray(config.gatherings)
+            ? config.gatherings.filter(gathering => gathering && gathering.title)
+            : [];
+        const hasGatherings = gatherings.length > 0 && gatheringWrap;
+        const legacyDate = section.querySelector('.spotlight-legacy-date');
+        const legacyDetails = section.querySelector('.spotlight-legacy-details');
 
-        // Update location - hide if empty
-        const locationDetail = section.querySelector('.spotlight-location')?.closest('.spotlight-detail');
-        if (locationDetail) {
-            if (config.location) {
-                locationDetail.style.display = '';
-                section.querySelector('.spotlight-location').textContent = config.location;
-            } else {
-                locationDetail.style.display = 'none';
+        if (hasGatherings) {
+            gatheringWrap.hidden = false;
+            if (legacyDate) legacyDate.style.display = 'none';
+            if (legacyDetails) legacyDetails.style.display = 'none';
+
+            gatheringCards.forEach((card, index) => {
+                const gathering = gatherings[index];
+                if (!gathering) {
+                    card.style.display = 'none';
+                    return;
+                }
+
+                card.style.display = '';
+                const title = card.querySelector('.spotlight-gathering-title');
+                const date = card.querySelector('.spotlight-gathering-date');
+                const time = card.querySelector('.spotlight-gathering-time');
+                const venue = card.querySelector('.spotlight-gathering-venue');
+                const address = card.querySelector('.spotlight-gathering-address');
+
+                if (title) title.textContent = gathering.title;
+                if (date) date.textContent = gathering.date || '';
+                if (time) time.textContent = gathering.time || '';
+                if (venue) venue.textContent = gathering.venue || '';
+                if (address) address.textContent = gathering.address || '';
+            });
+        } else {
+            if (gatheringWrap) gatheringWrap.hidden = true;
+            if (legacyDate) legacyDate.style.display = '';
+            if (legacyDetails) legacyDetails.style.display = '';
+
+            // Update time - hide if empty
+            const timeDetail = section.querySelector('.spotlight-time')?.closest('.spotlight-detail');
+            if (timeDetail) {
+                if (config.time) {
+                    timeDetail.style.display = '';
+                    section.querySelector('.spotlight-time').textContent = config.time;
+                } else {
+                    timeDetail.style.display = 'none';
+                }
+            }
+
+            // Update location - hide if empty
+            const locationDetail = section.querySelector('.spotlight-location')?.closest('.spotlight-detail');
+            if (locationDetail) {
+                if (config.location) {
+                    locationDetail.style.display = '';
+                    section.querySelector('.spotlight-location').textContent = config.location;
+                } else {
+                    locationDetail.style.display = 'none';
+                }
             }
         }
 
