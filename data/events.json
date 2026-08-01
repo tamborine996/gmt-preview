@@ -1,25 +1,39 @@
 {
   "spotlight": {
     "enabled": true,
-    "hideFrom": "2099-01-01",
-    "badgeText": "Upcoming Event",
-    "title": "Monthly Gyarwee Shareef",
-    "date": "Saturday 18th July 2026",
-    "description": "Monthly Gyarwee Shareef commemorating Imam Rabbani Mujaddid al-Alf al-Thani, Shaykh Ahmad Faruqi Sirhindi, and Imam Ahmad Raza Khan, with Mawlana Muhammad Irfan Naqshbandi and Mawlana Hafiz Faizan Raza.",
-    "time": "From Asr",
-    "location": "GMT Ghousia Masjid, 56 Camrose Street, SE2 0JA",
-    "poster": "images/event-poster.jpg",
+    "hideFrom": "2026-08-17",
+    "badgeText": "Mawlid Weekend",
+    "title": "Annual Mawlid un Nabi",
+    "date": "Sisters · Saturday 15 August | Brothers · Sunday 16 August",
+    "description": "On Saturday, sisters will gather at St Mark’s Hall; on Sunday, brothers will gather at Ghousia Masjid. At the heart of Mawlid is gratitude to Allah Almighty for sending the Best of Creation, our beloved Master Sayyiduna Muhammad—peace and blessings be upon him, his family and companions. Open either poster for the full programme.",
+    "time": "Sisters · 12:00pm | Brothers · 5:00pm",
+    "location": "Sisters · St Mark’s Hall, Old Mill Road, SE18 1QE | Brothers · GMT Ghousia Masjid, 56 Camrose Street, SE2 0JA",
+    "poster": "images/event-poster-brothers.jpg",
+    "posters": [
+      {
+        "src": "images/event-poster-sisters.jpg",
+        "label": "Sisters · 15 August",
+        "alt": "Sisters’ Annual Mawlid un Nabi poster for Saturday 15 August 2026 at St Mark’s Hall",
+        "ariaLabel": "Open the full sisters’ Mawlid poster"
+      },
+      {
+        "src": "images/event-poster-brothers.jpg",
+        "label": "Brothers · 16 August",
+        "alt": "Brothers’ Annual Mawlid un Nabi poster for Sunday 16 August 2026 at GMT Ghousia Masjid",
+        "ariaLabel": "Open the full brothers’ Mawlid poster"
+      }
+    ],
     "buttonText": "",
     "buttonUrl": "",
     "facebookUrl": ""
   },
   "notificationBar": {
     "enabled": true,
-    "hideFrom": "2099-01-01",
-    "badgeText": "Event poster",
-    "linkText": "Gyarwee Shareef — View poster",
-    "linkUrl": "images/event-poster.jpg",
+    "hideFrom": "2026-08-17",
+    "badgeText": "Mawlid",
+    "linkText": "Weekend gatherings · 15–16 August",
+    "linkUrl": "#event-spotlight",
     "openInNewTab": false,
-    "ariaLabel": "Open the full Gyarwee Shareef event poster"
+    "ariaLabel": "View the sisters’ and brothers’ Annual Mawlid gathering posters"
   }
 }

@@ -5077,7 +5077,28 @@ td.col-maghrib,
     }
 
     .spotlight-details {
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
+        gap: var(--space-md);
+    }
+
+    .spotlight-detail-location {
+        display: block;
+        width: min(100%, 17rem);
+        text-align: center;
+    }
+
+    .spotlight-detail-location svg {
+        display: inline-block;
+        margin-right: var(--space-xs);
+        vertical-align: -0.3rem;
+    }
+
+    .spotlight-location {
+        display: inline;
+        line-height: 1.5;
+        text-align: center;
     }
 
     .spotlight-poster {
@@ -5746,7 +5767,7 @@ td.col-maghrib,
 .current-timetable-preview figcaption { margin-top: var(--space-xs); color: var(--slate); font-size: 0.85rem; }
 @media (max-width: 640px) { .timetable-actions { align-items: stretch; flex-direction: column; } .timetable-actions .btn { justify-content: center; width: 100%; } .current-timetable-preview { max-width: 100%; } }
 
-/* Temporary Youth Summer Retreat campaign carousel */
+/* Campaign carousel foundation */
 .slide-campaign {
     isolation: isolate;
 }
@@ -6061,7 +6082,7 @@ td.col-maghrib,
     }
 }
 
-/* Staging exploration: independently art-directed editorial campaign slides */
+/* Independently art-directed editorial campaign slides */
 .slide-campaign {
     --editorial-ink: #171426;
     color: #fff;
@@ -6523,6 +6544,165 @@ td.col-maghrib,
     top: 4px;
 }
 
+/* 04 — Madrassah: illuminated learning folio */
+.slide-madrassah {
+    background: #f4e8cb;
+    color: #0b5149;
+}
+
+.slide-madrassah::before {
+    inset: 0 0 0 auto;
+    width: 44%;
+    height: 100%;
+    background: #0b5b52;
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%, 9% 76%, 2% 52%, 12% 27%);
+    opacity: 1;
+}
+
+.slide-madrassah::after {
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cpath d='M44 8l8 18 18-8-8 18 18 8-18 8 8 18-18-8-8 18-8-18-18 8 8-18-18-8 18-8-8-18 18 8z' fill='none' stroke='%23c59a43' stroke-opacity='.13' stroke-width='1.1'/%3E%3Ccircle cx='44' cy='44' r='11' fill='none' stroke='%23c59a43' stroke-opacity='.09'/%3E%3C/svg%3E");
+    background-size: 88px 88px;
+    opacity: 1;
+}
+
+.slide-madrassah .slide-badge {
+    padding: 0.43rem 0.7rem;
+    border: 2px solid #0b5149;
+    background: transparent;
+    color: #0b5149;
+    font-family: var(--font-body);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    transform: rotate(-1deg);
+}
+
+.slide-madrassah .slide-title-compact {
+    max-width: 10ch;
+    color: #0b5149;
+    font-family: var(--font-display);
+    font-size: clamp(2.05rem, 3.6vw, 2.68rem);
+    font-style: italic;
+    font-weight: 550;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+}
+
+.slide-madrassah .slide-description-compact {
+    color: rgba(11, 81, 73, 0.88);
+    font-weight: 560;
+}
+
+.slide-madrassah .campaign-meta span {
+    min-height: 0;
+    padding: 0.2rem 0 0.2rem 0.72rem;
+    border: 0;
+    border-left: 2px solid #c59a43;
+    background: transparent;
+    color: #0b5149;
+}
+
+.slide-madrassah .btn-light {
+    border: 2px solid #0b5149;
+    background: #0b5149;
+    color: #fff5d9;
+}
+
+.slide-madrassah .btn-light:hover {
+    border-color: #c59a43;
+    background: #c59a43;
+    color: #123f3a;
+}
+
+.madrassah-visual {
+    color: #123f3a;
+}
+
+.madrassah-arch {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 171px;
+    height: 220px;
+    border: 2px solid rgba(244, 232, 203, 0.68);
+    border-radius: 88px 88px 8px 8px;
+    transform: rotate(-2deg);
+}
+
+.madrassah-book {
+    position: absolute;
+    left: 13px;
+    top: 58px;
+    width: 146px;
+    height: 104px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 3px solid #123f3a;
+    background: #fff7df;
+    box-shadow: 10px 10px 0 #c59a43;
+    transform: rotate(-3deg);
+}
+
+.madrassah-book::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 50%;
+    width: 1px;
+    background: rgba(18, 63, 58, 0.34);
+}
+
+.madrassah-book span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.madrassah-book small {
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.madrassah-book strong {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    line-height: 1;
+}
+
+.madrassah-weekdays,
+.madrassah-field-label {
+    position: absolute;
+    z-index: 3;
+    display: inline-block;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.61rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.madrassah-weekdays {
+    right: -4px;
+    top: 25px;
+    border: 2px solid #123f3a;
+    background: #dcb753;
+    color: #123f3a;
+    transform: rotate(5deg);
+}
+
+.madrassah-field-label {
+    left: -6px;
+    bottom: 8px;
+    background: #fff7df;
+    color: #123f3a;
+    transform: rotate(-4deg);
+}
+
 @media (max-width: 600px) {
     .slide-campaign .slide-content-compact {
         padding: 1.35rem 2.05rem 2.55rem;
@@ -6566,7 +6746,8 @@ td.col-maghrib,
 
     .slide-event-feature .event-hero-visual,
     .slide-youth-retreat .retreat-visual,
-    .slide-youth-questionnaire .questionnaire-visual {
+    .slide-youth-questionnaire .questionnaire-visual,
+    .slide-madrassah .madrassah-visual {
         right: -28px;
         bottom: -30px;
         opacity: 0.16;
@@ -6582,9 +6763,14 @@ td.col-maghrib,
         right: -155px;
         bottom: -105px;
     }
+
+    .slide-madrassah::before {
+        width: 40%;
+        opacity: 0.14;
+    }
 }
 
-/* Staging exploration: gold poster ribbon + distinct Islamic geometry */
+/* Gold poster ribbon + distinct Islamic geometry */
 .event-notification-bar {
     min-height: 42px;
     gap: 0.65rem;
@@ -6731,7 +6917,7 @@ td.col-maghrib,
     }
 }
 
-/* Staging phone-first finishing pass — 21 July 2026 */
+/* Phone-first homepage finishing pass — 21 July 2026 */
 .prayer-banner .prayer-name,
 .prayer-banner .row-label {
     color: rgba(255, 255, 255, 0.9);
@@ -6773,5 +6959,150 @@ td.col-maghrib,
         font-size: 0.66rem;
         letter-spacing: 0.08em;
         white-space: nowrap;
+    }
+}
+
+/* Staging: Annual Mawlid dual-poster spotlight and carousel */
+.event-spotlight {
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
+.slide-mawlid-weekend .slide-title-compact {
+    max-width: 12ch;
+}
+
+.mawlid-poster-pair {
+    width: 192px;
+    height: 230px;
+}
+
+.event-poster-mini {
+    position: absolute;
+    padding: 6px;
+    background: #fff1d6;
+    box-shadow: 8px 10px 0 rgba(139, 47, 87, 0.78);
+}
+
+.slide-event-feature .mawlid-poster-pair .event-poster-mini img {
+    display: block;
+    width: 88px;
+    height: 124px;
+    object-fit: cover;
+}
+
+.event-poster-mini-sisters {
+    left: 4px;
+    top: 54px;
+    transform: rotate(-7deg);
+}
+
+.event-poster-mini-brothers {
+    right: 0;
+    top: 20px;
+    transform: rotate(6deg);
+}
+
+.slide-mawlid-weekend .event-editorial-date {
+    right: -2px;
+    top: 0;
+}
+
+.slide-mawlid-weekend .event-editorial-note {
+    left: -2px;
+    bottom: 8px;
+}
+
+.spotlight-content {
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: var(--space-2xl);
+}
+
+.spotlight-posters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--space-md);
+    min-width: 0;
+}
+
+.spotlight-posters .spotlight-poster-link {
+    min-width: 0;
+}
+
+.spotlight-posters .poster-frame {
+    width: 100%;
+    max-width: 260px;
+}
+
+.spotlight-poster-label {
+    display: block;
+    padding: 0.55rem 0.6rem;
+    background: var(--emerald);
+    color: var(--ivory);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+    .spotlight-content {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .spotlight-posters {
+        order: -1;
+        width: min(100%, 580px);
+        margin-inline: auto;
+    }
+
+    .spotlight-posters .poster-frame {
+        max-width: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .slide-event-feature .mawlid-poster-pair {
+        right: -12px;
+        bottom: -22px;
+        width: 182px;
+        opacity: 0.14;
+        transform: scale(0.86);
+        transform-origin: right bottom;
+    }
+
+    .slide-event-feature .mawlid-poster-pair .event-poster-mini img {
+        width: 86px;
+        height: 122px;
+    }
+
+    .event-spotlight {
+        padding-block: var(--space-xl);
+    }
+
+    .spotlight-content {
+        gap: var(--space-xl);
+    }
+
+    .spotlight-posters {
+        gap: 0.6rem;
+    }
+
+    .spotlight-poster-label {
+        padding: 0.45rem 0.25rem;
+        font-size: 0.61rem;
+        letter-spacing: 0.035em;
+    }
+
+    .spotlight-posters .poster-frame {
+        border-width: 2px;
+        border-radius: 8px;
+    }
+
+    .spotlight-description {
+        font-size: 1rem;
+        line-height: 1.6;
     }
 }

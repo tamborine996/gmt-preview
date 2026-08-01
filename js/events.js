@@ -9,7 +9,7 @@
     // Load events data and update the page
     async function loadEvents() {
         try {
-            const response = await fetch('data/events.json?v=20260720-gold-banner');
+            const response = await fetch('data/events.json?v=20260720-editorial-live');
             if (!response.ok) {
                 throw new Error('Failed to load events data');
             }
@@ -122,17 +122,38 @@
             badgeEl.textContent = config.badgeText;
         }
 
-        // Update poster and its full-size link
-        const posterImg = section.querySelector('.spotlight-poster img');
-        const posterLink = section.querySelector('.spotlight-poster-link');
-        if (posterImg && config.poster) {
-            posterImg.src = config.poster;
-            posterImg.alt = config.title + ' Poster';
-        }
-        if (posterLink && config.poster) {
-            posterLink.href = config.poster;
-            posterLink.setAttribute('aria-label', 'Open the full ' + config.title + ' poster');
-        }
+        // Update one or more posters and their full-size links.
+        // The single `poster` field remains supported for older event entries.
+        const configuredPosters = Array.isArray(config.posters) && config.posters.length
+            ? config.posters
+            : (config.poster ? [{ src: config.poster }] : []);
+        const posterLinks = Array.from(section.querySelectorAll('.spotlight-poster-link'));
+
+        posterLinks.forEach((posterLink, index) => {
+            const poster = configuredPosters[index];
+            if (!poster) {
+                posterLink.style.display = 'none';
+                return;
+            }
+
+            const posterSrc = poster.src || poster.url || poster.poster;
+            const posterImg = posterLink.querySelector('img');
+            const posterLabel = posterLink.querySelector('.spotlight-poster-label');
+            const posterName = poster.label || config.title || 'event';
+
+            posterLink.style.display = '';
+            posterLink.href = posterSrc;
+            posterLink.setAttribute('aria-label', poster.ariaLabel || 'Open the full ' + posterName + ' poster');
+
+            if (posterImg) {
+                posterImg.src = posterSrc;
+                posterImg.alt = poster.alt || posterName + ' poster';
+            }
+            if (posterLabel) {
+                posterLabel.textContent = poster.label || '';
+                posterLabel.style.display = poster.label ? '' : 'none';
+            }
+        });
 
         // Update title
         const titleEl = section.querySelector('.spotlight-title');
