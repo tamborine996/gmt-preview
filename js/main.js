@@ -236,9 +236,9 @@ function initCurrentYear() {
 }
 
 /**
- * Add a restrained Rabi al-Awwal layer while the official GMT Hijri calendar
- * reports days 1–30 of the month. It therefore disappears automatically even
- * if the following moon-sighting update has not yet been published.
+ * Dress the site for Rabi al-Awwal while the official GMT Hijri calendar
+ * reports days 1–30 of the month. The prayer banner remains untouched and the
+ * seasonal treatment occupies the established strip immediately beneath it.
  */
 async function initRabiAlAwwalSeason() {
     if (typeof PrayerTimes === 'undefined' || typeof PrayerTimes.getHijriDate !== 'function') return;
@@ -251,25 +251,34 @@ async function initRabiAlAwwalSeason() {
 
         document.body.dataset.rabiSeason = isRabiAlAwwal ? 'active' : 'inactive';
         document.body.classList.toggle('season-rabi-al-awwal', isRabiAlAwwal);
+        document.querySelectorAll('.rabi-season-banner').forEach(element => element.remove());
         if (!isRabiAlAwwal) return;
 
-        const dateBlock = document.querySelector('.prayer-banner-date');
-        if (!dateBlock || dateBlock.querySelector('.rabi-season-note')) return;
+        const prayerBanner = document.querySelector('.prayer-banner');
+        if (!prayerBanner) return;
 
-        const note = document.createElement('span');
-        note.className = 'rabi-season-note';
-        note.setAttribute('aria-label', 'Rabi al-Awwal: a month of love, remembrance and Salawat');
-
-        const ornament = document.createElement('span');
-        ornament.className = 'rabi-season-ornament';
-        ornament.setAttribute('aria-hidden', 'true');
-        ornament.textContent = '✦';
-
-        const words = document.createElement('span');
-        words.textContent = 'Love · remembrance · Ṣalawāt';
-
-        note.append(ornament, words);
-        dateBlock.appendChild(note);
+        const banner = document.createElement('aside');
+        banner.className = 'rabi-season-banner';
+        banner.setAttribute('aria-labelledby', 'rabi-season-title');
+        banner.innerHTML = `
+            <div class="rabi-season-arch-row" aria-hidden="true">
+                ${'<span><i></i></span>'.repeat(9)}
+            </div>
+            <span class="rabi-season-corner rabi-season-corner-left" aria-hidden="true"><i></i><b>✦</b></span>
+            <span class="rabi-season-corner rabi-season-corner-right" aria-hidden="true"><i></i><b>✦</b></span>
+            <div class="rabi-season-inner">
+                <span class="rabi-season-rule" aria-hidden="true"><i></i></span>
+                <div class="rabi-season-copy">
+                    <span class="rabi-season-month"><i aria-hidden="true">✦</i> RABIʿ AL-AWWAL <b class="rabi-season-year"></b> <i aria-hidden="true">✦</i></span>
+                    <div class="rabi-season-main">
+                        <strong id="rabi-season-title">Honouring the month in which the Prophet Muhammad ﷺ was born</strong>
+                        <a class="rabi-season-link" href="news.html#post-1">Read about our Mawlid event <span aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+                <span class="rabi-season-rule rabi-season-rule-right" aria-hidden="true"><i></i></span>
+            </div>`;
+        banner.querySelector('.rabi-season-year').textContent = `${hijri.year || ''} AH`;
+        prayerBanner.insertAdjacentElement('afterend', banner);
     } catch (error) {
         console.warn('Could not apply the Rabi al-Awwal seasonal theme:', error);
     }
