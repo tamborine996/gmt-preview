@@ -1,8 +1,56 @@
 {
   "generated_from": "Greenwich Madina Trust Facebook news imports",
   "status": "published",
-  "updated_at": "2026-07-20",
+  "updated_at": "2026-08-22",
   "posts": [
+    {
+      "slug": "annual-mawlid-un-nabi-highlights-2026",
+      "source": "gmt",
+      "source_url": "https://www.youtube.com/playlist?list=PLPS3SFPVXzgc",
+      "published_label": "22 August 2026",
+      "published_date": "22 August 2026",
+      "eyebrow": "Event Highlights",
+      "title": "Annual Mawlid-un-Nabi: highlights from our blessed gathering",
+      "text_blocks": [
+        "Alhamdulillah, on Sunday 16 August, Greenwich Madina Trust held its Annual Mawlid-un-Nabi gathering at Ghousia Masjid.",
+        "The blessed evening brought the community together for recitation of the Noble Qur’an, inspiring reminders, heartfelt Naʿat and abundant Ṣalawāt upon our beloved Master, Sayyiduna Muhammad ﷺ. We are grateful to our honoured guests, respected scholars, reciters, volunteers and everyone who attended and contributed.",
+        "May Allah ﷻ accept this humble gathering, reward everyone who helped to make it possible and increase within our hearts sincere love for His Beloved Messenger ﷺ. Āmīn. Watch the highlights and event videos through the YouTube playlist; further videos will be added soon, in shā’ Allāh."
+      ],
+      "key_details": [
+        {
+          "label": "Event",
+          "value": "Annual Mawlid-un-Nabi"
+        },
+        {
+          "label": "Date",
+          "value": "Sunday 16 August 2026"
+        },
+        {
+          "label": "Venue",
+          "value": "Ghousia Masjid, 56 Camrose Street, London SE2 0JA"
+        }
+      ],
+      "poster": {
+        "url": "images/news/mawlid-highlights-2026.jpg",
+        "alt": "Annual Mawlid-un-Nabi highlights title artwork in green and gold"
+      },
+      "gallery": [
+        {
+          "url": "images/news/mawlid-highlights-gathering-1.jpg",
+          "alt": "Annual Mawlid gathering at Ghousia Masjid with a speaker at the lectern"
+        },
+        {
+          "url": "images/news/mawlid-highlights-gathering-2.jpg",
+          "alt": "Congregation seated inside Ghousia Masjid during the Annual Mawlid gathering"
+        },
+        {
+          "url": "images/news/mawlid-highlights-gathering-3.jpg",
+          "alt": "Wide view of the Annual Mawlid programme inside Ghousia Masjid"
+        }
+      ],
+      "action_url": "https://www.youtube.com/playlist?list=PLPS3SFPVXzgc",
+      "action_label": "Watch the full playlist"
+    },
     {
       "slug": "youth-summer-retreat-2026",
       "source": "facebook",
