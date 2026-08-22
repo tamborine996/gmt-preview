@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Recent news and updates from Greenwich Madina Trust.">
     <title>News | Greenwich Madina Trust</title>
-    <link rel="stylesheet" href="css/styles.css?v=20260822-rabi-mawlid-staging4">
+    <link rel="stylesheet" href="css/styles.css?v=20260822-rabi-mawlid-staging5">
     <style>
         .news-listing {
             padding: 0 0 5rem;
@@ -361,11 +361,7 @@
             color: #063d37;
             font-style: normal;
         }
-        .mawlid-film-play small {
-            padding-left: .3rem;
-            color: #dfc877;
-            font-size: .67rem;
-        }
+
         .mawlid-film-play[hidden] { display: none; }
         .mawlid-film-play:focus-visible {
             outline: 3px solid #fff;
@@ -660,7 +656,7 @@
             }
             .mawlid-film-copy h3 { font-size: 1.58rem; }
             .mawlid-film-copy p { font-size: .8rem; }
-            .mawlid-film-play small { display: none; }
+
             .mawlid-playlist-copy > a { letter-spacing: .07em; }
         }
 
@@ -916,7 +912,7 @@
                         <section class="mawlid-film-chapter" aria-labelledby="mawlid-film-title">
                             <div class="mawlid-film-copy">
                                 <span class="mawlid-chapter-number">01 · Short film</span>
-                                <h3 id="mawlid-film-title">Watch the 51-second highlights</h3>
+                                <h3 id="mawlid-film-title">Watch the event highlights</h3>
                                 <p>A brief glimpse of recitation, reminders, Naʿat and Ṣalawāt from the blessed gathering.</p>
                                 <p class="mawlid-film-note"><span aria-hidden="true"></span> The film will only play when you choose.</p>
                             </div>
@@ -925,8 +921,8 @@
                                     <source src="${escapeHtml(video.url || '')}" type="${escapeHtml(video.type || 'video/mp4')}">
                                     Your browser cannot play this video. <a href="${escapeHtml(video.url || '')}">Open the highlights film</a>.
                                 </video>
-                                <button class="mawlid-film-play" type="button" aria-controls="mawlid-story-film" aria-label="Play the 51-second Mawlid highlights film">
-                                    <i aria-hidden="true">▶</i><span>Play highlights</span><small>0:51</small>
+                                <button class="mawlid-film-play" type="button" aria-controls="mawlid-story-film" aria-label="Play the Mawlid highlights film">
+                                    <i aria-hidden="true">▶</i><span>Play highlights</span>
                                 </button>
                             </div>
                         </section>
@@ -975,14 +971,6 @@
                 const playButton = frame?.querySelector('.mawlid-film-play');
                 if (!playButton) return;
                 const label = playButton.querySelector('span');
-                const timer = playButton.querySelector('small');
-
-                const updateDuration = () => {
-                    if (!Number.isFinite(video.duration)) return;
-                    const seconds = Math.round(video.duration);
-                    timer.textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
-                };
-
                 playButton.addEventListener('click', async () => {
                     try {
                         await video.play();
@@ -990,13 +978,11 @@
                         playButton.hidden = false;
                     }
                 });
-                video.addEventListener('loadedmetadata', updateDuration);
-                video.addEventListener('durationchange', updateDuration);
                 video.addEventListener('play', () => { playButton.hidden = true; });
                 video.addEventListener('ended', () => {
                     playButton.hidden = false;
                     label.textContent = 'Replay highlights';
-                    playButton.setAttribute('aria-label', 'Replay the 51-second Mawlid highlights film');
+                    playButton.setAttribute('aria-label', 'Replay the Mawlid highlights film');
                 });
             });
         }

@@ -7492,6 +7492,35 @@ td.col-maghrib,
     background: #ffffff;
 }
 
+.mawlid-carousel-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+}
+
+.mawlid-carousel-playlist-link {
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(248, 231, 185, 0.72);
+    color: #fff7df;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.045em;
+    line-height: 1.25;
+    text-decoration: none;
+}
+
+.mawlid-carousel-playlist-link:hover,
+.mawlid-carousel-playlist-link:focus-visible {
+    border-bottom-color: #ffffff;
+    color: #ffffff;
+}
+
+.mawlid-carousel-playlist-link:focus-visible {
+    outline: 2px solid #fff3cf;
+    outline-offset: 4px;
+}
+
 .slide-mawlid-video .mawlid-video-visual {
     z-index: 4;
     width: 292px;
@@ -7532,22 +7561,6 @@ td.col-maghrib,
     height: 100%;
     object-fit: cover;
     background: #020b13;
-}
-
-.mawlid-video-duration {
-    position: absolute;
-    z-index: 3;
-    top: 0.75rem;
-    right: 0.75rem;
-    padding: 0.3rem 0.48rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 999px;
-    background: rgba(1, 12, 20, 0.72);
-    color: #fff;
-    font-size: 0.65rem;
-    font-weight: 800;
-    line-height: 1;
-    backdrop-filter: blur(8px);
 }
 
 .mawlid-video-controls {
@@ -7661,6 +7674,15 @@ td.col-maghrib,
 
     .slide-mawlid-video .btn-light {
         padding: 0.62rem 1rem;
+    }
+
+    .mawlid-carousel-actions {
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .mawlid-carousel-playlist-link {
+        font-size: 0.7rem;
     }
 }
 
@@ -7838,13 +7860,13 @@ td.col-maghrib,
     position: relative;
     flex: 0 0 auto;
     padding-bottom: 2px;
-    border-bottom: 1px solid rgba(7,84,71,.48);
-    color: #075447;
-    font-size: 9px;
+    border-bottom: 1.5px solid rgba(5,68,58,.72);
+    color: #043f36;
+    font-size: 13px;
     font-weight: 800;
-    letter-spacing: .12em;
+    letter-spacing: .025em;
+    line-height: 1.3;
     text-decoration: none;
-    text-transform: uppercase;
 }
 
 .rabi-season-link::before {
@@ -7855,7 +7877,7 @@ td.col-maghrib,
 
 .rabi-season-link span {
     margin-left: 3px;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .rabi-season-link:hover,
@@ -8036,14 +8058,14 @@ td.col-maghrib,
 
     .rabi-season-link {
         display: inline-block;
-        margin-top: 3px;
-        font-size: 7.5px;
-        letter-spacing: .07em;
+        margin-top: 5px;
+        font-size: 11px;
+        letter-spacing: .015em;
     }
 
     .rabi-season-link span {
-        margin-left: 1px;
-        font-size: 10px;
+        margin-left: 2px;
+        font-size: 12px;
     }
 
     .rabi-season-corner {
