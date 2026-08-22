@@ -7458,9 +7458,9 @@ td.col-maghrib,
 }
 
 .slide-mawlid-video .slide-content-compact {
-    grid-template-columns: minmax(0, 1fr) minmax(218px, 0.72fr);
-    gap: 1.25rem;
-    padding: 1.75rem 2.55rem 2.75rem;
+    grid-template-columns: minmax(0, 0.95fr) minmax(270px, 1.05fr);
+    gap: 1.1rem;
+    padding: 1.75rem 2.45rem 2.75rem;
 }
 
 .slide-mawlid-video .slide-badge {
@@ -7494,8 +7494,8 @@ td.col-maghrib,
 
 .slide-mawlid-video .mawlid-video-visual {
     z-index: 4;
-    width: 228px;
-    height: 366px;
+    width: 292px;
+    height: 250px;
     display: flex;
     align-items: stretch;
     justify-content: stretch;
@@ -7530,7 +7530,7 @@ td.col-maghrib,
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     background: #020b13;
 }
 
@@ -7581,12 +7581,26 @@ td.col-maghrib,
     backdrop-filter: blur(8px);
 }
 
-.mawlid-video-control:hover,
-.mawlid-video-control:focus-visible {
+.mawlid-video-control:hover {
     border-color: #fff3cf;
-    background: #0a6757;
+    background: rgba(10, 48, 58, 0.94);
+}
+
+.mawlid-video-control:focus-visible {
     outline: 2px solid #fff3cf;
     outline-offset: 2px;
+}
+
+.mawlid-sound-control[aria-pressed="true"] {
+    border-color: #bde9d7;
+    background: #0a6757;
+    color: #ffffff;
+    box-shadow: 0 0 0 1px rgba(189, 233, 215, 0.18);
+}
+
+.mawlid-sound-control[aria-pressed="false"] {
+    background: rgba(1, 17, 27, 0.82);
+    color: #fff7df;
 }
 
 .mawlid-video-control svg {
@@ -7647,5 +7661,90 @@ td.col-maghrib,
 
     .slide-mawlid-video .btn-light {
         padding: 0.62rem 1rem;
+    }
+}
+
+/* Rabi al-Awwal seasonal layer — enabled from the official GMT Hijri calendar */
+.rabi-season-note {
+    display: none;
+}
+
+body.season-rabi-al-awwal .header {
+    box-shadow: 0 5px 24px rgba(4, 70, 55, 0.1);
+}
+
+body.season-rabi-al-awwal .header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background:
+        repeating-linear-gradient(90deg,
+            #0d705b 0 18px,
+            #e3bd69 18px 22px,
+            #0d705b 22px 40px,
+            transparent 40px 45px);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+body.season-rabi-al-awwal .logo-symbol {
+    filter: drop-shadow(0 0 7px rgba(207, 166, 72, 0.34));
+}
+
+body.season-rabi-al-awwal .prayer-banner {
+    background:
+        radial-gradient(circle at 9% 18%, rgba(240, 207, 129, 0.14), transparent 23%),
+        radial-gradient(circle at 91% 82%, rgba(240, 207, 129, 0.11), transparent 20%),
+        linear-gradient(135deg, #063f38 0%, #09634f 50%, #0b7a5b 100%);
+}
+
+body.season-rabi-al-awwal .prayer-banner::before {
+    background-image:
+        linear-gradient(45deg, transparent 46%, rgba(255, 239, 195, 0.065) 47% 53%, transparent 54%),
+        linear-gradient(-45deg, transparent 46%, rgba(255, 239, 195, 0.065) 47% 53%, transparent 54%);
+    background-size: 38px 38px;
+    opacity: 0.62;
+}
+
+body.season-rabi-al-awwal .hijri-date {
+    color: #ffe3a0;
+    text-shadow: 0 0 18px rgba(255, 214, 119, 0.2);
+}
+
+body.season-rabi-al-awwal .rabi-season-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: max-content;
+    flex-shrink: 0;
+    padding: 0.24rem 0.52rem;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 223, 147, 0.5);
+    border-radius: 999px;
+    background: rgba(2, 48, 43, 0.62);
+    color: #fff0c7;
+    font-size: 0.63rem;
+    font-weight: 650;
+    letter-spacing: 0.025em;
+    line-height: 1;
+    box-shadow: 0 5px 16px rgba(0, 26, 22, 0.16);
+    backdrop-filter: blur(7px);
+}
+
+.rabi-season-ornament {
+    color: #f4cf7b;
+    font-size: 0.72rem;
+    transform: rotate(15deg);
+}
+
+@media (max-width: 600px) {
+    body.season-rabi-al-awwal .rabi-season-note {
+        max-width: 168px;
+        padding: 0.2rem 0.42rem;
+        font-size: 0.54rem;
+        white-space: nowrap;
     }
 }

@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dynamic footer year
     initCurrentYear();
 
+    // Rabi al-Awwal seasonal detailing (automatically expires after day 30)
+    initRabiAlAwwalSeason();
+
     // Staging-only markers for this preview deployment
     initStagingPreviewMarkers();
 });
@@ -230,6 +233,46 @@ function initCurrentYear() {
     document.querySelectorAll('[data-current-year]').forEach(el => {
         el.textContent = currentYear;
     });
+}
+
+/**
+ * Add a restrained Rabi al-Awwal layer while the official GMT Hijri calendar
+ * reports days 1–30 of the month. It therefore disappears automatically even
+ * if the following moon-sighting update has not yet been published.
+ */
+async function initRabiAlAwwalSeason() {
+    if (typeof PrayerTimes === 'undefined' || typeof PrayerTimes.getHijriDate !== 'function') return;
+
+    try {
+        const hijri = await PrayerTimes.getHijriDate();
+        const month = String(hijri.month || '').toLowerCase().replace(/[^a-z]/g, '');
+        const day = Number(hijri.day);
+        const isRabiAlAwwal = month === 'rabialawwal' && day >= 1 && day <= 30;
+
+        document.body.dataset.rabiSeason = isRabiAlAwwal ? 'active' : 'inactive';
+        document.body.classList.toggle('season-rabi-al-awwal', isRabiAlAwwal);
+        if (!isRabiAlAwwal) return;
+
+        const dateBlock = document.querySelector('.prayer-banner-date');
+        if (!dateBlock || dateBlock.querySelector('.rabi-season-note')) return;
+
+        const note = document.createElement('span');
+        note.className = 'rabi-season-note';
+        note.setAttribute('aria-label', 'Rabi al-Awwal: a month of love, remembrance and Salawat');
+
+        const ornament = document.createElement('span');
+        ornament.className = 'rabi-season-ornament';
+        ornament.setAttribute('aria-hidden', 'true');
+        ornament.textContent = '✦';
+
+        const words = document.createElement('span');
+        words.textContent = 'Love · remembrance · Ṣalawāt';
+
+        note.append(ornament, words);
+        dateBlock.appendChild(note);
+    } catch (error) {
+        console.warn('Could not apply the Rabi al-Awwal seasonal theme:', error);
+    }
 }
 
 /**

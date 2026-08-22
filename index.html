@@ -13,7 +13,7 @@
     </script>
     <meta name="description" content="Greenwich Madina Trust - Serving the local Muslim community with prayers, events, education, and services.">
     <title>Greenwich Madina Trust | Home</title>
-    <link rel="stylesheet" href="css/styles.css?v=20260822-mawlid-video-staging2">
+    <link rel="stylesheet" href="css/styles.css?v=20260822-rabi-mawlid-staging3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="images/gemini-logo-final.png">
@@ -1036,10 +1036,10 @@
                                 </div>
                                 <div class="campaign-visual mawlid-video-visual">
                                     <div class="mawlid-carousel-player">
-                                        <video id="mawlid-carousel-video" muted autoplay playsinline preload="metadata" poster="images/news/mawlid-highlights-2026.jpg" aria-label="Annual Mawlid-un-Nabi highlights film">
-                                            <source src="videos/annual-mawlid-highlights-carousel-2026.mp4" type="video/mp4">
+                                        <video id="mawlid-carousel-video" muted autoplay playsinline preload="metadata" poster="images/news/mawlid-carousel-landscape-poster.jpg" aria-label="Annual Mawlid-un-Nabi highlights film">
+                                            <source src="videos/annual-mawlid-highlights-carousel-landscape-2026.mp4" type="video/mp4">
                                         </video>
-                                        <span class="mawlid-video-duration" aria-hidden="true">0:51</span>
+                                        <span class="mawlid-video-duration" id="mawlid-video-countdown" aria-label="51 seconds remaining">0:51</span>
                                         <div class="mawlid-video-controls" aria-label="Highlights video controls">
                                             <button type="button" class="mawlid-video-control" id="mawlid-video-play" aria-pressed="true" aria-label="Pause highlights video">
                                                 <span aria-hidden="true">Ⅱ</span><span class="control-label">Pause</span>
@@ -1552,14 +1552,14 @@
         });
     </script>
 
-    <script src="js/prayer-times.js?v=20260731-august"></script>
+    <script src="js/prayer-times.js?v=20260822-rabi-season-staging3"></script>
     <script src="js/events.js?v=20260801-gathering-panels-staging"></script>
     <!-- Swiper.js for carousel -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- GLightbox for video modals -->
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="js/youtube.js?v=20241220"></script>
-    <script src="js/main.js?v=20260720-editorial-live"></script>
+    <script src="js/main.js?v=20260822-rabi-season-staging3"></script>
     <!-- Initialize Swiper carousel -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1593,9 +1593,10 @@
             const videoSlide = document.querySelector('[data-mawlid-video-slide]');
             const playButton = document.getElementById('mawlid-video-play');
             const soundButton = document.getElementById('mawlid-video-sound');
+            const countdown = document.getElementById('mawlid-video-countdown');
             const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-            if (!video || !videoSlide || !playButton || !soundButton) return;
+            if (!video || !videoSlide || !playButton || !soundButton || !countdown) return;
 
             const updatePlayButton = () => {
                 const isPlaying = !video.paused && !video.ended;
@@ -1606,10 +1607,19 @@
             };
 
             const updateSoundButton = () => {
-                const soundIsOn = !video.muted;
+                const soundIsOn = !video.muted && video.volume > 0;
                 soundButton.setAttribute('aria-pressed', String(soundIsOn));
                 soundButton.setAttribute('aria-label', soundIsOn ? 'Turn sound off' : 'Turn sound on');
                 soundButton.querySelector('.control-label').textContent = soundIsOn ? 'Sound off' : 'Sound on';
+            };
+
+            const updateCountdown = () => {
+                const duration = Number.isFinite(video.duration) ? video.duration : 51;
+                const remaining = video.ended ? 0 : Math.max(0, Math.ceil(duration - video.currentTime));
+                const minutes = Math.floor(remaining / 60);
+                const seconds = String(remaining % 60).padStart(2, '0');
+                countdown.textContent = `${minutes}:${seconds}`;
+                countdown.setAttribute('aria-label', `${remaining} second${remaining === 1 ? '' : 's'} remaining`);
             };
 
             const videoSlideIsActive = () => videoSlide.classList.contains('swiper-slide-active');
@@ -1658,16 +1668,30 @@
             });
 
             soundButton.addEventListener('click', async () => {
-                video.muted = !video.muted;
+                const soundIsOn = !video.muted && video.volume > 0;
+                if (soundIsOn) {
+                    video.muted = true;
+                } else {
+                    if (video.volume === 0) video.volume = 1;
+                    video.muted = false;
+                }
                 updateSoundButton();
                 if (video.paused) await playActiveVideo();
             });
 
             video.addEventListener('play', updatePlayButton);
             video.addEventListener('pause', updatePlayButton);
+            video.addEventListener('volumechange', updateSoundButton);
+            video.addEventListener('loadedmetadata', updateCountdown);
+            video.addEventListener('durationchange', updateCountdown);
+            video.addEventListener('timeupdate', updateCountdown);
+            video.addEventListener('seeking', updateCountdown);
             video.addEventListener('ended', () => {
                 updatePlayButton();
-                window.heroSwiper.slideNext();
+                updateCountdown();
+                window.setTimeout(() => {
+                    if (video.ended && videoSlideIsActive()) window.heroSwiper.slideNext();
+                }, 700);
             });
 
             window.heroSwiper.on('slideChangeTransitionStart', syncVideoWithSlide);
@@ -1685,6 +1709,7 @@
             });
 
             updateSoundButton();
+            updateCountdown();
             syncVideoWithSlide();
         });
     </script>

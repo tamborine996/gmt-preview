@@ -68,7 +68,7 @@ const PrayerTimes = (function() {
         }
 
         try {
-            const response = await fetch('data/hijri-calendar.json');
+            const response = await fetch('data/hijri-calendar.json?v=20260813-rabi-al-awwal');
             if (!response.ok) {
                 throw new Error('Failed to load Hijri calendar data');
             }
@@ -396,6 +396,7 @@ const PrayerTimes = (function() {
         getTodaysTimes,
         getTimesForDate,
         getMonthlyCalendar,
+        getHijriDate,
         updateDisplay,
         renderMonthlyTable,
         getMetadata
