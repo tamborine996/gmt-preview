@@ -7438,112 +7438,214 @@ td.col-maghrib,
     }
 }
 
-/* Post-event Mawlid highlights treatment — staging review */
-.slide-mawlid-highlights .slide-title-compact {
-    max-width: 11ch;
+/* Post-event Mawlid video feature — staging review */
+.slide-mawlid-video {
+    background:
+        radial-gradient(circle at 82% 18%, rgba(64, 198, 178, 0.22), transparent 30%),
+        radial-gradient(circle at 12% 92%, rgba(236, 196, 105, 0.18), transparent 34%),
+        linear-gradient(135deg, #031525 0%, #07384a 54%, #08624f 125%);
 }
 
-.slide-mawlid-highlights .mawlid-highlights-visual {
-    z-index: 4;
-    width: 230px;
-    height: 286px;
-    right: 24px;
-    top: 50%;
-    bottom: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(-50%);
-}
-
-.mawlid-highlights-frame {
-    position: relative;
-    width: 164px;
-    height: 244px;
-    padding: 6px;
-    border: 1px solid rgba(247, 218, 153, 0.76);
-    background: #f0d18b;
-    box-shadow:
-        14px 18px 38px rgba(0, 10, 22, 0.46),
-        0 0 0 9px rgba(238, 203, 124, 0.08);
-    transform: rotate(2.5deg);
-}
-
-.mawlid-highlights-frame::before {
+.slide-mawlid-video::after {
     content: '';
     position: absolute;
-    z-index: -1;
-    inset: -18px 20px 16px -20px;
-    border: 1px solid rgba(238, 203, 124, 0.46);
-    border-radius: 88px 88px 14px 14px;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(115deg, transparent 0 61%, rgba(255, 255, 255, 0.045) 61% 61.4%, transparent 61.4%),
+        linear-gradient(25deg, transparent 0 82%, rgba(239, 205, 128, 0.07) 82% 82.4%, transparent 82.4%);
+    pointer-events: none;
 }
 
-.mawlid-highlights-frame img {
+.slide-mawlid-video .slide-content-compact {
+    grid-template-columns: minmax(0, 1fr) minmax(218px, 0.72fr);
+    gap: 1.25rem;
+    padding: 1.75rem 2.55rem 2.75rem;
+}
+
+.slide-mawlid-video .slide-badge {
+    background: #f1d384;
+    color: #05283a;
+    box-shadow: 0 5px 20px rgba(235, 196, 103, 0.22);
+}
+
+.slide-mawlid-video .campaign-copy {
+    padding-left: 0.65rem;
+}
+
+.slide-mawlid-video .slide-title-compact {
+    max-width: 11ch;
+    color: #fff7df;
+}
+
+.slide-mawlid-video .slide-description-compact {
+    max-width: 34ch;
+    color: rgba(244, 252, 249, 0.9);
+}
+
+.slide-mawlid-video .btn-light {
+    background: #f8e7b9;
+    color: #05283a;
+}
+
+.slide-mawlid-video .btn-light:hover {
+    background: #ffffff;
+}
+
+.slide-mawlid-video .mawlid-video-visual {
+    z-index: 4;
+    width: 228px;
+    height: 366px;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    justify-self: center;
+}
+
+.mawlid-carousel-player {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(242, 212, 143, 0.8);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 50% 18%, rgba(31, 128, 110, 0.44), transparent 42%),
+        #020b13;
+    box-shadow:
+        0 22px 45px rgba(0, 7, 14, 0.46),
+        0 0 0 7px rgba(222, 187, 107, 0.07);
+}
+
+.mawlid-carousel-player::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, transparent 55%, rgba(1, 10, 17, 0.78) 100%);
+    pointer-events: none;
+}
+
+.mawlid-carousel-player video {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain;
+    background: #020b13;
 }
 
-.mawlid-play-mark {
+.mawlid-video-duration {
     position: absolute;
-    right: -16px;
-    bottom: 18px;
-    width: 52px;
-    height: 52px;
-    display: grid;
-    place-items: center;
-    border: 2px solid #fff4d5;
-    border-radius: 50%;
-    background: #0a624f;
-    color: #fff8e8;
-    box-shadow: 0 10px 22px rgba(0, 16, 26, 0.4);
-}
-
-.mawlid-play-mark svg {
-    width: 22px;
-    height: 22px;
-    fill: currentColor;
-    transform: translateX(1px);
-}
-
-.mawlid-watch-note {
-    position: absolute;
-    right: 4px;
-    bottom: 0;
-    padding: 0.42rem 0.58rem;
-    border: 1px solid rgba(239, 207, 132, 0.72);
-    background: #073c43;
-    color: #fff4d4;
-    box-shadow: 6px 7px 0 rgba(2, 28, 51, 0.36);
-    font-size: 0.58rem;
-    font-weight: 900;
-    letter-spacing: 0.11em;
+    z-index: 3;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.3rem 0.48rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    background: rgba(1, 12, 20, 0.72);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
     line-height: 1;
-    text-transform: uppercase;
-    transform: rotate(-2deg);
+    backdrop-filter: blur(8px);
+}
+
+.mawlid-video-controls {
+    position: absolute;
+    z-index: 4;
+    left: 0.65rem;
+    right: 0.65rem;
+    bottom: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.45rem;
+}
+
+.mawlid-video-control {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.34rem;
+    padding: 0.42rem 0.58rem;
+    border: 1px solid rgba(246, 220, 157, 0.68);
+    border-radius: 999px;
+    background: rgba(1, 17, 27, 0.82);
+    color: #fff7df;
+    font: inherit;
+    font-size: 0.65rem;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.mawlid-video-control:hover,
+.mawlid-video-control:focus-visible {
+    border-color: #fff3cf;
+    background: #0a6757;
+    outline: 2px solid #fff3cf;
+    outline-offset: 2px;
+}
+
+.mawlid-video-control svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
 }
 
 @media (max-width: 600px) {
-    .slide-mawlid-highlights .mawlid-highlights-visual {
-        right: -22px;
-        top: auto;
-        bottom: -32px;
-        width: 178px;
-        height: 252px;
-        opacity: 0.16;
-        transform: rotate(3deg);
-        transform-origin: right bottom;
+    .slide-mawlid-video .slide-content-compact {
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem 1.35rem 2.65rem;
+        text-align: center;
     }
 
-    .slide-mawlid-highlights .mawlid-highlights-frame {
-        width: 138px;
-        height: 218px;
+    .slide-mawlid-video .mawlid-video-visual {
+        position: relative;
+        order: -1;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: 230px;
+        opacity: 1;
+        transform: none;
     }
 
-    .slide-mawlid-highlights .mawlid-play-mark,
-    .slide-mawlid-highlights .mawlid-watch-note {
-        display: none;
+    .slide-mawlid-video .mawlid-carousel-player {
+        border-radius: 17px;
+    }
+
+    .slide-mawlid-video .campaign-copy {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .slide-mawlid-video .slide-badge {
+        margin-bottom: 0.45rem;
+        padding: 0.34rem 0.78rem;
+        font-size: 0.62rem;
+    }
+
+    .slide-mawlid-video .slide-title-compact {
+        max-width: none;
+        margin-bottom: 0.4rem;
+        font-size: clamp(1.45rem, 7vw, 1.8rem);
+        line-height: 1.08;
+    }
+
+    .slide-mawlid-video .slide-description-compact {
+        max-width: 34ch;
+        margin-bottom: 0.7rem;
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    .slide-mawlid-video .btn-light {
+        padding: 0.62rem 1rem;
     }
 }
