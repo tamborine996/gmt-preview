@@ -124,6 +124,34 @@
             background: var(--ivory);
             box-shadow: var(--shadow-soft);
         }
+        .news-video {
+            width: min(100%, 330px);
+            margin: 0 auto 1.75rem;
+        }
+        .news-video-stage {
+            padding: 0.65rem;
+            border: 1px solid rgba(196, 169, 98, 0.48);
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at 84% 12%, rgba(228, 193, 111, 0.22), transparent 28%),
+                linear-gradient(145deg, #031a34, #075f50);
+            box-shadow: 0 22px 50px rgba(5, 39, 52, 0.2);
+        }
+        .news-video video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            object-fit: contain;
+            border-radius: 18px;
+            background: #020b12;
+        }
+        .news-video-caption {
+            margin: 0.8rem 0 0;
+            color: var(--text-light);
+            font-size: 0.92rem;
+            line-height: 1.55;
+            text-align: center;
+        }
         .news-actions {
             display: flex;
             gap: 0.75rem;
@@ -342,6 +370,22 @@
             return `<div class="news-poster"><img src="${escapeHtml(poster.url)}" alt="${escapeHtml(poster.alt || '')}" loading="lazy"></div>`;
         }
 
+        function renderVideo(video) {
+            if (!video || !video.url) return '';
+            const title = video.title || 'Event highlights video';
+            return `
+                <figure class="news-video">
+                    <div class="news-video-stage">
+                        <video controls playsinline preload="metadata"${video.poster ? ` poster="${escapeHtml(video.poster)}"` : ''} aria-label="${escapeHtml(title)}">
+                            <source src="${escapeHtml(video.url)}" type="${escapeHtml(video.type || 'video/mp4')}">
+                            Your browser cannot play this video. <a href="${escapeHtml(video.url)}">Open the highlights film</a>.
+                        </video>
+                    </div>
+                    ${video.caption ? `<figcaption class="news-video-caption">${escapeHtml(video.caption)}</figcaption>` : ''}
+                </figure>
+            `;
+        }
+
         function renderPost(post, index, fallbackDate) {
             const staticDate = post.published_date || fallbackDate || post.published_label || '';
             return `
@@ -352,10 +396,11 @@
                             <span class="news-date">${escapeHtml(staticDate)}</span>
                         </div>
                         <h2>${escapeHtml(post.title)}</h2>
+                        ${renderVideo(post.video)}
                         <div class="news-prose">${renderTextBlocks(post.text_blocks || [])}</div>
                         ${post.action_url ? `<div class="news-actions news-actions-inline"><a class="btn btn-primary" href="${escapeHtml(post.action_url)}"${linkAttributes(post.action_url)}>${escapeHtml(post.action_label || 'Learn more')}</a>${post.related_url ? `<a class="btn btn-secondary" href="${escapeHtml(post.related_url)}"${linkAttributes(post.related_url)}>${escapeHtml(post.related_label || 'Related information')}</a>` : ''}</div>` : ''}
                         ${renderDetails(post.key_details || [])}
-                        ${renderPoster(post.poster)}
+                        ${post.video ? '' : renderPoster(post.poster)}
                         ${renderGallery(post.gallery || [])}
                         ${post.action_url ? '' : `
                         <div class="news-actions">

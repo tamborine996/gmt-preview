@@ -12,23 +12,9 @@
       "eyebrow": "Event Highlights",
       "title": "Annual Mawlid-un-Nabi: highlights from our blessed gathering",
       "text_blocks": [
-        "Alhamdulillah, on Sunday 16 August, Greenwich Madina Trust held its Annual Mawlid-un-Nabi gathering at Ghousia Masjid.",
-        "The blessed evening brought the community together for recitation of the Noble Qur’an, inspiring reminders, heartfelt Naʿat and abundant Ṣalawāt upon our beloved Master, Sayyiduna Muhammad ﷺ. We are grateful to our honoured guests, respected scholars, reciters, volunteers and everyone who attended and contributed.",
-        "May Allah ﷻ accept this humble gathering, reward everyone who helped to make it possible and increase within our hearts sincere love for His Beloved Messenger ﷺ. Āmīn. Watch the highlights and event videos through the YouTube playlist; further videos will be added soon, in shā’ Allāh."
-      ],
-      "key_details": [
-        {
-          "label": "Event",
-          "value": "Annual Mawlid-un-Nabi"
-        },
-        {
-          "label": "Date",
-          "value": "Sunday 16 August 2026"
-        },
-        {
-          "label": "Venue",
-          "value": "Ghousia Masjid, 56 Camrose Street, London SE2 0JA"
-        }
+        "Alhamdulillah, Greenwich Madina Trust’s Annual Mawlid-un-Nabi gathering brought the community together in love, gratitude and remembrance.",
+        "The blessed evening included recitation of the Noble Qur’an, inspiring reminders, heartfelt Naʿat and abundant Ṣalawāt upon our beloved Master, Sayyiduna Muhammad ﷺ. We are grateful to our honoured guests, respected scholars, reciters, volunteers and everyone who attended and contributed.",
+        "May Allah ﷻ accept this humble gathering, reward everyone who helped to make it possible and increase within our hearts sincere love for His Beloved Messenger ﷺ. Āmīn. Watch the short highlights film here, then explore the event videos through the full YouTube playlist."
       ],
       "poster": {
         "url": "images/news/mawlid-highlights-2026.jpg",
@@ -49,7 +35,14 @@
         }
       ],
       "action_url": "https://www.youtube.com/playlist?list=PLPS3SFPVXzgc",
-      "action_label": "Watch the full playlist"
+      "action_label": "Watch the full playlist",
+      "video": {
+        "url": "videos/annual-mawlid-highlights-2026.mp4",
+        "type": "video/mp4",
+        "poster": "images/news/mawlid-highlights-2026.jpg",
+        "title": "Annual Mawlid-un-Nabi 2026 highlights film",
+        "caption": "A 51-second film capturing highlights from the blessed gathering."
+      }
     },
     {
       "slug": "youth-summer-retreat-2026",
