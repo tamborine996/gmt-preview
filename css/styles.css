@@ -7686,396 +7686,411 @@ td.col-maghrib,
     }
 }
 
-/* Rabi al-Awwal seasonal identity — enabled from the official GMT Hijri calendar */
-.rabi-season-banner {
+/* ==================================================================
+   Rabi al-Awwal seasonal identity — "Nur, the Radiant Address"
+   Enabled site-wide from the official GMT Hijri calendar (days 1-30 of
+   Rabi al-Awwal); js/main.js builds the elements beneath .prayer-banner
+   and sets body.season-rabi-al-awwal. Anatomy: champagne radiance band,
+   the Na'layn Sharif crest in an apron of falling light, fountains of
+   curved rays at the band's corners flowing into garlands of light down
+   both margins (phone-native drawings below 1300px), fore-edge veils and
+   a gilt seam beneath the fixed header. All decoration pointer-inert.
+   ================================================================== */
+body:not(.season-rabi-al-awwal) .rabi-nur-band,
+body:not(.season-rabi-al-awwal) .rabi-nur-veil,
+body:not(.season-rabi-al-awwal) .rabi-nur-garland { display: none !important; }
+
+.rabi-nur-band {
     position: relative;
     z-index: 5;
-    overflow: hidden;
-    min-height: 78px;
-    color: #103e35;
-    background: linear-gradient(105deg,
-        #aa7627 0%,
-        #d6a84c 13%,
-        #edd282 32%,
-        #f8e9b6 50%,
-        #ebcd78 68%,
-        #d0a047 87%,
-        #9e6b24 100%);
-    border-top: 4px double #0a584a;
-    border-bottom: 4px double #0a584a;
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.72),
-        inset 0 12px 28px rgba(255,248,214,.16),
-        inset 0 -14px 26px rgba(95,55,8,.1);
+    background: linear-gradient(180deg, #FCF7EA 0%, #F8F0DD 55%, #F5EBD3 100%);
+    border-top: 1px solid rgba(176, 141, 63, .5);
+    margin-bottom: 44px;
 }
 
-.rabi-season-banner::before {
+.rabi-nur-band::before {
     content: '';
+    position: absolute;
+    inset: 3px 0;
+    border-top: 1px solid rgba(176, 141, 63, .22);
+    pointer-events: none;
+}
+
+/* the band's lower rule dissolves before the corners so the fountains
+   grow out of the fading line rather than sitting on a hard one */
+.rabi-nur-rule {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 4px;
+    background: linear-gradient(180deg,
+        rgba(176, 141, 63, .22) 0, rgba(176, 141, 63, .22) 1px,
+        transparent 1px, transparent 3px,
+        rgba(176, 141, 63, .5) 3px, rgba(176, 141, 63, .5) 4px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 160px, #000 calc(100% - 160px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 160px, #000 calc(100% - 160px), transparent 100%);
+    pointer-events: none;
+}
+
+.rabi-nur-rays-clip {
     position: absolute;
     inset: 0;
-    opacity: .55;
-    background-image: radial-gradient(circle at 1px 1px, rgba(12,82,68,.12) 1px, transparent 1.5px);
-    background-size: 18px 18px;
-    mask-image: linear-gradient(90deg, #000, transparent 25%, transparent 75%, #000);
+    overflow: hidden;
     pointer-events: none;
 }
 
-.rabi-season-banner::after {
-    content: '✦';
+.rabi-nur-rays,
+.rabi-nur-rays-m {
     position: absolute;
-    z-index: 2;
     left: 50%;
-    bottom: -9px;
-    width: 30px;
-    height: 17px;
-    transform: translateX(-50%);
-    background: #f5f0e5;
-    color: #b1842f;
-    text-align: center;
-    font-size: .68rem;
-    line-height: 17px;
-    pointer-events: none;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
 }
 
-.rabi-season-arch-row {
-    position: absolute;
-    inset: auto 0 -17px;
-    height: 82px;
-    display: flex;
-    justify-content: space-around;
-    opacity: .22;
-    pointer-events: none;
-}
+.rabi-nur-rays { width: 920px; max-width: none; }
+.rabi-nur-rays-m { display: none; width: min(380px, 94vw); }
 
-.rabi-season-arch-row > span {
-    position: relative;
-    display: block;
-    width: 76px;
-    height: 78px;
-    border: 2px solid #0b5b4c;
-    border-bottom: 0;
-    border-radius: 48% 48% 0 0 / 62% 62% 0 0;
-    transform: scaleX(.86);
-}
-
-.rabi-season-arch-row > span::before {
+.rabi-nur-rays-clip::after {
     content: '';
     position: absolute;
     left: 50%;
-    top: -9px;
-    width: 15px;
-    height: 15px;
-    border: 2px solid #0b5b4c;
-    transform: translateX(-50%) rotate(45deg);
-    background: rgba(247,229,172,.88);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 96px;
+    background: radial-gradient(ellipse closest-side,
+        rgba(250, 244, 228, .95) 34%,
+        rgba(250, 244, 228, .55) 66%,
+        rgba(250, 244, 228, 0) 100%);
+    pointer-events: none;
 }
 
-.rabi-season-arch-row i {
+/* the apron of light: the zone beneath the band is falling radiance */
+.rabi-nur-apron {
     position: absolute;
-    inset: 14px 13px 0;
-    border: 1px solid #0a5a4b;
-    border-bottom: 0;
-    border-radius: 48% 48% 0 0 / 60% 60% 0 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 150px;
+    z-index: 0;
+    background:
+        radial-gradient(46% 100% at 50% 0%,
+            rgba(236, 216, 168, .34),
+            rgba(236, 216, 168, 0) 78%),
+        linear-gradient(180deg,
+            rgba(236, 216, 168, .42) 0,
+            rgba(236, 216, 168, .13) 52%,
+            rgba(236, 216, 168, 0) 100%);
+    pointer-events: none;
 }
 
-.rabi-season-inner {
-    position: relative;
-    max-width: 1120px;
-    min-height: 70px;
-    margin: auto;
-    padding: 6px 34px;
-    display: grid;
-    grid-template-columns: 1fr minmax(0, 820px) 1fr;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
+.rabi-nur-apron-rays {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: min(720px, 96vw);
+    z-index: 0;
+    opacity: .85;
+    pointer-events: none;
+    user-select: none;
 }
 
-.rabi-season-copy {
+.rabi-nur-copy {
     position: relative;
+    z-index: 1;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 24px 24px 27px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4px 18px;
+    gap: 7px;
+    text-align: center;
 }
 
-.rabi-season-copy::before,
-.rabi-season-copy::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    width: 58%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(10,90,75,.7), transparent);
-}
-
-.rabi-season-copy::before { top: 0; }
-.rabi-season-copy::after { bottom: 0; }
-
-.rabi-season-month {
+.rabi-nur-month {
     display: flex;
     align-items: center;
-    gap: 9px;
-    margin-bottom: 4px;
-    color: #0a5a4b;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .18em;
+    gap: 12px;
+    color: #8E6F2E;
+    font-family: var(--font-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .34em;
+    text-indent: .34em;
     text-transform: uppercase;
     white-space: nowrap;
 }
 
-.rabi-season-month i {
-    color: #0a5a4b;
-    font-size: 8px;
+.rabi-nur-month i {
     font-style: normal;
+    font-size: 8px;
+    color: #B08D3F;
+    letter-spacing: 0;
+    text-indent: 0;
+    transform: translateY(-.5px);
 }
 
-.rabi-season-month b {
-    padding: 3px 6px;
-    background: #0a5a4b;
-    color: #f7df95;
-    font-size: 7px;
-    letter-spacing: .1em;
-}
+.rabi-nur-month b { font-weight: inherit; }
 
-.rabi-season-main {
+.rabi-nur-row {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    white-space: nowrap;
+    gap: 8px;
 }
 
-.rabi-season-main strong {
-    color: #173f36;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 20px;
+.rabi-nur-main {
+    margin: 0;
+    color: #123F35;
+    font-family: var(--font-display);
+    font-size: 23px;
     font-weight: 500;
-    line-height: 1.15;
+    line-height: 1.24;
     text-wrap: balance;
 }
 
-.rabi-season-link {
-    position: relative;
-    flex: 0 0 auto;
-    padding-bottom: 2px;
-    border-bottom: 1.5px solid rgba(5,68,58,.72);
-    color: #043f36;
+.rabi-nur-link {
+    padding-bottom: 3px;
+    color: #0A5A4B;
+    font-family: var(--font-body);
     font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .025em;
-    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: .06em;
     text-decoration: none;
+    border-bottom: 1px solid rgba(176, 141, 63, .65);
+    transition: color .25s ease, border-color .25s ease;
 }
 
-.rabi-season-link::before {
-    content: '';
+.rabi-nur-link:hover,
+.rabi-nur-link:focus-visible { color: #083D33; border-bottom-color: #8E6F2E; }
+.rabi-nur-link:focus-visible { outline: 2px solid #0A5A4B; outline-offset: 5px; }
+.rabi-nur-link .rabi-nur-arrow { margin-left: 4px; }
+
+/* the Na'layn Sharif crest, hanging in its pool of light */
+.rabi-nur-crest {
     position: absolute;
-    inset: -13px -8px;
+    left: 50%;
+    bottom: -76px;
+    transform: translateX(-50%);
+    width: 64px;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
 }
 
-.rabi-season-link span {
-    margin-left: 3px;
-    font-size: 13px;
-}
-
-.rabi-season-link:hover,
-.rabi-season-link:focus-visible {
-    color: #023f35;
-    border-bottom-color: #023f35;
-}
-
-.rabi-season-link:focus-visible {
-    outline: 2px solid #075447;
-    outline-offset: 5px;
-}
-
-.rabi-season-rule {
-    position: relative;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #0a5a4b);
-}
-
-.rabi-season-rule-right {
-    background: linear-gradient(90deg, #0a5a4b, transparent);
-}
-
-.rabi-season-rule i {
+.rabi-nur-crest-glow {
     position: absolute;
-    right: -8px;
-    top: -8px;
-    width: 17px;
-    height: 17px;
-    border: 1px solid #0a5a4b;
-    transform: rotate(45deg);
-    background: rgba(247,229,172,.9);
-}
-
-.rabi-season-rule-right i {
-    right: auto;
-    left: -8px;
-}
-
-.rabi-season-rule i::after {
-    content: '✦';
-    position: absolute;
-    inset: -3px;
-    display: grid;
-    place-items: center;
-    color: #0a5a4b;
-    font-size: 8px;
-    font-style: normal;
-    transform: rotate(-45deg);
-}
-
-.rabi-season-corner {
-    position: absolute;
-    top: 0;
-    width: 106px;
-    height: 92px;
-    color: #0a5a4b;
-    opacity: .72;
+    left: 50%;
+    bottom: -104px;
+    transform: translateX(-50%);
+    width: 190px;
+    height: 190px;
+    background: radial-gradient(circle, rgba(233, 214, 164, .55), rgba(233, 214, 164, 0) 68%);
+    z-index: 1;
     pointer-events: none;
 }
 
-.rabi-season-corner-left { left: 0; }
-.rabi-season-corner-right { right: 0; transform: scaleX(-1); }
+/* fore-edge veils (desktop) */
+.rabi-nur-veil {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    z-index: 55;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
+}
+.rabi-nur-veil-l { left: 0; background: linear-gradient(90deg, rgba(233, 214, 164, .58), rgba(233, 214, 164, 0)); }
+.rabi-nur-veil-r { right: 0; background: linear-gradient(270deg, rgba(233, 214, 164, .58), rgba(233, 214, 164, 0)); }
 
-.rabi-season-corner::before,
-.rabi-season-corner::after {
+/* garlands of light: corner fountain -> serpentine descent -> terminal */
+.rabi-nur-garland {
+    position: absolute;
+    display: none;
+    width: 130px;
+    z-index: 60;
+    flex-direction: column;
+    align-items: flex-start;
+    pointer-events: none;
+    user-select: none;
+}
+.rabi-nur-garland.rabi-nur-garland-on { display: flex; }
+.rabi-nur-garland-l { left: 2px; }
+.rabi-nur-garland-r { right: 2px; transform: scaleX(-1); }
+.rabi-nur-garland img { display: block; }
+/* togglers carry the parent class: they must outrank `.rabi-nur-garland img` */
+.rabi-nur-garland .rabi-nur-garland-spray-m,
+.rabi-nur-garland .rabi-nur-garland-end-m { display: none; }
+.rabi-nur-garland-line {
+    width: 64px;
+    flex: 1 1 auto;
+    min-height: 0;
+    background: url('../images/rabi/garland-tile.svg') top left / 64px 1250px repeat-y;
+}
+
+/* persistent gilt seam beneath the fixed header */
+body.season-rabi-al-awwal .header::after {
     content: '';
     position: absolute;
     left: 0;
-    top: 0;
-    border-color: #0a5a4b;
-    border-style: solid;
-    border-width: 0 1px 1px 0;
-    border-radius: 0 0 95% 0;
+    right: 0;
+    bottom: -3px;
+    height: 3px;
+    background: linear-gradient(90deg,
+        rgba(176, 141, 63, 0) 2%,
+        rgba(176, 141, 63, .52) 20%,
+        rgba(211, 178, 106, .95) 50%,
+        rgba(176, 141, 63, .52) 80%,
+        rgba(176, 141, 63, 0) 98%);
+    pointer-events: none;
 }
 
-.rabi-season-corner::before { width: 92px; height: 73px; }
-.rabi-season-corner::after { width: 68px; height: 50px; }
-
-.rabi-season-corner i {
-    position: absolute;
-    left: 15px;
-    top: 14px;
-    width: 28px;
-    height: 28px;
-    border: 1px solid #0a5a4b;
-    transform: rotate(45deg);
-}
-
-.rabi-season-corner b {
-    position: absolute;
-    left: 21px;
-    top: 20px;
-    color: #c89f45;
-    font-size: 15px;
-    font-weight: 400;
+/* below 1300px the garland swaps to its phone-native drawing */
+@media (max-width: 1299px) {
+    .rabi-nur-veil { display: none !important; }
+    .rabi-nur-garland { width: 70px; }
+    .rabi-nur-garland-l { left: 0; }
+    .rabi-nur-garland-r { right: 0; }
+    .rabi-nur-garland .rabi-nur-garland-spray-d,
+    .rabi-nur-garland .rabi-nur-garland-end-d { display: none; }
+    .rabi-nur-garland .rabi-nur-garland-spray-m,
+    .rabi-nur-garland .rabi-nur-garland-end-m { display: block; }
+    .rabi-nur-garland-line {
+        width: 24px;
+        background: url('../images/rabi/garland-tile-m.svg') top left / 24px 900px repeat-y;
+    }
 }
 
 @media (max-width: 900px) {
-    .rabi-season-inner {
-        display: block;
-        max-width: 820px;
-    }
-
-    .rabi-season-rule {
-        display: none;
-    }
-
-    .rabi-season-main {
-        white-space: normal;
-        flex-wrap: wrap;
-        row-gap: 4px;
-    }
+    .rabi-nur-band { margin-bottom: 34px; }
+    .rabi-nur-apron { height: 100px; }
+    .rabi-nur-apron-rays { width: min(400px, 96vw); }
+    .rabi-nur-rays { display: none; }
+    .rabi-nur-rays-m { display: block; }
+    .rabi-nur-rays-clip::after { width: 420px; height: 104px; }
+    .rabi-nur-copy { padding: 20px 20px 22px; }
+    .rabi-nur-main { font-size: 19px; }
+    .rabi-nur-month { font-size: 9.5px; letter-spacing: .26em; text-indent: .26em; gap: 9px; }
+    .rabi-nur-crest { width: 48px; bottom: -58px; }
+    .rabi-nur-crest-glow { width: 140px; height: 140px; bottom: -80px; }
 }
 
 @media (max-width: 620px) {
-    .rabi-season-banner {
-        min-height: 84px;
-    }
+    .rabi-nur-copy { padding: 19px 18px 20px; gap: 5px; }
+    .rabi-nur-main { font-size: 17.5px; line-height: 1.3; }
+    .rabi-nur-month { font-size: 8.5px; letter-spacing: .22em; text-indent: .22em; }
+    .rabi-nur-link { font-size: 12px; }
+    body.season-rabi-al-awwal .header::after { height: 2px; bottom: -2px; }
+}
 
-    .rabi-season-arch-row {
-        height: 50px;
-        bottom: -13px;
-    }
+@media (max-width: 360px) {
+    .rabi-nur-main { font-size: 16.5px; }
+    .rabi-nur-rays-clip::after { width: 300px; height: 92px; }
+}
 
-    .rabi-season-arch-row > span {
-        width: 42px;
-        height: 49px;
-    }
+/* Slide 3: TikTok announcement — a multifoil arch niche (the cusped
+   arch of Cordoba and the Alhambra) drawn tall like a phone screen holds
+   the glyph; beneath it a dome-topped gold equalizer gently pulses —
+   sound made architectural. Youthful bounce, the site's own materials. */
+.slide-tiktok {
+    background: linear-gradient(135deg, #073f36 0%, #0d5c4d 62%, #0b4a52 140%);
+}
 
-    .rabi-season-arch-row > span::before {
-        width: 10px;
-        height: 10px;
-        top: -6px;
-    }
+.tiktok-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-    .rabi-season-arch-row i {
-        inset: 9px 8px 0;
-    }
+.tiktok-arch {
+    position: relative;
+    width: 128px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: rotate(-3deg);
+}
 
-    .rabi-season-inner {
-        min-height: 76px;
-        padding: 5px 14px;
-    }
+.tiktok-arch-frame {
+    width: 128px;
+    height: auto;
+    display: block;
+}
 
-    .rabi-season-copy {
-        padding: 3px 14px;
-    }
+.tiktok-arch .tiktok-glyph {
+    position: absolute;
+    top: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    color: #F5EFE6;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+}
 
-    .rabi-season-copy::before,
-    .rabi-season-copy::after {
-        width: 80%;
-    }
+.tiktok-eq {
+    position: absolute;
+    top: 112px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 30px;
+}
 
-    .rabi-season-month {
-        gap: 6px;
-        margin-bottom: 3px;
-        font-size: 8px;
-        letter-spacing: .12em;
-    }
+.tiktok-eq i {
+    display: block;
+    width: 7px;
+    border-radius: 7px 7px 2px 2px;
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold-muted));
+    transform-origin: bottom;
+    animation: tiktokEq 1.5s ease-in-out infinite;
+}
 
-    .rabi-season-month b {
-        padding: 2px 5px;
-        font-size: 6px;
-    }
+.tiktok-eq i:nth-child(1) { height: 14px; animation-delay: 0s; }
+.tiktok-eq i:nth-child(2) { height: 24px; animation-delay: .18s; }
+.tiktok-eq i:nth-child(3) { height: 30px; animation-delay: .36s; }
+.tiktok-eq i:nth-child(4) { height: 18px; animation-delay: .54s; }
+.tiktok-eq i:nth-child(5) { height: 26px; animation-delay: .72s; }
 
-    .rabi-season-main {
-        display: block;
-        white-space: normal;
-    }
+@keyframes tiktokEq {
+    0%, 100% { transform: scaleY(0.72); }
+    50% { transform: scaleY(1.12); }
+}
 
-    .rabi-season-main strong {
-        display: block;
-        max-width: 350px;
-        font-size: 15px;
-        line-height: 1.15;
-    }
+.tiktok-handle {
+    margin-top: 14px;
+    color: #EFDCA8;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
 
-    .rabi-season-link {
-        display: inline-block;
-        margin-top: 5px;
-        font-size: 11px;
-        letter-spacing: .015em;
-    }
+.tiktok-spark {
+    position: absolute;
+    color: var(--gold-bright);
+    animation: tiktokTwinkle 2.8s ease-in-out infinite;
+}
 
-    .rabi-season-link span {
-        margin-left: 2px;
-        font-size: 12px;
-    }
+.tiktok-spark-1 { top: 2%; right: 8%; font-size: 17px; transform: rotate(14deg); }
+.tiktok-spark-2 { top: auto; right: auto; bottom: 14%; left: 4%; font-size: 11px; transform: rotate(-12deg); animation-delay: .9s; }
+.tiktok-spark-3 { top: 30%; left: -2%; font-size: 13px; transform: rotate(8deg); animation-delay: 1.6s; }
+.tiktok-spark-4 { top: auto; bottom: 2%; right: 16%; font-size: 10px; transform: rotate(-20deg); animation-delay: 2.2s; }
 
-    .rabi-season-corner {
-        width: 46px;
-        height: 42px;
-        opacity: .42;
-    }
+@keyframes tiktokTwinkle {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
 
-    .rabi-season-corner::before { width: 44px; height: 36px; }
-    .rabi-season-corner::after { width: 31px; height: 25px; }
-    .rabi-season-corner i { left: 7px; top: 7px; width: 15px; height: 15px; }
-    .rabi-season-corner b { left: 9px; top: 8px; font-size: 10px; }
+@media (prefers-reduced-motion: reduce) {
+    .tiktok-eq i, .tiktok-spark { animation: none; }
+    .tiktok-spark { opacity: 0.8; }
 }
