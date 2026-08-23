@@ -1,6 +1,6 @@
 # GMT acceptance staging
 
-- Production-derived source commit: `1a27c3332312c0ed674140b9cd799fc2326b36e9`
+- Production-derived source commit: `9a40dcf287987e15717e5b63930a031d569c339b`
 - Rebuilt: 2026-08-23
 - Public URL: <https://tamborine996.github.io/gmt-preview/>
 
