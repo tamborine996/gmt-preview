@@ -1,6 +1,6 @@
 # GMT acceptance staging
 
-- Production-derived source commit: `2898aa6df30160a3c2fa2c102b10918313cad2d9`
+- Production-derived source commit: `1a27c3332312c0ed674140b9cd799fc2326b36e9`
 - Rebuilt: 2026-08-23
 - Public URL: <https://tamborine996.github.io/gmt-preview/>
 
@@ -10,6 +10,6 @@
 2. `noindex`, `nofollow`, `noarchive`, and `robots.txt` prevent intended indexing.
 3. Google Analytics collection disabled on staging.
 4. Contact forms receive a hidden acceptance-staging `site_version` marker.
-5. Asset cache markers use the `staging5` suffix.
+5. Asset cache markers use the `staging6` suffix.
 
 Visible site content and website assets are otherwise derived from the source commit above.
