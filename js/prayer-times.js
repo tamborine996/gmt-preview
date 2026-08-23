@@ -47,7 +47,7 @@ const PrayerTimes = (function() {
         }
 
         try {
-            const response = await fetch('data/prayer-times-2026.json?v=20260731-august');
+            const response = await fetch('data/prayer-times-2026.json?v=20260815-asr1900-v2');
             if (!response.ok) {
                 throw new Error('Failed to load prayer times data');
             }
@@ -68,7 +68,7 @@ const PrayerTimes = (function() {
         }
 
         try {
-            const response = await fetch('data/hijri-calendar.json?v=20260813-rabi-al-awwal');
+            const response = await fetch('data/hijri-calendar.json');
             if (!response.ok) {
                 throw new Error('Failed to load Hijri calendar data');
             }

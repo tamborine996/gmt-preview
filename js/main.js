@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Rabi al-Awwal seasonal detailing (automatically expires after day 30)
     initRabiAlAwwalSeason();
 
-    // Staging-only markers for this preview deployment
+    // Staging-only marker for preview contact submissions
     initStagingPreviewMarkers();
 });
 
@@ -241,6 +241,7 @@ function initCurrentYear() {
  * seasonal treatment occupies the established strip immediately beneath it.
  */
 async function initRabiAlAwwalSeason() {
+    if (!document.body.hasAttribute('data-seasonal-shell')) return;
     if (typeof PrayerTimes === 'undefined' || typeof PrayerTimes.getHijriDate !== 'function') return;
 
     try {
@@ -413,16 +414,10 @@ function isValidEmail(email) {
 }
 
 /**
- * Staging submission marker
- *
- * This file is modified only in the gmt-preview repository. It labels any
- * Formspree submissions that come from the staging copy without changing
- * the site's visible presentation.
+ * Label preview Formspree submissions without changing visible content.
  */
 function initStagingPreviewMarkers() {
-    const markerValue = 'GMT staging preview - tamborine996.github.io/gmt-preview';
-
-    // Hidden Formspree field so test submissions are distinguishable from live enquiries.
+    const markerValue = 'GMT acceptance staging - tamborine996.github.io/gmt-preview';
     const contactForm = document.getElementById('contact-form');
     if (contactForm && !contactForm.querySelector('input[name="site_version"]')) {
         const input = document.createElement('input');

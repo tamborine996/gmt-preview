@@ -6962,7 +6962,7 @@ td.col-maghrib,
     }
 }
 
-/* Staging: Annual Mawlid dual-poster spotlight and carousel */
+/* Annual Mawlid dual-poster spotlight and carousel */
 .event-spotlight {
     scroll-margin-top: calc(var(--header-height) + 1rem);
 }
@@ -7203,7 +7203,7 @@ td.col-maghrib,
     }
 }
 
-/* Mawlid carousel draft 2: midnight blue, emerald and ceremonial gold */
+/* Annual Mawlid carousel: midnight blue, emerald and ceremonial gold */
 .slide-mawlid-weekend {
     isolation: isolate;
     background:
