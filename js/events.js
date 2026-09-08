@@ -9,7 +9,7 @@
     // Load events data and update the page
     async function loadEvents() {
         try {
-            const response = await fetch('data/events.json?v=20260720-editorial-live');
+            const response = await fetch('data/events.json?v=20260908-gyaarwee-staging1');
             if (!response.ok) {
                 throw new Error('Failed to load events data');
             }
