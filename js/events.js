@@ -9,7 +9,7 @@
     // Load events data and update the page
     async function loadEvents() {
         try {
-            const response = await fetch('data/events.json?v=20260908-grand-annual-v2');
+            const response = await fetch('data/events.json?v=20260908-ribbon-v3');
             if (!response.ok) {
                 throw new Error('Failed to load events data');
             }
@@ -83,6 +83,18 @@
         if (badgeEl) {
             badgeEl.textContent = config.badgeText || '';
             badgeEl.style.display = config.badgeText ? '' : 'none';
+        }
+
+        const arrow = bar.querySelector('.event-notif-arrow');
+        if (arrow) {
+            let action = arrow.querySelector('.event-notif-action');
+            if (!action) {
+                action = document.createElement('span');
+                action.className = 'event-notif-action';
+                arrow.prepend(action);
+            }
+            action.textContent = config.actionText || '';
+            action.hidden = !config.actionText;
         }
 
         const textEl = bar.querySelector('.event-notif-text');

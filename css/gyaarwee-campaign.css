@@ -75,20 +75,26 @@
 }
 @media(max-width:350px){.gw-poster-teaser{width:413.19px;right:-76px;top:-32.56px;opacity:.32;}}
 
-/* Two-line event ribbon: event identity first, date/time beneath. */
-#event-notification-bar {min-height:62px;padding:9px 22px;gap:16px;}
-#event-notification-bar .event-notif-text {display:flex;flex-direction:column;align-items:center;gap:3px;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;}
-#event-notification-bar .event-notif-title {font-size:14px;font-weight:800;}
-#event-notification-bar .event-notif-details {font-size:12px;font-weight:550;letter-spacing:.015em;}
-#event-notification-bar .event-notif-arrow {flex-shrink:0;}
+/* Single-line event ribbon: date/time badge, annual title, View more. */
+#event-notification-bar {min-height:44px;padding:7px 18px;gap:14px;flex-wrap:nowrap;}
+#event-notification-bar .event-notif-badge {white-space:nowrap;flex-shrink:0;text-transform:none;letter-spacing:.035em;background:#073f48;font-size:11px;padding:5px 8px;}
+#event-notification-bar .event-notif-text {display:block;white-space:nowrap;overflow:visible;text-overflow:clip;line-height:1.25;flex:0 1 auto;}
+#event-notification-bar .event-notif-text strong {font-size:14px;font-weight:800;}
+#event-notification-bar .event-notif-arrow {display:inline-flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;}
+#event-notification-bar .event-notif-action {font-size:12px;font-weight:650;}
+#event-notification-bar .event-notif-arrow svg {width:14px;height:14px;}
 #event-spotlight .spotlight-title {text-wrap:balance;}
 @media(max-width:600px){
- #event-notification-bar {padding:9px 15px;gap:10px;min-height:62px;}
- #event-notification-bar .event-notif-title {font-size:12px;}
- #event-notification-bar .event-notif-details {font-size:10.5px;}
+ #event-notification-bar {padding:6px 10px;gap:8px;}
+ #event-notification-bar .event-notif-badge {font-size:9px;letter-spacing:0;padding:5px;}
+ #event-notification-bar .event-notif-text strong {font-size:11px;letter-spacing:-.015em;}
+ #event-notification-bar .event-notif-action {font-size:9px;}
+ #event-notification-bar .event-notif-arrow {gap:3px;}
+ #event-notification-bar .event-notif-arrow svg {width:11px;height:11px;}
 }
 @media(max-width:350px){
- #event-notification-bar {padding-inline:10px;gap:8px;}
- #event-notification-bar .event-notif-title {font-size:11px;}
- #event-notification-bar .event-notif-details {font-size:10px;}
+ #event-notification-bar {padding-inline:6px;gap:5px;}
+ #event-notification-bar .event-notif-badge {font-size:9px;padding:5px 4px;}
+ #event-notification-bar .event-notif-text strong {font-size:10px;}
+ #event-notification-bar .event-notif-action {font-size:9px;}
 }

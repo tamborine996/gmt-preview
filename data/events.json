@@ -16,11 +16,12 @@
   "notificationBar": {
     "enabled": true,
     "hideFrom": "2026-09-14",
-    "badgeText": "",
+    "badgeText": "13 Sep @ 5:15pm",
     "linkText": "Grand Annual Gyaarwee Shareef",
-    "linkUrl": "images/event-poster.jpg?v=20260913",
-    "openInNewTab": true,
-    "ariaLabel": "Open the Grand Annual Gyaarwee Shareef event poster. Sunday 13 September, starts 5:15pm.",
-    "linkDetails": "Sunday 13 September · Starts 5:15pm"
+    "linkUrl": "#event-spotlight",
+    "openInNewTab": false,
+    "ariaLabel": "View the Grand Annual Gyaarwee Shareef poster and event details. 13 September at 5:15pm.",
+    "linkDetails": "",
+    "actionText": "View more"
   }
 }
