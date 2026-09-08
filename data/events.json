@@ -2,11 +2,11 @@
   "spotlight": {
     "enabled": true,
     "hideFrom": "2026-09-14",
-    "badgeText": "Grand Annual Gathering",
-    "title": "Gyaarwee Shareef",
+    "badgeText": "Upcoming Event",
+    "title": "Grand Annual Gyaarwee Shareef",
     "date": "Sunday 13 September 2026",
     "description": "The programme will include talks in English and Urdu, and Na’at recitations in praise of the Prophet ﷺ. Food will be served. Please see the poster for the full programme.",
-    "time": "5:15pm",
+    "time": "Starts 5:15pm",
     "location": "GMT Ghousia Masjid, 56 Camrose Street, London SE2 0JA",
     "poster": "images/event-poster.jpg?v=20260913",
     "buttonText": "",
@@ -16,10 +16,11 @@
   "notificationBar": {
     "enabled": true,
     "hideFrom": "2026-09-14",
-    "badgeText": "Sun 13 Sep",
-    "linkText": "Gyaarwee Shareef — View poster",
+    "badgeText": "",
+    "linkText": "Grand Annual Gyaarwee Shareef",
     "linkUrl": "images/event-poster.jpg?v=20260913",
     "openInNewTab": true,
-    "ariaLabel": "Open the Gyaarwee Shareef poster for Sunday 13 September at 5:15pm"
+    "ariaLabel": "Open the Grand Annual Gyaarwee Shareef event poster. Sunday 13 September, starts 5:15pm.",
+    "linkDetails": "Sunday 13 September · Starts 5:15pm"
   }
 }
