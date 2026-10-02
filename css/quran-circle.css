@@ -1,0 +1,90 @@
+/* Scoped to the Qur'an Circle; other service cards stay unchanged. */
+.service-detail-card.quran-circle-card {
+    display: block;
+    padding: clamp(24px, 4vw, 48px);
+    text-align: left;
+    border-color: rgba(145, 112, 44, .38);
+    scroll-margin-top: 160px;
+}
+.quran-circle-card::before { opacity: 1; }
+.quran-circle-card .quran-circle-heading {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+.quran-circle-card .service-detail-icon { margin: 0; flex-shrink: 0; }
+.quran-circle-card .quran-circle-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin: 0 0 8px;
+}
+.quran-circle-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--emerald-deep);
+    margin: 0 0 12px;
+}
+.quran-circle-card h3 span { font-size: .7em; white-space: nowrap; }
+.quran-circle-card .quran-circle-intro {
+    color: var(--slate);
+    font-size: 17px;
+    line-height: 1.55;
+    margin: 0;
+}
+.quran-circle-sessions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+    border-top: 1px solid rgba(145, 112, 44, .3);
+    padding-top: 26px;
+}
+.quran-circle-card .quran-circle-session { padding: 0; min-width: 0; }
+.quran-circle-session + .quran-circle-session {
+    border-left: 1px solid rgba(145, 112, 44, .3);
+    padding-left: 32px;
+}
+.quran-circle-card h4 {
+    color: var(--emerald);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+.quran-circle-card .quran-circle-time {
+    color: var(--emerald-deep);
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 16px;
+}
+.quran-circle-time span { display: inline-block; margin-left: 8px; }
+.quran-circle-card .quran-circle-venue {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--slate);
+    margin: 0 0 14px;
+}
+.quran-circle-venue strong { color: var(--emerald-deep); font-weight: 600; }
+.quran-circle-card .quran-circle-detail {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--slate);
+    margin: 0;
+}
+.quran-circle-age { font-weight: 600; }
+@media (max-width: 600px) {
+    .quran-circle-card .quran-circle-heading { align-items: flex-start; gap: 14px; margin-bottom: 22px; }
+    .quran-circle-card .service-detail-icon { width: 52px; height: 52px; min-width: 52px; }
+    .quran-circle-card .service-detail-icon svg { width: 28px; height: 28px; }
+    .quran-circle-card h3 span { display: block; margin-top: 5px; }
+    .quran-circle-card .quran-circle-intro { font-size: 16px; }
+    .quran-circle-sessions { grid-template-columns: 1fr; gap: 22px; padding-top: 22px; }
+    .quran-circle-session + .quran-circle-session { border-left: 0; border-top: 1px solid rgba(145, 112, 44, .3); padding: 22px 0 0; }
+    .quran-circle-card .quran-circle-time { font-size: 22px; margin-bottom: 10px; }
+}
