@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Rabi al-Awwal seasonal detailing (automatically expires after day 30)
     initRabiAlAwwalSeason();
-
-    // Staging-only marker for preview contact submissions
-    initStagingPreviewMarkers();
 });
 
 /**
@@ -411,21 +408,6 @@ function initFormValidation() {
 function isValidEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
-}
-
-/**
- * Label preview Formspree submissions without changing visible content.
- */
-function initStagingPreviewMarkers() {
-    const markerValue = 'GMT acceptance staging - tamborine996.github.io/gmt-preview';
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm && !contactForm.querySelector('input[name="site_version"]')) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'site_version';
-        input.value = markerValue;
-        contactForm.appendChild(input);
-    }
 }
 
 /**

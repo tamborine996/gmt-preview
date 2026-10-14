@@ -1,15 +1,18 @@
 # GMT acceptance staging
 
-- Production-derived source commit: `9a40dcf287987e15717e5b63930a031d569c339b`
-- Rebuilt: 2026-08-23
-- Public URL: <https://tamborine996.github.io/gmt-preview/>
+- Production source: `0750fcc490121fc404c2313b7e100fbb0bb5ddc2`
+- Rebuilt: 2026-10-14
+- Public staging: https://tamborine996.github.io/gmt-preview/
+- Previous staging: `5c86517aa491e9138b70d38f5830869fa7aed681`
+- Rollback tag: `archive/before-live-parity-20261014`
 
-## Permitted staging-only differences
+## Exact permitted differences from production
 
-1. Production `CNAME` omitted; `.nojekyll` retained for GitHub Pages.
-2. `noindex`, `nofollow`, `noarchive`, and `robots.txt` prevent intended indexing.
-3. Google Analytics collection disabled on staging.
-4. Contact forms receive a hidden acceptance-staging `site_version` marker.
-5. Asset cache markers use the `staging6` suffix.
+1. Omit production CNAME; add .nojekyll for project Pages.
+2. Add robots noindex/nofollow/noarchive metadata and disallow crawling. This is not authentication.
+3. Disable production Google Analytics collection before its loader.
+4. Add a hidden site_version marker to forms; form destinations and visible fields remain unchanged.
+5. Append a staging cache marker to relative CSS/JavaScript URLs.
+6. Add this provenance file and staging-provenance.json.
 
-Visible site content and website assets are otherwise derived from the source commit above.
+No visible review banner, content revision, redesign, timetable change or image alteration is included. Donation and other external destinations remain real external services; this is a visual staging surface, not a payment sandbox.

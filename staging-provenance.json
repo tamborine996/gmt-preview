@@ -1,0 +1,8 @@
+{
+  "source_commit": "0750fcc490121fc404c2313b7e100fbb0bb5ddc2",
+  "previous_staging_commit": "5c86517aa491e9138b70d38f5830869fa7aed681",
+  "archive_tag": "archive/before-live-parity-20261014",
+  "marker": "staging-20261014-live-0750fcc",
+  "purpose": "Exact live baseline before visual changes",
+  "rebuilt": "2026-10-14"
+}
