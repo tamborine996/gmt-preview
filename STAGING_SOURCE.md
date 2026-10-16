@@ -133,3 +133,8 @@ No visible review banner, content revision, redesign, timetable change or image 
   - `coming-up.html` lists only items that have a full post (text or a poster).
 - **Examples (review only):** `data/coming-up-examples.json`, shown with `?examples=notices` or `?examples=important`. It is staging only; `build-live.cjs` leaves it out.
 - **Checks:** `labels-shots.cjs` 13/13 (labels in turn, steady tag and height, unlinked notice, Important alone, no gap, real list unchanged); `a11y-checks.cjs` 28/28; `consent-checks.cjs` 23/23.
+
+- **Follow-up (`staging-20261016-home10`):**
+  - **Slimmer strip:** phones are 49px for one event and 66px for two (were 56 and 74); laptops are 38px (were 42).
+  - **Link button:** items that link somewhere show a small dark button at the end of their second line ("See details" on laptops, "Details" on phones, or their own `link_label`); unlinked notices have none.
+  - **`coming-up.html`:** has "Back to home" above the heading and after the posts. It keeps review settings, and no longer repeats the strip.

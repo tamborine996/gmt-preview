@@ -89,9 +89,12 @@
     const ROTATE_MS = 6000;
     const PAUSE_ICON = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
     const PLAY_ICON = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
+    const CHEVRON = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
     const ALERT_ICON = '<svg class="cu-label-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v6.2"/><circle cx="12" cy="16.6" r="0.6" fill="currentColor"/></svg>';
 
     function renderStrip(current) {
+        // The Coming up page lists the posts themselves, so the strip would only repeat them there.
+        if (document.getElementById('coming-up-root')) return;
         const container = document.querySelector('.prayer-banner .container');
         // While anything Important is current, the strip shows only that.
         const important = current.filter(isImportant);
@@ -103,10 +106,13 @@
             const link = linkOf(item);
             const when = whenInWords(item);
             const label = many ? ` aria-label="${escape(`${i + 1} of ${items.length}. ${labelOf(item)}: ${item.title}${when ? `, ${when}` : ''}.${link ? ` ${link.label}.` : ''}`)}"` : '';
+            // An item that goes somewhere shows a small button ("See details ›") at the end of its second line.
+            // The default reads "See details" on laptops and "Details" on phones, where width is short.
+            const words = link && link.label === 'See details' ? '<span class="cu-more-long">See details</span><span class="cu-more-short">Details</span>' : escape(link ? link.label : '');
+            const more = link ? `<span class="cu-more">${words}${CHEVRON}</span>` : '';
             const body = `
                         <span class="visually-hidden">${escape(labelOf(item))}: </span><span class="cu-title">${escape(item.title)}</span>
-                        ${when ? `<span class="cu-when">${escape(when)}</span>` : ''}
-                        ${link ? `<span class="cu-more">${escape(link.label)}</span>` : ''}`;
+                        ${when || more ? `<span class="cu-when">${when ? `<span class="cu-when-text">${escape(when)}</span>` : ''}${more}</span>` : ''}`;
             const active = i === 0 ? ' is-active' : '';
             return link
                 ? `
@@ -184,6 +190,8 @@
     function renderPage(current) {
         const root = document.getElementById('coming-up-root');
         if (!root) return;
+        // "Back to home" keeps a review link's settings, so the homepage shows the same day.
+        document.querySelectorAll('.page-back-link').forEach(link => { link.href = keepReview('index.html'); });
         const items = current.filter(hasPost);
         if (!items.length) {
             root.innerHTML = `

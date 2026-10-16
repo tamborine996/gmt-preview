@@ -3,6 +3,39 @@
 
 /* ---------- coming-up.html ---------- */
 
+/* "Back to home": above the heading, and again after the posts. */
+.page-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--emerald);
+    text-decoration: none;
+}
+
+.page-back-link:hover {
+    color: var(--emerald-deep);
+}
+
+.page-back-link svg {
+    transition: transform var(--duration-fast) ease;
+}
+
+.page-back-link:hover svg {
+    transform: translateX(-3px);
+}
+
+.page-back-link:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+.coming-up-back {
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
 .coming-up-list {
     display: grid;
     gap: clamp(1.5rem, 3vw, 2.25rem);
@@ -221,7 +254,7 @@
 
 .prayer-coming-up .cu-title {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: 1.08rem;
     font-weight: 500;
     line-height: 1.2;
 }
@@ -243,11 +276,35 @@
     background: currentColor;
 }
 
+/* The link button: only on items that go somewhere, so a plain notice reads as plain. "See details" on laptops,
+   "Details" on phones. */
+.prayer-coming-up .cu-more-short {
+    display: none;
+}
+
 .prayer-coming-up .cu-more {
-    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px 2px 10px;
+    border-radius: 999px;
+    background: var(--gold-bright);
+    color: var(--emerald-deep);
+    font-size: 0.74rem;
     font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
     white-space: nowrap;
-    color: var(--gold-bright);
+    transition: background-color var(--duration-fast) ease;
+}
+
+.prayer-coming-up .cu-more svg {
+    transition: transform var(--duration-fast) ease;
+}
+
+.prayer-coming-up a.cu-item:hover .cu-more svg,
+.prayer-coming-up a.cu-item:focus-visible .cu-more svg {
+    transform: translateX(2px);
 }
 
 /* Only items that go somewhere react to the pointer. */
@@ -348,7 +405,7 @@
 
 .prayer-coming-up.strip-gold {
     margin: 14px calc(50% - 50vw) 0;
-    padding: 8px calc(50vw - 50%);
+    padding: 6px calc(50vw - 50%);
     border-top: 1px solid #b89a4f;
     background: linear-gradient(180deg, #ddc583 0%, var(--gold) 100%);
     color: var(--emerald-deep);
@@ -361,9 +418,17 @@
 }
 
 .prayer-coming-up.strip-gold .cu-title,
-.prayer-coming-up.strip-gold .cu-more,
 .prayer-coming-up.strip-gold .cu-controls {
     color: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-more {
+    background: var(--emerald-deep);
+    color: var(--ivory);
+}
+
+.prayer-coming-up.strip-gold a.cu-item:hover .cu-more {
+    background: var(--emerald);
 }
 
 .prayer-coming-up.strip-gold .cu-when {
@@ -379,7 +444,7 @@
    Important is current the strip shows only Important items (js/coming-up.js). */
 .prayer-coming-up.strip-important {
     margin: 14px calc(50% - 50vw) 0;
-    padding: 8px calc(50vw - 50%);
+    padding: 6px calc(50vw - 50%);
     border-top: 1px solid #5c1712;
     background: linear-gradient(180deg, #93302a 0%, #74201b 100%);
     color: var(--ivory);
@@ -392,9 +457,13 @@
 }
 
 .prayer-coming-up.strip-important .cu-title,
-.prayer-coming-up.strip-important .cu-more,
 .prayer-coming-up.strip-important .cu-controls {
     color: var(--ivory);
+}
+
+.prayer-coming-up.strip-important .cu-more {
+    background: var(--ivory);
+    color: #74201b;
 }
 
 .prayer-coming-up.strip-important .cu-when {
@@ -420,22 +489,22 @@
     .prayer-coming-up.strip-gold,
     .prayer-coming-up.strip-important {
         margin-top: 12px;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
 
     /* "Coming / up" on two short lines, as a block. */
     .prayer-coming-up .cu-eyebrow {
         width: min-content;
-        font-size: 9.5px;
-        letter-spacing: 0.16em;
+        font-size: 9px;
+        letter-spacing: 0.15em;
         text-align: center;
     }
 
     .prayer-coming-up.strip-gold .cu-eyebrow,
     .prayer-coming-up.strip-tag .cu-eyebrow,
     .prayer-coming-up.strip-important .cu-eyebrow {
-        padding: 6px 7px;
+        padding: 5px 6px;
     }
 
     .prayer-coming-up .cu-item {
@@ -445,14 +514,15 @@
 
     .prayer-coming-up .cu-title {
         display: block;
-        font-size: 1.02rem;
+        font-size: 0.97rem;
+        line-height: 1.15;
     }
 
     .prayer-coming-up .cu-when {
         display: block;
         margin-top: 1px;
-        font-size: 0.8rem;
-        line-height: 1.35;
+        font-size: 0.76rem;
+        line-height: 1.3;
         white-space: normal;
     }
 
@@ -460,14 +530,28 @@
         display: none;
     }
 
-    /* The whole line is the link on phones; "See details" stays for screen readers. */
+    /* The link button follows the second line's words; "See details" shortens to "Details". */
     .prayer-coming-up .cu-more {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        white-space: nowrap;
+        margin-left: 6px;
+        padding: 1px 6px 1px 8px;
+        font-size: 0.7rem;
+        vertical-align: 1px;
+    }
+
+    .prayer-coming-up .cu-more-long {
+        display: none;
+    }
+
+    .prayer-coming-up .cu-more-short {
+        display: inline;
+    }
+
+    .prayer-coming-up .cu-when-text + .cu-more {
+        margin-left: 6px;
+    }
+
+    .prayer-coming-up .cu-when > .cu-more:first-child {
+        margin-left: 0;
     }
 
     .prayer-coming-up .cu-controls {
@@ -477,10 +561,12 @@
 
     .prayer-coming-up .cu-dot {
         width: 18px;
+        height: 19px;
     }
 
     .prayer-coming-up .cu-pause {
-        margin: 3px 0 0;
+        height: 19px;
+        margin: 2px 0 0;
     }
 
     .prayer-coming-up .cu-pause::before {
