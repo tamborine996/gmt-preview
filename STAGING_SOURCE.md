@@ -119,3 +119,5 @@ No visible review banner, content revision, redesign, timetable change or image 
 - **Checks:** `a11y-checks.cjs` 27/27 (new checks for the viewer, the strip and the table); `consent-checks.cjs` 23/23.
 
 - **Follow-up (`staging-20261016-home6`):** the Full Timetable pop-up always shows the real month (a review link with `?today=` had opened July); a pinch-zoomed picture stays inside its own area on phones.
+
+- **Follow-up (`staging-20261016-home7`):** the homepage asks for the Coming up list in its head and runs the strip right after the prayer banner, so on most connections the strip is there when the page appears. On slow connections it slides open (0.3s) instead of jumping in.

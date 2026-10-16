@@ -90,6 +90,16 @@
             </section>`);
         const strip = container.lastElementChild;
         container.closest('.prayer-banner').classList.toggle('has-gold-strip', stripTone === 'gold');
+        // On a slow connection the list can arrive after the page has appeared: the strip then slides open rather
+        // than jumping in. Arriving in time (the usual case), it is simply there.
+        const painted = performance.getEntriesByType('paint').some(entry => entry.name === 'first-contentful-paint');
+        if (painted && typeof strip.animate === 'function' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const end = getComputedStyle(strip);
+            const to = { height: `${strip.offsetHeight}px`, marginTop: end.marginTop, paddingTop: end.paddingTop, paddingBottom: end.paddingBottom, opacity: 1 };
+            strip.style.overflow = 'hidden';
+            strip.animate([{ height: '0px', marginTop: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 }, to], { duration: 320, easing: 'ease-out' })
+                .finished.then(() => strip.style.removeProperty('overflow'), () => strip.style.removeProperty('overflow'));
+        }
         // The hero sizes its poster to the first screen; let it re-measure now the strip is in place.
         window.dispatchEvent(new Event('resize'));
 
@@ -166,9 +176,12 @@
         });
     }
 
-    fetch('data/coming-up.json', { cache: 'no-store' })
-        .then(response => (response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`))))
-        .then(data => (data.items || []).filter(isCurrent))
+    // The homepage asks for the list in its <head> (window.comingUpRequest); other pages ask here.
+    const request = window.comingUpRequest || fetch('data/coming-up.json', { cache: 'no-store' })
+        .then(response => (response.ok ? response.json() : null))
+        .catch(() => null);
+    request
+        .then(data => ((data && data.items) || []).filter(isCurrent))
         .catch(() => [])
         .then(items => {
             renderStrip(items);
