@@ -102,3 +102,18 @@ No visible review banner, content revision, redesign, timetable change or image 
 - **Phones:** the photograph, then the welcome, then the poster slot. The poster keeps its full size there.
 - **Checks:** `a11y-checks.cjs` 23/23; `consent-checks.cjs` 23/23; `strip-shots.cjs` confirms rotation, the hover pause, a steady strip height, and the lightbox.
 - **Before production:** the retreat poster artwork's address line says "Plumstead" and needs re-exporting.
+
+### 2026-10-16 — no poster carousel, slimmer strip, timetable pop-up, simpler Prayer Times (`staging-20261016-home5`)
+- **Homepage:** the poster carousel is gone on laptops and phones; the weekly section follows the welcome.
+  - The approved Tajweed Circle and Dars-e-Quran posters are a "See poster" button on their rows in the weekly section (`data/weekly-schedule.json` `poster`).
+  - Swiper is no longer loaded.
+- **Coming up strip:** slimmer, about 80px on phones (was 100–120px) and 42px on laptops.
+  - "Coming up" sits as a block on the left; one dot per item; the pause button is a plain symbol apart from the dots.
+  - No arrow and no pop-up: each item links straight to its post on `coming-up.html`.
+- **Full Timetable** (prayer banner, every redesigned page): opens this month's published timetable in a picture viewer, with "Download PDF" and "Prayer Times page".
+  - The viewer is `js/viewer.js` + `css/viewer.css`. GLightbox 3.3.1 loads from jsDelivr only when first needed.
+  - `data/timetables.json` lists the months. The Prayer Times page's printable timetable now reads the same list (it was code inside the page).
+- **Prayer Times:** the Today/Tomorrow cards are removed (today is in the prayer banner).
+  - The month table highlights only today, with "Today" in the day column. Fridays are no longer shaded (the printed PDF keeps its shading).
+  - On phones the table starts at today, with "Show 1–15 October" for the earlier days.
+- **Checks:** `a11y-checks.cjs` 27/27 (new checks for the viewer, the strip and the table); `consent-checks.cjs` 23/23.

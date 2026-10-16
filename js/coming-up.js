@@ -1,8 +1,8 @@
 /* Coming up (16 Oct 2026): upcoming events and time-limited requests from data/coming-up.json.
    Each item shows from show_from until the day before hide_from (London). Current items appear in two places:
-   - the homepage strip, at the foot of the prayer banner (.prayer-banner .container): one item at a time;
-     an item with a poster opens it in a lightbox, with its details;
-   - coming-up.html (#coming-up-root): each item's full post, at #<id>.
+   - the homepage strip, at the foot of the prayer banner (.prayer-banner .container): one item at a time,
+     each a link to its full post;
+   - coming-up.html (#coming-up-root): each item's full post (poster, details, button), at #<id>.
    The strip says when in words relative to today ("This Sunday · 6–8pm", "On now", "Open until …") from
    starts / ends / time. The homepage poster slot is separate: the weekly class posters, "Every week".
    Review aids: ?today=YYYY-MM-DD shows the site as on that date; ?all=1 treats every item as current;
@@ -64,9 +64,8 @@
     // the page never jumps. Rotation stops while the pointer or keyboard is on the strip, can be paused, and never
     // starts for visitors who ask for less motion.
     const ROTATE_MS = 6000;
-    const ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-    const PAUSE_ICON = '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
-    const PLAY_ICON = '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
+    const PAUSE_ICON = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+    const PLAY_ICON = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
 
     function renderStrip(items) {
         const container = document.querySelector('.prayer-banner .container');
@@ -76,11 +75,11 @@
                     <a class="cu-item${i === 0 ? ' is-active' : ''}" href="${escape(keepToday(postUrl(item)))}" data-id="${escape(item.id)}"${many ? ` aria-label="${escape(`${i + 1} of ${items.length}: ${item.title}, ${whenInWords(item)}. See details.`)}"` : ''}>
                         <span class="cu-title">${escape(item.title)}</span>
                         <span class="cu-when">${escape(whenInWords(item))}</span>
-                        <span class="cu-more"><span class="cu-more-text">See details</span>${ARROW}</span>
+                        <span class="cu-more">See details</span>
                     </a>`).join('');
         const controls = many ? `
                 <div class="cu-controls">
-                    ${items.map((item, i) => `<button type="button" class="cu-dot" data-index="${i}" aria-label="Show ${escape(item.title)}" aria-pressed="${i === 0}"></button>`).join('')}
+                    <span class="cu-dots">${items.map((item, i) => `<button type="button" class="cu-dot" data-index="${i}" aria-label="Show ${escape(item.title)}" aria-pressed="${i === 0}"></button>`).join('')}</span>
                     <button type="button" class="cu-pause" aria-label="Pause">${PAUSE_ICON}</button>
                 </div>` : '';
         container.insertAdjacentHTML('beforeend', `
@@ -94,11 +93,6 @@
         // The hero sizes its poster to the first screen; let it re-measure now the strip is in place.
         window.dispatchEvent(new Event('resize'));
 
-        const openPoster = posterLightbox(items);
-        strip.addEventListener('click', event => {
-            const link = event.target.closest('.cu-item');
-            if (link && openPoster && openPoster(link.dataset.id)) event.preventDefault();
-        });
         if (!many) return;
 
         const links = [...strip.querySelectorAll('.cu-item')];
@@ -131,45 +125,6 @@
         strip.addEventListener('focusout', event => { if (!strip.contains(event.relatedTarget)) { holding = false; run(); } });
         document.addEventListener('visibilitychange', run);
         setPaused(paused);
-    }
-
-    // The poster lightbox (GLightbox, already on the homepage): each current item with a poster, in file order,
-    // with its details beside it. Returns open(id), which reports whether that item had a poster to show; an item
-    // without one goes to its post instead.
-    function posterLightbox(items) {
-        const posters = items.filter(item => item.poster && item.poster.url);
-        if (typeof window.GLightbox !== 'function' || !posters.length) return null;
-        const details = item => {
-            const action = item.button ? `<a class="btn btn-primary" href="${escape(item.button.url)}"${/^https?:/.test(item.button.url) ? ' target="_blank" rel="noopener"' : ''}>${escape(item.button.label)}</a>` : '';
-            return `<span class="cu-lb-when">${escape(whenInWords(item))}</span>`
-                + (item.place ? `<span class="cu-lb-place">${escape(item.place)}</span>` : '')
-                + (item.text && item.text[0] ? `<span class="cu-lb-text">${escape(item.text[0])}</span>` : '')
-                + `<span class="cu-lb-actions">${action}<a class="cu-lb-more" href="${escape(keepToday(postUrl(item)))}">Full details</a></span>`;
-        };
-        let box = null;
-        return id => {
-            const at = posters.findIndex(item => item.id === id);
-            if (at < 0) return false;
-            if (!box) {
-                box = window.GLightbox({
-                    elements: posters.map(item => ({
-                        href: item.poster.url,
-                        type: 'image',
-                        alt: item.poster.alt,
-                        title: `<span class="cu-lb-kind">${escape(item.kind)}</span>${escape(item.title)}`,
-                        description: details(item),
-                        descPosition: 'right',
-                    })),
-                    loop: posters.length > 1,
-                    moreLength: 0,
-                    zoomable: false,
-                    draggable: posters.length > 1,
-                });
-                box.on('open', () => (box.modal || document.getElementById('glightbox-body'))?.classList.add('cu-lightbox'));
-            }
-            box.openAt(at);
-            return true;
-        };
     }
 
     // ---------- coming-up.html ----------

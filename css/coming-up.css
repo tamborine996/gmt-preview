@@ -1,46 +1,5 @@
-/* Coming up (16 Oct 2026): the homepage strip at the foot of the prayer banner, its poster lightbox, and
-   coming-up.html's full posts (js/coming-up.js, data/coming-up.json). Also the "Every week" label above the
-   homepage poster slot. */
-
-/* ---------- Label above the homepage poster slot ---------- */
-
-.hero-carousel-label {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin: 0 0 0.6rem;
-}
-
-.hero-carousel-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold-muted);
-}
-
-.hero-carousel-eyebrow::before {
-    content: '';
-    width: 28px;
-    height: 2px;
-    background: var(--gold);
-}
-
-.hero-carousel-all {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--emerald);
-    text-decoration: none;
-    border-bottom: 1px solid var(--gold);
-}
-
-.hero-carousel-all:hover {
-    color: var(--emerald-deep);
-}
+/* Coming up (16 Oct 2026): coming-up.html's full posts and the homepage strip at the foot of the prayer banner
+   (js/coming-up.js, data/coming-up.json). */
 
 /* ---------- coming-up.html ---------- */
 
@@ -184,49 +143,19 @@
     }
 }
 
-/* ---------- Strip: shared type ---------- */
-
-.cu-eyebrow {
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-}
-
-.cu-title {
-    font-family: var(--font-display);
-    font-weight: 500;
-}
-
-.cu-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.cu-more svg {
-    flex: 0 0 auto;
-    transition: transform var(--duration-fast) var(--ease-out-expo);
-}
-
-a:hover .cu-more svg,
-a:focus-visible .cu-more svg {
-    transform: translateX(3px);
-}
-
-/* ---------- Strip: every current item, one at a time, inside the green prayer banner ----------
-   js/coming-up.js renderStrip. Items share one grid cell, so the strip keeps its longest item's height and the
-   page never jumps; the active one (.is-active) fades in. Dots and a pause button appear when there are several. */
+/* ---------- Strip: every current item, one at a time, at the foot of the prayer banner ----------
+   js/coming-up.js renderStrip. Items share one grid cell, so the strip keeps its longest item's height and the page
+   never jumps; the active one (.is-active) fades in. Each item is a link to its full post. With several items,
+   one dot per item, then a pause button set apart by a thin rule.
+   Laptops: one line, "COMING UP | title • when  See details ... dots | pause".
+   Phones: two lines, the "Coming up" label as a block on the left, the controls stacked on the right. */
 .prayer-coming-up {
     position: relative;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
+    gap: 16px;
     margin-top: 12px;
     padding-top: 10px;
     border-top: 1px solid rgba(212, 190, 122, 0.32);
@@ -235,6 +164,11 @@ a:focus-visible .cu-more svg {
 
 .prayer-coming-up .cu-eyebrow {
     flex: 0 0 auto;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.25;
+    text-transform: uppercase;
     color: var(--gold-bright);
 }
 
@@ -247,7 +181,6 @@ a:focus-visible .cu-more svg {
     grid-area: 1 / 1;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     gap: 14px;
     color: inherit;
     text-decoration: none;
@@ -263,7 +196,9 @@ a:focus-visible .cu-more svg {
 }
 
 .prayer-coming-up .cu-title {
-    font-size: 1.12rem;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
     line-height: 1.2;
 }
 
@@ -272,6 +207,7 @@ a:focus-visible .cu-more svg {
     align-items: center;
     gap: 14px;
     font-size: 0.9rem;
+    white-space: nowrap;
     color: rgba(255, 254, 249, 0.85);
 }
 
@@ -280,12 +216,13 @@ a:focus-visible .cu-more svg {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: var(--gold);
+    background: currentColor;
 }
 
 .prayer-coming-up .cu-more {
-    padding-bottom: 1px;
-    border-bottom: 1px solid rgba(212, 190, 122, 0.6);
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
     color: var(--gold-bright);
 }
 
@@ -293,63 +230,74 @@ a:focus-visible .cu-more svg {
     color: var(--gold-bright);
 }
 
-.prayer-coming-up .cu-item:focus-visible {
-    outline: 2px solid var(--gold-bright);
-    outline-offset: 3px;
+.prayer-coming-up .cu-item:focus-visible,
+.prayer-coming-up .cu-dot:focus-visible,
+.prayer-coming-up .cu-pause:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }
 
 .prayer-coming-up .cu-controls {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
+    color: var(--gold-bright);
+}
+
+.prayer-coming-up .cu-dots {
+    display: flex;
 }
 
 .prayer-coming-up .cu-dot {
     display: grid;
     place-items: center;
-    width: 24px;
+    width: 22px;
     height: 24px;
     padding: 0;
     border: 0;
     background: none;
+    color: inherit;
     cursor: pointer;
 }
 
 .prayer-coming-up .cu-dot::before {
     content: '';
-    width: 7px;
-    height: 7px;
-    border: 1px solid var(--gold-bright);
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid currentColor;
     border-radius: 50%;
+    box-sizing: border-box;
     transition: background-color var(--duration-fast) ease;
 }
 
 .prayer-coming-up .cu-dot[aria-pressed="true"]::before {
-    background: var(--gold-bright);
+    background: currentColor;
 }
 
+/* The pause button: a plain symbol, set apart from the dots by a thin rule so it is not read as another dot. */
 .prayer-coming-up .cu-pause {
+    position: relative;
     display: grid;
     place-items: center;
-    width: 26px;
-    height: 26px;
-    margin-left: 6px;
+    width: 24px;
+    height: 24px;
+    margin-left: 9px;
     padding: 0;
-    border: 1px solid rgba(212, 190, 122, 0.55);
-    border-radius: 50%;
+    border: 0;
     background: none;
-    color: var(--gold-bright);
+    color: inherit;
     cursor: pointer;
 }
 
-.prayer-coming-up .cu-pause:hover {
-    background: rgba(212, 190, 122, 0.15);
-}
-
-.prayer-coming-up .cu-dot:focus-visible,
-.prayer-coming-up .cu-pause:focus-visible {
-    outline: 2px solid var(--gold-bright);
-    outline-offset: 1px;
+.prayer-coming-up .cu-pause::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: -5px;
+    width: 1px;
+    background: currentColor;
+    opacity: 0.45;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -359,71 +307,14 @@ a:focus-visible .cu-more svg {
     }
 }
 
-@media (max-width: 600px) {
-    .prayer-coming-up {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        grid-template-areas: "eyebrow controls" "stack stack";
-        align-items: center;
-        gap: 2px 12px;
-        margin-top: 10px;
-        padding-top: 8px;
-    }
-
-    .prayer-coming-up .cu-eyebrow { grid-area: eyebrow; }
-    .prayer-coming-up .cu-controls { grid-area: controls; margin-right: -4px; }
-    .prayer-coming-up .cu-stack { grid-area: stack; }
-
-    /* Single item: no controls, so the words sit just under the eyebrow. */
-    .prayer-coming-up:not(.is-rotating) {
-        row-gap: 4px;
-    }
-
-    .prayer-coming-up .cu-item {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        justify-content: stretch;
-        align-content: center;
-        gap: 1px 12px;
-    }
-
-    .prayer-coming-up .cu-title { grid-column: 1; grid-row: 1; font-size: 1.05rem; }
-    .prayer-coming-up .cu-when { grid-column: 1; grid-row: 2; font-size: 0.85rem; }
-    .prayer-coming-up .cu-when::before { display: none; }
-
-    .prayer-coming-up .cu-more {
-        grid-column: 2;
-        grid-row: 1 / span 2;
-        align-self: center;
-        border-bottom: 0;
-    }
-
-    .prayer-coming-up .cu-more svg { width: 18px; height: 18px; }
-
-    .prayer-coming-up .cu-more-text {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        white-space: nowrap;
-    }
-}
-
 /* ---------- Strip colourings (?strip=, .strip-* set by js/coming-up.js) ----------
    gold (the default): a solid gold band along the foot of the prayer banner, emerald type (the prayer banner
-   loses its bottom padding so the band meets the hero). tag: a solid gold "Coming up" label on the green, larger
-   title. green: the strip's own styles above, gold lettering on the green. */
+   loses its bottom padding so the band meets the hero). tag: a solid gold "Coming up" label on the green.
+   green: the strip's own styles above, gold lettering on the green. */
 .prayer-coming-up.strip-tag .cu-eyebrow {
     padding: 5px 9px 4px;
     background: var(--gold-bright);
     color: var(--emerald-deep);
-    font-weight: 700;
-    letter-spacing: 0.18em;
-}
-
-.prayer-coming-up.strip-tag .cu-title {
-    font-size: 1.22rem;
 }
 
 .prayer-banner.has-gold-strip {
@@ -432,7 +323,7 @@ a:focus-visible .cu-more svg {
 
 .prayer-coming-up.strip-gold {
     margin: 14px calc(50% - 50vw) 0;
-    padding: 9px calc(50vw - 50%);
+    padding: 8px calc(50vw - 50%);
     border-top: 1px solid #b89a4f;
     background: linear-gradient(180deg, #ddc583 0%, var(--gold) 100%);
     color: var(--emerald-deep);
@@ -442,12 +333,11 @@ a:focus-visible .cu-more svg {
     padding: 5px 9px 4px;
     background: var(--emerald-deep);
     color: var(--gold-bright);
-    font-weight: 700;
-    letter-spacing: 0.18em;
 }
 
-.prayer-coming-up.strip-gold .cu-title {
-    font-size: 1.22rem;
+.prayer-coming-up.strip-gold .cu-title,
+.prayer-coming-up.strip-gold .cu-more,
+.prayer-coming-up.strip-gold .cu-controls {
     color: var(--emerald-deep);
 }
 
@@ -456,183 +346,90 @@ a:focus-visible .cu-more svg {
     color: #1f3a33;
 }
 
-.prayer-coming-up.strip-gold .cu-when::before {
-    background: var(--emerald-deep);
-}
-
-.prayer-coming-up.strip-gold .cu-more {
-    border-bottom-color: rgba(8, 61, 51, 0.45);
-    font-weight: 700;
-    color: var(--emerald-deep);
-}
-
 .prayer-coming-up.strip-gold .cu-item:hover .cu-title {
     color: var(--emerald);
 }
 
-.prayer-coming-up.strip-gold .cu-dot::before {
-    border-color: var(--emerald-deep);
-}
-
-.prayer-coming-up.strip-gold .cu-dot[aria-pressed="true"]::before {
-    background: var(--emerald-deep);
-}
-
-.prayer-coming-up.strip-gold .cu-pause {
-    border-color: rgba(8, 61, 51, 0.5);
-    color: var(--emerald-deep);
-}
-
-.prayer-coming-up.strip-gold .cu-pause:hover {
-    background: rgba(8, 61, 51, 0.1);
-}
-
-.prayer-coming-up.strip-gold .cu-item:focus-visible,
-.prayer-coming-up.strip-gold .cu-dot:focus-visible,
-.prayer-coming-up.strip-gold .cu-pause:focus-visible {
-    outline-color: var(--emerald-deep);
-}
-
+/* ---------- Phones ---------- */
 @media (max-width: 600px) {
-    .prayer-coming-up.strip-tag .cu-eyebrow,
-    .prayer-coming-up.strip-gold .cu-eyebrow {
-        justify-self: start;
-    }
-
-    .prayer-coming-up.strip-tag .cu-title,
-    .prayer-coming-up.strip-gold .cu-title {
-        font-size: 1.12rem;
+    .prayer-coming-up {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 0 12px;
+        margin-top: 10px;
+        padding-top: 8px;
     }
 
     .prayer-coming-up.strip-gold {
         margin-top: 12px;
-        padding-top: 9px;
-        padding-bottom: 11px;
-        row-gap: 6px;
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
-    .prayer-coming-up.strip-tag {
-        row-gap: 6px;
+    /* "Coming / up" on two short lines, as a block. */
+    .prayer-coming-up .cu-eyebrow {
+        width: min-content;
+        font-size: 9.5px;
+        letter-spacing: 0.16em;
+        text-align: center;
     }
-}
 
-/* ---------- Poster lightbox (.cu-lightbox on GLightbox's container, set by js/coming-up.js) ----------
-   Laptops: the poster with an ivory panel to its right. Phones: the poster with the panel beneath it, rather than
-   GLightbox's default caption laid over the bottom of the picture. */
-.cu-lightbox .goverlay {
-    background: rgba(5, 38, 32, 0.94);
-}
-
-.glightbox-clean.cu-lightbox .gslide-description {
-    background: var(--ivory);
-}
-
-.glightbox-clean.cu-lightbox .gdesc-inner {
-    padding: 26px 24px;
-    border-top: 3px solid var(--gold);
-}
-
-.glightbox-clean.cu-lightbox .gslide-title {
-    margin: 0 0 14px;
-    font-family: var(--font-display);
-    font-size: 1.55rem;
-    font-weight: 500;
-    line-height: 1.15;
-    color: var(--emerald-deep);
-}
-
-.cu-lb-kind {
-    display: block;
-    margin-bottom: 8px;
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #806b32; /* darker than --gold-muted: 5.1:1 on ivory */
-}
-
-.glightbox-clean.cu-lightbox .gslide-desc {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--slate);
-}
-
-.cu-lb-when {
-    display: block;
-    font-size: 1.02rem;
-    font-weight: 600;
-    color: var(--charcoal);
-}
-
-.cu-lb-place {
-    display: block;
-    margin-top: 2px;
-}
-
-.cu-lb-text {
-    display: block;
-    margin-top: 14px;
-}
-
-.cu-lb-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px 18px;
-    margin-top: 20px;
-}
-
-.cu-lightbox .cu-lb-actions .btn {
-    color: var(--ivory);
-}
-
-.cu-lightbox .cu-lb-more {
-    padding-bottom: 1px;
-    border-bottom: 1px solid var(--gold);
-    font-weight: 600;
-    color: var(--emerald);
-    text-decoration: none;
-}
-
-@media (min-width: 769px) {
-    .cu-lightbox .gslide-description.description-right {
-        max-width: 330px;
+    .prayer-coming-up.strip-gold .cu-eyebrow,
+    .prayer-coming-up.strip-tag .cu-eyebrow {
+        padding: 6px 7px;
     }
-}
 
-.glightbox-mobile .cu-lightbox .gslide-description {
-    flex: 0 0 auto;
-    position: relative;
-    bottom: auto;
-    max-height: none;
-    padding: 0;
-    background: var(--ivory);
-}
+    .prayer-coming-up .cu-item {
+        display: block;
+        align-self: center;
+    }
 
-.glightbox-mobile .cu-lightbox .gdesc-inner {
-    padding: 16px 20px 20px;
-}
+    .prayer-coming-up .cu-title {
+        display: block;
+        font-size: 1.02rem;
+    }
 
-.glightbox-mobile .cu-lightbox .gslide-title {
-    margin-bottom: 8px;
-    font-size: 1.3rem;
-    color: var(--emerald-deep);
-}
+    .prayer-coming-up .cu-when {
+        display: block;
+        margin-top: 1px;
+        font-size: 0.8rem;
+        white-space: normal;
+    }
 
-.glightbox-mobile .cu-lightbox .gslide-desc,
-.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-place {
-    color: var(--slate);
-}
+    .prayer-coming-up .cu-when::before {
+        display: none;
+    }
 
-.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-when { color: var(--charcoal); }
-.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-kind { color: var(--gold-muted); }
-.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-text { display: none; }
-.glightbox-mobile .cu-lightbox .gslide-desc .btn { color: var(--ivory); }
-.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-more { color: var(--emerald); }
+    /* The whole line is the link on phones; "See details" stays for screen readers. */
+    .prayer-coming-up .cu-more {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
 
-.glightbox-mobile .cu-lightbox .gslide-image img {
-    max-height: calc(100vh - 250px);
-    max-height: calc(100dvh - 250px);
+    .prayer-coming-up .cu-controls {
+        flex-direction: column;
+        margin-right: -4px;
+    }
+
+    .prayer-coming-up .cu-dot {
+        width: 18px;
+    }
+
+    .prayer-coming-up .cu-pause {
+        margin: 3px 0 0;
+    }
+
+    .prayer-coming-up .cu-pause::before {
+        top: -2px;
+        bottom: auto;
+        left: 6px;
+        right: 6px;
+        width: auto;
+        height: 1px;
+    }
 }
