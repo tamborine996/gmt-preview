@@ -72,3 +72,6 @@ No visible review banner, content revision, redesign, timetable change or image 
   - Changed files carry `?v=20261016-site3&review=staging-20261016-site3`.
   - The homepage's retired inline styles are dropped (computed styles identical).
 - To remove: revert the staging commit that adds this section.
+
+### 2026-10-16 — donation photo reframed (commit 73ca015)
+- Same Mawlid 2026 congregation photo with the bottom fifth trimmed (`images/donate/ghousia-masjid-mawlid-2026-congregation-hall-{800,1280}.webp`): the decorated hall reads and the front row drops out. Only `index.html` (three lines) and the two images change.
