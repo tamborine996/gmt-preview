@@ -121,3 +121,5 @@ No visible review banner, content revision, redesign, timetable change or image 
 - **Follow-up (`staging-20261016-home6`):** the Full Timetable pop-up always shows the real month (a review link with `?today=` had opened July); a pinch-zoomed picture stays inside its own area on phones.
 
 - **Follow-up (`staging-20261016-home7`):** the homepage asks for the Coming up list in its head and runs the strip right after the prayer banner, so on most connections the strip is there when the page appears. On slow connections it slides open (0.3s) instead of jumping in.
+
+- **Fix (`staging-20261016-home8`):** home7 put the strip's script between the prayer banner and the hero, which brought back the hero's top margin (an 86px empty band on phones, 96px on laptops). The script now sits inside the prayer banner, and the hero's top margin is always 0. `a11y-checks.cjs` now fails on any empty band between sections (9 pages, phone and laptop).

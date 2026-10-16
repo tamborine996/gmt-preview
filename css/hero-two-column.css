@@ -11,6 +11,7 @@
     --hero-slant: clamp(80px, 8vw, 130px); /* horizontal run of the diagonal */
     --hero-slant-m: 34px;                  /* vertical run of the mobile slant */
     --hero-edge: 4px;                      /* gold line along the diagonal */
+    margin-top: 0; /* always directly under the prayer banner, whatever sits between them in the markup */
     padding: 24px 0 28px;
     background: var(--cream);
 }
