@@ -1,0 +1,37 @@
+{
+  "about": "REVIEW ONLY (staging): example notices, shown with ?examples=notices or ?examples=important. Every item in a set counts as current; 'real' names items from data/coming-up.json to show alongside. build-staging.cjs copies this file; build-live.cjs does not, so the live site never has it.",
+  "sets": {
+    "notices": {
+      "real": ["monthly-gyarwee-2026-10"],
+      "items": [
+        {
+          "id": "example-car-park",
+          "label": "Notice",
+          "title": "Car park closed this Friday",
+          "line": "Please park on nearby roads and allow extra time for Jum’a",
+          "link": null
+        },
+        {
+          "id": "example-volunteers",
+          "label": "Help needed",
+          "title": "Volunteers needed for Gyarwee set-up",
+          "line": "Sunday from 4pm · let us know if you can help",
+          "link": "contact.html",
+          "link_label": "Get in touch"
+        }
+      ]
+    },
+    "important": {
+      "real": ["monthly-gyarwee-2026-10"],
+      "items": [
+        {
+          "id": "example-closed",
+          "label": "Important",
+          "title": "Masjid closed today until 3pm",
+          "line": "Dhuhr Jama’at at the Educational Centre, 46 Conway Road",
+          "link": null
+        }
+      ]
+    }
+  }
+}

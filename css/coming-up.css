@@ -172,6 +172,30 @@
     color: var(--gold-bright);
 }
 
+/* One label per item ("Coming up", "Notice", "Help needed", "Important"), stacked in one cell so the tag keeps the
+   width of its longest label and the words beside it never shift; the active one shows. */
+.prayer-coming-up .cu-eyebrow {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.prayer-coming-up .cu-label {
+    grid-area: 1 / 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    visibility: hidden;
+}
+
+.prayer-coming-up .cu-label.is-active {
+    visibility: visible;
+}
+
+.prayer-coming-up .cu-label-icon {
+    flex: 0 0 auto;
+}
+
 .prayer-coming-up .cu-stack {
     display: grid;
     min-width: 0;
@@ -226,7 +250,8 @@
     color: var(--gold-bright);
 }
 
-.prayer-coming-up .cu-item:hover .cu-title {
+/* Only items that go somewhere react to the pointer. */
+.prayer-coming-up a.cu-item:hover .cu-title {
     color: var(--gold-bright);
 }
 
@@ -346,8 +371,39 @@
     color: #1f3a33;
 }
 
-.prayer-coming-up.strip-gold .cu-item:hover .cu-title {
+.prayer-coming-up.strip-gold a.cu-item:hover .cu-title {
     color: var(--emerald);
+}
+
+/* Important: a deep red band in place of the gold, ivory type, an ivory tag with a warning mark. While anything
+   Important is current the strip shows only Important items (js/coming-up.js). */
+.prayer-coming-up.strip-important {
+    margin: 14px calc(50% - 50vw) 0;
+    padding: 8px calc(50vw - 50%);
+    border-top: 1px solid #5c1712;
+    background: linear-gradient(180deg, #93302a 0%, #74201b 100%);
+    color: var(--ivory);
+}
+
+.prayer-coming-up.strip-important .cu-eyebrow {
+    padding: 5px 9px 4px;
+    background: var(--ivory);
+    color: #74201b;
+}
+
+.prayer-coming-up.strip-important .cu-title,
+.prayer-coming-up.strip-important .cu-more,
+.prayer-coming-up.strip-important .cu-controls {
+    color: var(--ivory);
+}
+
+.prayer-coming-up.strip-important .cu-when {
+    font-weight: 600;
+    color: rgba(255, 254, 249, 0.9);
+}
+
+.prayer-coming-up.strip-important a.cu-item:hover .cu-title {
+    color: #ffe3b8;
 }
 
 /* ---------- Phones ---------- */
@@ -361,7 +417,8 @@
         padding-top: 8px;
     }
 
-    .prayer-coming-up.strip-gold {
+    .prayer-coming-up.strip-gold,
+    .prayer-coming-up.strip-important {
         margin-top: 12px;
         padding-top: 8px;
         padding-bottom: 8px;
@@ -376,7 +433,8 @@
     }
 
     .prayer-coming-up.strip-gold .cu-eyebrow,
-    .prayer-coming-up.strip-tag .cu-eyebrow {
+    .prayer-coming-up.strip-tag .cu-eyebrow,
+    .prayer-coming-up.strip-important .cu-eyebrow {
         padding: 6px 7px;
     }
 
@@ -394,6 +452,7 @@
         display: block;
         margin-top: 1px;
         font-size: 0.8rem;
+        line-height: 1.35;
         white-space: normal;
     }
 

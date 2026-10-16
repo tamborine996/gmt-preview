@@ -1,16 +1,19 @@
 /* Review aid for the Coming up strip (16 Oct 2026), for staging only: build-live.cjs removes this script.
-   Shows only on a review link (one with ?today=, ?strip= or ?all=), as a small panel bottom right that switches the
-   strip's colouring, the date the site pretends it is, and whether every item counts as current. */
+   Shows only on a review link (one with ?today=, ?strip=, ?all= or ?examples=), as a small panel bottom right that
+   switches the strip's colouring, the date the site pretends it is, whether every item counts as current, and the
+   example notices (data/coming-up-examples.json). */
 (() => {
     'use strict';
 
     const params = new URLSearchParams(window.location.search);
-    if (!['today', 'strip', 'all'].some(key => params.has(key))) return;
+    const KEYS = ['today', 'strip', 'all', 'examples'];
+    if (!KEYS.some(key => params.has(key))) return;
 
     const ROWS = [
         ['strip', 'Strip colouring', [['gold', 'Gold band'], ['tag', 'Gold label'], ['green', 'Green']], 'gold'],
         ['today', 'Pretend today is', [['2026-07-25', 'Sat 25 Jul (two)'], ['2026-07-15', 'Wed 15 Jul'], ['2026-10-08', 'Thu 8 Oct (one)'], ['2026-10-11', 'Sun 11 Oct'], ['', 'Real today']], ''],
         ['all', 'Items', [['', 'Only what is current'], ['1', 'All three at once']], ''],
+        ['examples', 'Example notices', [['', 'None'], ['notices', 'Notice + Help needed'], ['important', 'Important']], ''],
     ];
 
     const style = document.createElement('style');
@@ -31,8 +34,10 @@
     const go = (key, value) => {
         const next = new URLSearchParams(window.location.search);
         if (value) next.set(key, value); else next.delete(key);
+        // The examples sit beside the October Gyarwee, so they show it as on Thursday 8 October.
+        if (key === 'examples' && value) next.set('today', '2026-10-08');
         // Keep the panel on screen after "Real today" by holding a review key.
-        if (!['today', 'strip', 'all'].some(k => next.has(k))) next.set('strip', 'gold');
+        if (!KEYS.some(k => next.has(k))) next.set('strip', 'gold');
         window.location.search = next.toString();
     };
 
