@@ -15,7 +15,11 @@
             // Page coordinates keep the height stable when the user scrolls.
             const available = window.innerHeight - (rect.top + window.scrollY) - 16;
             const limit = window.innerWidth >= 1024 ? 440 : 480;
-            const height = Math.max(160, Math.floor(Math.min(rect.width, available, limit)));
+            // Fit the poster into the first screen only when a useful size fits there; when the carousel
+            // starts lower (e.g. below the welcome on phones), show it full size (same rule as hero-two-column.js).
+            const FLOOR = 320;
+            const room = available >= FLOOR ? available : Infinity;
+            const height = Math.max(160, Math.floor(Math.min(rect.width, room, limit)));
             const value = `${height}px`;
             if (root.style.getPropertyValue('--programme-height') !== value) {
                 root.style.setProperty('--programme-height', value);

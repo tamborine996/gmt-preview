@@ -1,0 +1,638 @@
+/* Coming up (16 Oct 2026): the homepage strip at the foot of the prayer banner, its poster lightbox, and
+   coming-up.html's full posts (js/coming-up.js, data/coming-up.json). Also the "Every week" label above the
+   homepage poster slot. */
+
+/* ---------- Label above the homepage poster slot ---------- */
+
+.hero-carousel-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 0.6rem;
+}
+
+.hero-carousel-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+}
+
+.hero-carousel-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+}
+
+.hero-carousel-all {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--emerald);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+}
+
+.hero-carousel-all:hover {
+    color: var(--emerald-deep);
+}
+
+/* ---------- coming-up.html ---------- */
+
+.coming-up-list {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.coming-up-post {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: start;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-top: 2px solid var(--gold);
+    background: var(--ivory);
+    box-shadow: var(--shadow-soft);
+    scroll-margin-top: calc(var(--header-height) + 1.25rem);
+}
+
+.coming-up-post:focus {
+    outline: none;
+}
+
+.coming-up-post:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+.coming-up-poster {
+    display: block;
+    background: #073b30;
+}
+
+.coming-up-poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.coming-up-kind {
+    margin: 0 0 0.4rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+}
+
+.coming-up-body h2 {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--emerald-deep);
+}
+
+.coming-up-when {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--emerald-deep);
+}
+
+.coming-up-place {
+    margin: 0 0 1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+}
+
+.coming-up-body p {
+    max-width: 62ch;
+    margin: 0 0 0.85rem;
+    line-height: 1.65;
+    color: var(--slate);
+}
+
+.coming-up-body .coming-up-when,
+.coming-up-body .coming-up-place {
+    color: var(--emerald-deep);
+}
+
+.coming-up-details {
+    display: grid;
+    gap: 0;
+    margin: 1.25rem 0;
+    border-top: 1px solid rgba(196, 169, 98, 0.45);
+}
+
+.coming-up-details > div {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(196, 169, 98, 0.45);
+}
+
+.coming-up-details dt {
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+}
+
+.coming-up-details dd {
+    margin: 0;
+    color: var(--charcoal);
+}
+
+.coming-up-body .btn {
+    margin-top: 0.5rem;
+}
+
+.coming-up-empty {
+    padding: 2rem;
+    border-top: 2px solid var(--gold);
+    background: var(--ivory);
+    box-shadow: var(--shadow-soft);
+}
+
+.coming-up-empty h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--emerald-deep);
+}
+
+@media (max-width: 760px) {
+    .coming-up-post {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .coming-up-poster {
+        max-width: 420px;
+    }
+
+    .coming-up-details > div {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.2rem;
+    }
+}
+
+/* ---------- Strip: shared type ---------- */
+
+.cu-eyebrow {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.cu-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+}
+
+.cu-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.cu-more svg {
+    flex: 0 0 auto;
+    transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+a:hover .cu-more svg,
+a:focus-visible .cu-more svg {
+    transform: translateX(3px);
+}
+
+/* ---------- Strip: every current item, one at a time, inside the green prayer banner ----------
+   js/coming-up.js renderStrip. Items share one grid cell, so the strip keeps its longest item's height and the
+   page never jumps; the active one (.is-active) fades in. Dots and a pause button appear when there are several. */
+.prayer-coming-up {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(212, 190, 122, 0.32);
+    color: var(--ivory);
+}
+
+.prayer-coming-up .cu-eyebrow {
+    flex: 0 0 auto;
+    color: var(--gold-bright);
+}
+
+.prayer-coming-up .cu-stack {
+    display: grid;
+    min-width: 0;
+}
+
+.prayer-coming-up .cu-item {
+    grid-area: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.prayer-coming-up .cu-item.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease;
+}
+
+.prayer-coming-up .cu-title {
+    font-size: 1.12rem;
+    line-height: 1.2;
+}
+
+.prayer-coming-up .cu-when {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.9rem;
+    color: rgba(255, 254, 249, 0.85);
+}
+
+.prayer-coming-up .cu-when::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.prayer-coming-up .cu-more {
+    padding-bottom: 1px;
+    border-bottom: 1px solid rgba(212, 190, 122, 0.6);
+    color: var(--gold-bright);
+}
+
+.prayer-coming-up .cu-item:hover .cu-title {
+    color: var(--gold-bright);
+}
+
+.prayer-coming-up .cu-item:focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 3px;
+}
+
+.prayer-coming-up .cu-controls {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+.prayer-coming-up .cu-dot {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.prayer-coming-up .cu-dot::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--gold-bright);
+    border-radius: 50%;
+    transition: background-color var(--duration-fast) ease;
+}
+
+.prayer-coming-up .cu-dot[aria-pressed="true"]::before {
+    background: var(--gold-bright);
+}
+
+.prayer-coming-up .cu-pause {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    margin-left: 6px;
+    padding: 0;
+    border: 1px solid rgba(212, 190, 122, 0.55);
+    border-radius: 50%;
+    background: none;
+    color: var(--gold-bright);
+    cursor: pointer;
+}
+
+.prayer-coming-up .cu-pause:hover {
+    background: rgba(212, 190, 122, 0.15);
+}
+
+.prayer-coming-up .cu-dot:focus-visible,
+.prayer-coming-up .cu-pause:focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .prayer-coming-up .cu-item,
+    .prayer-coming-up .cu-item.is-active {
+        transition: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .prayer-coming-up {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "eyebrow controls" "stack stack";
+        align-items: center;
+        gap: 2px 12px;
+        margin-top: 10px;
+        padding-top: 8px;
+    }
+
+    .prayer-coming-up .cu-eyebrow { grid-area: eyebrow; }
+    .prayer-coming-up .cu-controls { grid-area: controls; margin-right: -4px; }
+    .prayer-coming-up .cu-stack { grid-area: stack; }
+
+    /* Single item: no controls, so the words sit just under the eyebrow. */
+    .prayer-coming-up:not(.is-rotating) {
+        row-gap: 4px;
+    }
+
+    .prayer-coming-up .cu-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        justify-content: stretch;
+        align-content: center;
+        gap: 1px 12px;
+    }
+
+    .prayer-coming-up .cu-title { grid-column: 1; grid-row: 1; font-size: 1.05rem; }
+    .prayer-coming-up .cu-when { grid-column: 1; grid-row: 2; font-size: 0.85rem; }
+    .prayer-coming-up .cu-when::before { display: none; }
+
+    .prayer-coming-up .cu-more {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: center;
+        border-bottom: 0;
+    }
+
+    .prayer-coming-up .cu-more svg { width: 18px; height: 18px; }
+
+    .prayer-coming-up .cu-more-text {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+}
+
+/* ---------- Strip colourings (?strip=, .strip-* set by js/coming-up.js) ----------
+   gold (the default): a solid gold band along the foot of the prayer banner, emerald type (the prayer banner
+   loses its bottom padding so the band meets the hero). tag: a solid gold "Coming up" label on the green, larger
+   title. green: the strip's own styles above, gold lettering on the green. */
+.prayer-coming-up.strip-tag .cu-eyebrow {
+    padding: 5px 9px 4px;
+    background: var(--gold-bright);
+    color: var(--emerald-deep);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.prayer-coming-up.strip-tag .cu-title {
+    font-size: 1.22rem;
+}
+
+.prayer-banner.has-gold-strip {
+    padding-bottom: 0;
+}
+
+.prayer-coming-up.strip-gold {
+    margin: 14px calc(50% - 50vw) 0;
+    padding: 9px calc(50vw - 50%);
+    border-top: 1px solid #b89a4f;
+    background: linear-gradient(180deg, #ddc583 0%, var(--gold) 100%);
+    color: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-eyebrow {
+    padding: 5px 9px 4px;
+    background: var(--emerald-deep);
+    color: var(--gold-bright);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.prayer-coming-up.strip-gold .cu-title {
+    font-size: 1.22rem;
+    color: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-when {
+    font-weight: 600;
+    color: #1f3a33;
+}
+
+.prayer-coming-up.strip-gold .cu-when::before {
+    background: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-more {
+    border-bottom-color: rgba(8, 61, 51, 0.45);
+    font-weight: 700;
+    color: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-item:hover .cu-title {
+    color: var(--emerald);
+}
+
+.prayer-coming-up.strip-gold .cu-dot::before {
+    border-color: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-dot[aria-pressed="true"]::before {
+    background: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-pause {
+    border-color: rgba(8, 61, 51, 0.5);
+    color: var(--emerald-deep);
+}
+
+.prayer-coming-up.strip-gold .cu-pause:hover {
+    background: rgba(8, 61, 51, 0.1);
+}
+
+.prayer-coming-up.strip-gold .cu-item:focus-visible,
+.prayer-coming-up.strip-gold .cu-dot:focus-visible,
+.prayer-coming-up.strip-gold .cu-pause:focus-visible {
+    outline-color: var(--emerald-deep);
+}
+
+@media (max-width: 600px) {
+    .prayer-coming-up.strip-tag .cu-eyebrow,
+    .prayer-coming-up.strip-gold .cu-eyebrow {
+        justify-self: start;
+    }
+
+    .prayer-coming-up.strip-tag .cu-title,
+    .prayer-coming-up.strip-gold .cu-title {
+        font-size: 1.12rem;
+    }
+
+    .prayer-coming-up.strip-gold {
+        margin-top: 12px;
+        padding-top: 9px;
+        padding-bottom: 11px;
+        row-gap: 6px;
+    }
+
+    .prayer-coming-up.strip-tag {
+        row-gap: 6px;
+    }
+}
+
+/* ---------- Poster lightbox (.cu-lightbox on GLightbox's container, set by js/coming-up.js) ----------
+   Laptops: the poster with an ivory panel to its right. Phones: the poster with the panel beneath it, rather than
+   GLightbox's default caption laid over the bottom of the picture. */
+.cu-lightbox .goverlay {
+    background: rgba(5, 38, 32, 0.94);
+}
+
+.glightbox-clean.cu-lightbox .gslide-description {
+    background: var(--ivory);
+}
+
+.glightbox-clean.cu-lightbox .gdesc-inner {
+    padding: 26px 24px;
+    border-top: 3px solid var(--gold);
+}
+
+.glightbox-clean.cu-lightbox .gslide-title {
+    margin: 0 0 14px;
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--emerald-deep);
+}
+
+.cu-lb-kind {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #806b32; /* darker than --gold-muted: 5.1:1 on ivory */
+}
+
+.glightbox-clean.cu-lightbox .gslide-desc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--slate);
+}
+
+.cu-lb-when {
+    display: block;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--charcoal);
+}
+
+.cu-lb-place {
+    display: block;
+    margin-top: 2px;
+}
+
+.cu-lb-text {
+    display: block;
+    margin-top: 14px;
+}
+
+.cu-lb-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+    margin-top: 20px;
+}
+
+.cu-lightbox .cu-lb-actions .btn {
+    color: var(--ivory);
+}
+
+.cu-lightbox .cu-lb-more {
+    padding-bottom: 1px;
+    border-bottom: 1px solid var(--gold);
+    font-weight: 600;
+    color: var(--emerald);
+    text-decoration: none;
+}
+
+@media (min-width: 769px) {
+    .cu-lightbox .gslide-description.description-right {
+        max-width: 330px;
+    }
+}
+
+.glightbox-mobile .cu-lightbox .gslide-description {
+    flex: 0 0 auto;
+    position: relative;
+    bottom: auto;
+    max-height: none;
+    padding: 0;
+    background: var(--ivory);
+}
+
+.glightbox-mobile .cu-lightbox .gdesc-inner {
+    padding: 16px 20px 20px;
+}
+
+.glightbox-mobile .cu-lightbox .gslide-title {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+    color: var(--emerald-deep);
+}
+
+.glightbox-mobile .cu-lightbox .gslide-desc,
+.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-place {
+    color: var(--slate);
+}
+
+.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-when { color: var(--charcoal); }
+.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-kind { color: var(--gold-muted); }
+.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-text { display: none; }
+.glightbox-mobile .cu-lightbox .gslide-desc .btn { color: var(--ivory); }
+.glightbox-mobile .cu-lightbox .gslide-desc .cu-lb-more { color: var(--emerald); }
+
+.glightbox-mobile .cu-lightbox .gslide-image img {
+    max-height: calc(100vh - 250px);
+    max-height: calc(100dvh - 250px);
+}

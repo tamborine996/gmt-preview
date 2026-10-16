@@ -26,21 +26,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link rel="stylesheet" href="css/gyaarwee-campaign.css?v=20260908-ribbon-v3&review=staging-20261014-live-0750fcc">
     <link rel="stylesheet" href="css/programme-carousel.css?v=20261012-programmes2&review=staging-20261014-live-0750fcc">
-    <link rel="stylesheet" href="css/hero-two-column.css?v=20261016-privacy4&review=staging-20261016-privacy4">
-    <link rel="stylesheet" href="css/home-sections.css?v=20261016-privacy4&review=staging-20261016-privacy4">
-    <link rel="stylesheet" href="css/home-news.css?v=20261016-privacy4&review=staging-20261016-privacy4">
-    <link rel="stylesheet" href="css/home-week.css?v=20261016-privacy4&review=staging-20261016-privacy4">
-    <link rel="stylesheet" href="css/home-media.css?v=20261016-privacy4&review=staging-20261016-privacy4">
-    <link rel="stylesheet" href="css/home-visit.css?v=20261016-privacy4&review=staging-20261016-privacy4">
-    <link rel="stylesheet" href="css/footer-refresh.css?v=20261016-privacy4&review=staging-20261016-privacy4">
-    <link rel="stylesheet" href="css/home-donate.css?v=20261016-privacy4&review=staging-20261016-privacy4">
+    <link rel="stylesheet" href="css/hero-two-column.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/coming-up.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/home-sections.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/home-news.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/home-week.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/home-media.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/home-visit.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/footer-refresh.css?v=20261016-comingup1&review=staging-20261016-comingup1">
+    <link rel="stylesheet" href="css/home-donate.css?v=20261016-comingup1&review=staging-20261016-comingup1">
     <!-- Cookie choice: optional cookies (analytics) only after the visitor allows them -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css">
-    <link rel="stylesheet" href="css/consent.css?v=20261016-privacy4&review=staging-20261016-privacy4">
+    <link rel="stylesheet" href="css/consent.css?review=staging-20261014-live-0750fcc">
     <script defer src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
-    <script defer src="js/consent.js?v=20261016-privacy4&review=staging-20261016-privacy4"></script>
+    <script defer src="js/consent.js?review=staging-20261014-live-0750fcc"></script>
     <!-- Maps load only when the visitor presses "Show map" -->
-    <script defer src="js/map-consent.js?v=20261016-privacy4&review=staging-20261016-privacy4"></script>
+    <script defer src="js/map-consent.js?review=staging-20261014-live-0750fcc"></script>
 </head>
 <body>
     <a class="skip-link" href="#content">Skip to content</a>
@@ -165,18 +166,9 @@
         </div>
     </section>
 
-    <!-- Event Notification Bar -->
-    <a href="#event-spotlight" class="event-notification-bar" id="event-notification-bar" style="display: none;" aria-label="Open the full event poster">
-        <span class="event-notif-badge">Upcoming</span>
-        <span class="event-notif-text"><strong>Gyaarwee Shareef</strong> — 13 September · 5:15pm · View poster</span>
-        <span class="event-notif-arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-        </span>
-    </a>
-
     <!-- Hero Section: welcome above the carousel on ivory; exterior photograph on a diagonal.
          Desktop: the photograph is positioned against the section and bleeds to the right edge.
-         Below 1024px: carousel, then photograph, then welcome. -->
+         Below 1024px: photograph, then welcome, then the weekly poster slot. Coming up is in the prayer banner. -->
     <section class="hero-combined hero-two-column" id="content" tabindex="-1">
         <div class="container">
             <div class="hero-grid">
@@ -203,6 +195,10 @@
                 </figure>
                 <!-- Carousel (Swiper.js). Arrows sit outside the slides so they do not cover the artwork. -->
                 <div class="hero-carousel-frame">
+                <div class="hero-carousel-label">
+                    <span class="hero-carousel-eyebrow">Every week</span>
+                    <a class="hero-carousel-all" href="what-we-offer.html#education">Classes and times</a>
+                </div>
                 <div class="hero-carousel-compact swiper has-programme-slide" id="hero-carousel" role="region" aria-label="Featured programmes and updates">
                     <div class="swiper-wrapper">
                         <!-- Approved recurring programmes: full-bleed, with native carousel controls. -->
@@ -229,39 +225,6 @@
                     <!-- Swiper Navigation -->
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Spotlight Section -->
-    <section class="event-spotlight light" id="event-spotlight" style="display: none;">
-        <div class="container">
-            <div class="spotlight-content">
-                <div class="spotlight-posters" aria-label="Event poster">
-                    <a class="spotlight-poster-link" href="images/event-poster.jpg?v=20260913" target="_blank" rel="noopener noreferrer" aria-label="Open the full Gyaarwee Shareef poster">
-                        <div class="poster-frame">
-                            <span class="spotlight-poster-label" style="display:none"></span>
-                            <img src="images/event-poster.jpg?v=20260913" alt="Grand Annual Gyaarwee Shareef poster, Sunday 13 September 2026 at 5:15pm">
-                        </div>
-                    </a>
-                </div>
-                <div class="spotlight-text">
-                    <span class="spotlight-badge">Upcoming Event</span>
-                    <h2 class="spotlight-title">Grand Annual Gyaarwee Shareef</h2>
-                    <p class="spotlight-date spotlight-legacy-date">Sunday 13 September 2026</p>
-                    <p class="spotlight-description">The programme will include talks in English and Urdu, and Na’at recitations in praise of the Prophet ﷺ. Food will be served. Please see the poster for the full programme.</p>
-                    <div class="spotlight-details spotlight-legacy-details">
-                        <div class="spotlight-detail">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <span class="spotlight-time">Starts 5:15pm</span>
-                        </div>
-                        <div class="spotlight-detail spotlight-detail-location">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span class="spotlight-location">GMT Ghousia Masjid, 56 Camrose Street, London SE2 0JA</span>
-                        </div>
-                    </div>
-                    <a href="https://www.facebook.com/GreenwichMadinaTrust/" target="_blank" class="btn btn-primary spotlight-fb-link">View on Facebook</a>
                 </div>
             </div>
         </div>
@@ -623,17 +586,20 @@
     </script>
 
     <script src="js/prayer-times.js?v=20260929-october-rollover&review=staging-20261014-live-0750fcc"></script>
-    <script src="js/events.js?v=20260908-ribbon-v3&review=staging-20261014-live-0750fcc"></script>
     <!-- Swiper.js for carousel -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- GLightbox for video modals -->
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-    <script src="js/youtube.js?v=20261016-privacy4&review=staging-20261016-privacy4"></script>
+    <script src="js/youtube.js?v=20261016-privacy&review=staging-20261014-live-0750fcc"></script>
     <script src="js/main.js?v=20260823-rabi-nur-live1&review=staging-20261014-live-0750fcc"></script>
     <!-- sizes the square poster before Swiper measures it -->
-    <script src="js/hero-two-column.js?v=20261016-privacy4&review=staging-20261016-privacy4"></script>
+    <script src="js/hero-two-column.js?v=20261016-comingup1&review=staging-20261016-comingup1"></script>
     <!-- weekly schedule and services -->
-    <script src="js/home-week.js?v=20261016-privacy4&review=staging-20261016-privacy4"></script>
+    <script src="js/home-week.js?v=20261016-comingup1&review=staging-20261016-comingup1"></script>
+    <!-- Coming up: the strip in the prayer banner, from data/coming-up.json -->
+    <script src="js/coming-up.js?v=20261016-comingup1&review=staging-20261016-comingup1"></script>
+    <!-- Review aid (staging only; build-live.cjs removes it): shows with ?today= / ?strip= / ?all= -->
+    <script src="js/review-switcher.js?v=20261016-comingup1&review=staging-20261016-comingup1"></script>
     <script>
         // Remove expired campaign cards before Swiper counts or displays them.
         (() => {
@@ -792,8 +758,8 @@
             syncVideoWithSlide();
         });
     </script>
-    <script src="js/programme-carousel.js?v=20261012-programmes2&review=staging-20261014-live-0750fcc"></script>
+    <script src="js/programme-carousel.js?v=20261016-comingup1&review=staging-20261016-comingup1"></script>
     <!-- pause / play beside the slide dots; focus holds the slides still -->
-    <script src="js/carousel-controls.js?v=20261016-privacy4&review=staging-20261016-privacy4"></script>
+    <script src="js/carousel-controls.js?v=20261016-comingup1&review=staging-20261016-comingup1"></script>
 </body>
 </html>

@@ -84,3 +84,21 @@ No visible review banner, content revision, redesign, timetable change or image 
 - **Checks:** `consent-checks.cjs` 23/23 (no Google requests or cookies before a choice, including the homepage with its Instagram feed); `a11y-checks.cjs` 23/23.
 - **For the user to confirm:** the retention periods in the policy.
 
+
+### 2026-10-16 — Coming up strip; phones show the photo first (`staging-20261016-comingup1`)
+- **Coming up** replaces the event spotlight and its ribbon. `data/coming-up.json` lists upcoming events and time-limited requests, each shown from `show_from` until the day before `hide_from`.
+  - **Homepage:** current items appear in a strip at the foot of the prayer banner, one at a time.
+  - **Rotation:** several items fade every 6 seconds, with dots and a pause button. Rotation stops on hover or focus, and never runs for reduced motion.
+  - **Wording:** the strip says when in words relative to today ("This Sunday · 6–8pm", "On now", "Open until …").
+  - **Poster:** tapping an item opens its poster in a lightbox (GLightbox), with its details and button.
+  - **Full posts:** `coming-up.html`.
+- **Poster slot:** always the weekly class posters, labelled "Every week".
+- **Colouring under review:** gold band (default), gold label, or green.
+- **Review links** show a small switcher (`js/review-switcher.js`, removed by the live build):
+  - `?today=2026-07-25` shows two events (the Youth Summer Retreat and the questionnaire);
+  - `?strip=tag` / `?strip=green` change the colouring;
+  - `?all=1` treats every item as current.
+- **Nothing current today:** no item is current on 16 October, so the plain homepage shows no strip.
+- **Phones:** the photograph, then the welcome, then the poster slot. The poster keeps its full size there.
+- **Checks:** `a11y-checks.cjs` 23/23; `consent-checks.cjs` 23/23; `strip-shots.cjs` confirms rotation, the hover pause, a steady strip height, and the lightbox.
+- **Before production:** the retreat poster artwork's address line says "Plumstead" and needs re-exporting.

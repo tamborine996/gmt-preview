@@ -13,6 +13,9 @@
 
     const params = new URLSearchParams(window.location.search);
     if (params.get('order') === 'carousel-first') hero.dataset.order = 'carousel-first';
+    // Review aid (16 Oct 2026): phones and tablets show photograph, welcome, poster slot. ?mobile=carousel-first
+    // (the previous order) or ?mobile=welcome-first shows the alternatives.
+    if (['carousel-first', 'welcome-first'].includes(params.get('mobile'))) hero.dataset.mobile = params.get('mobile');
 
     const PHOTOS = {
         // The original Facebook cover (pre-refurbishment frontage, white sky).

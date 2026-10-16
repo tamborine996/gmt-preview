@@ -263,8 +263,9 @@
 /* ---------- Tablet and phone ---------- */
 
 @media (max-width: 1023.98px) {
+    /* Phones and tablets (16 Oct 2026): photograph, then welcome, then the poster slot. */
     .hero-two-column {
-        padding: 16px 0 36px;
+        padding: 0 0 36px;
     }
 
     .hero-two-column .hero-grid {
@@ -280,14 +281,15 @@
     }
 
     .hero-carousel-frame {
-        order: 1;
+        order: 3;
+        margin-top: 32px;
     }
 
     .hero-photo {
-        order: 2;
+        order: 1;
         position: relative;
         height: clamp(210px, 56vw, 380px);
-        margin: 28px calc(-1 * var(--space-lg)) 0;
+        margin: 0 calc(-1 * var(--space-lg)) 0;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--hero-slant-m)));
     }
 
@@ -304,8 +306,8 @@
     }
 
     .hero-two-column .hero-welcome {
-        order: 3;
-        margin-top: 8px;
+        order: 2;
+        margin-top: 4px;
         text-align: left;
     }
 
@@ -315,6 +317,43 @@
 
     .hero-two-column .hero-welcome .welcome-buttons {
         justify-content: flex-start;
+    }
+}
+
+/* Review variants for phones and tablets (16 Oct 2026), set by ?mobile=… in js/hero-two-column.js.
+   carousel-first: the previous order (poster slot, photograph, welcome). welcome-first: welcome, photograph, poster slot. */
+@media (max-width: 1023.98px) {
+    .hero-two-column[data-mobile="carousel-first"] {
+        padding-top: 16px;
+    }
+
+    .hero-two-column[data-mobile="carousel-first"] .hero-carousel-frame {
+        order: 1;
+        margin-top: 0;
+    }
+
+    .hero-two-column[data-mobile="carousel-first"] .hero-photo {
+        order: 2;
+        margin-top: 28px;
+    }
+
+    .hero-two-column[data-mobile="carousel-first"] .hero-welcome {
+        order: 3;
+        margin-top: 8px;
+    }
+
+    .hero-two-column[data-mobile="welcome-first"] {
+        padding-top: 16px;
+    }
+
+    .hero-two-column[data-mobile="welcome-first"] .hero-welcome {
+        order: 1;
+        margin-top: 0;
+    }
+
+    .hero-two-column[data-mobile="welcome-first"] .hero-photo {
+        order: 2;
+        margin-top: 24px;
     }
 }
 
