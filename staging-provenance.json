@@ -93,6 +93,37 @@
         "Imam to glance at the new short labels on What We Offer (At a glance, When, Where, Who, Next step, Ceremony, Arranging, Confidentiality, Dates, Through the year)",
         "Open questions in Mosque admin/WEBSITE-STYLE-GUIDE.md section 9 (Fajr start in the strip, class times on the printed timetable, approved wording that differs from the house terms, news categories, privacy policy)"
       ]
+    },
+    {
+      "marker": "staging-20261016-privacy4",
+      "date": "2026-10-16",
+      "summary": "Cookie choice bar (analytics only after consent), maps on request, YouTube privacy mode, rewritten privacy policy; analytics gated on legacy pages; unlinked review pages removed",
+      "files": [
+        "index.html",
+        "news.html",
+        "prayer-times.html",
+        "what-we-offer.html",
+        "resources.html",
+        "contact.html",
+        "privacy.html",
+        "nikah-certificate.html",
+        "about.html",
+        "events.html",
+        "media.html",
+        "css/consent.css",
+        "css/privacy-page.css",
+        "js/consent.js",
+        "js/map-consent.js",
+        "js/youtube.js"
+      ],
+      "removed": [
+        "home-news-preview.html",
+        "home-news-preview-v2.html",
+        "logo-preview.html"
+      ],
+      "production_blockers": [
+        "User to confirm the retention periods stated in the privacy policy"
+      ]
     }
   ]
 }

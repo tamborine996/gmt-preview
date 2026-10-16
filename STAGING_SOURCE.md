@@ -75,3 +75,12 @@ No visible review banner, content revision, redesign, timetable change or image 
 
 ### 2026-10-16 — donation photo reframed (commit 73ca015)
 - Same Mawlid 2026 congregation photo with the bottom fifth trimmed (`images/donate/ghousia-masjid-mawlid-2026-congregation-hall-{800,1280}.webp`): the decorated hall reads and the front row drops out. Only `index.html` (three lines) and the two images change.
+
+### 2026-10-16 — privacy: cookie choice, maps on request, new policy (`staging-20261016-privacy4`)
+- **Cookie choice:** a slim bar in the house style (vanilla-cookieconsent 3.0.1). Google Analytics tags are `type="text/plain" data-category="analytics"` and run only after "Allow analytics"; Google signals and ad personalisation are off; withdrawing consent deletes the `_ga` cookies. "Cookie settings" sits in every footer. Staging still disables analytics entirely (`ga-disable`).
+- **Maps** (Home, Contact) load only after "Show map". **Videos** play in YouTube's privacy-enhanced mode, with the player from jsDelivr.
+- **Privacy policy** rewritten to match what the site does (Formspree, Google, GitHub, Hibabox, Behold, cookies table, legal reasons, retention, rights).
+- **Also gated:** `nikah-certificate.html`, `about.html`, `events.html`, `media.html`. **Removed:** the unlinked review pages `home-news-preview.html`, `home-news-preview-v2.html`, `logo-preview.html`, which loaded analytics without consent.
+- **Checks:** `consent-checks.cjs` 23/23 (no Google requests or cookies before a choice, including the homepage with its Instagram feed); `a11y-checks.cjs` 23/23.
+- **For the user to confirm:** the retention periods in the policy.
+
