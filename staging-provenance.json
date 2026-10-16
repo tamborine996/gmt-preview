@@ -4,5 +4,49 @@
   "archive_tag": "archive/before-live-parity-20261014",
   "marker": "staging-20261014-live-0750fcc",
   "purpose": "Exact live baseline before visual changes",
-  "rebuilt": "2026-10-14"
+  "rebuilt": "2026-10-14",
+  "staged_changes": [
+    {
+      "marker": "staging-20261016-hero1",
+      "date": "2026-10-16",
+      "summary": "Two-column homepage hero with AI-edited exterior photograph (review only)",
+      "files": [
+        "index.html",
+        "css/hero-two-column.css",
+        "js/hero-two-column.js",
+        "images/hero/ghousia-masjid-clear-cleaned-800.webp",
+        "images/hero/ghousia-masjid-clear-cleaned-1280.webp",
+        "images/hero/ghousia-masjid-clear-cleaned-1399.webp"
+      ],
+      "production_blockers": [
+        "Replace contributor sign pixels with a mosque-owned front-on photograph of the sign",
+        "Committee/Imam approval of an AI-edited image of the building"
+      ]
+    },
+    {
+      "marker": "staging-20261016-home2",
+      "date": "2026-10-16",
+      "summary": "Rest of the homepage: editorial news with date-based expiry, weekly schedule, donation section with Mawlid 2026 photo, curated media, two-building visit guide, shared headings, emerald footer; retired inline styles removed",
+      "files": [
+        "index.html",
+        "news.html",
+        "js/youtube.js",
+        "js/home-week.js",
+        "data/facebook-news-preview.json",
+        "data/weekly-schedule.json",
+        "css/home-sections.css",
+        "css/home-news.css",
+        "css/home-week.css",
+        "css/home-media.css",
+        "css/home-visit.css",
+        "css/home-donate.css",
+        "css/footer-refresh.css",
+        "images/donate/ghousia-masjid-mawlid-2026-congregation-800.webp",
+        "images/donate/ghousia-masjid-mawlid-2026-congregation-1280.webp"
+      ],
+      "production_blockers": [
+        "Add data/weekly-schedule.json to CONTENT-REGISTER.md and correct its stale Qur'an Circle and Dars-e-Quran entries"
+      ]
+    }
+  ]
 }

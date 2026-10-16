@@ -987,11 +987,21 @@
             });
         }
 
+        // True once London's date is after an action_until date: the post stays as history,
+        // but its call to action (and paired related button) is no longer offered.
+        function actionHasEnded(post) {
+            if (!post.action_until) return false;
+            const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+            const value = Object.fromEntries(parts.map(part => [part.type, part.value]));
+            return `${value.year}-${value.month}-${value.day}` > post.action_until;
+        }
+
         function renderPost(post, index, fallbackDate) {
             if (post.slug === 'annual-mawlid-un-nabi-highlights-2026') {
                 return renderMawlidFeature(post, index, fallbackDate);
             }
             const staticDate = post.published_date || fallbackDate || post.published_label || '';
+            const actionLive = post.action_url && !actionHasEnded(post);
             return `
                 <article class="news-article" id="post-${index + 1}">
                     <div class="news-article-body">
@@ -1002,7 +1012,7 @@
                         <h2>${escapeHtml(post.title)}</h2>
                         ${renderVideo(post.video)}
                         <div class="news-prose">${renderTextBlocks(post.text_blocks || [])}</div>
-                        ${post.action_url ? `<div class="news-actions news-actions-inline"><a class="btn btn-primary" href="${escapeHtml(post.action_url)}"${linkAttributes(post.action_url)}>${escapeHtml(post.action_label || 'Learn more')}</a>${post.related_url ? `<a class="btn btn-secondary" href="${escapeHtml(post.related_url)}"${linkAttributes(post.related_url)}>${escapeHtml(post.related_label || 'Related information')}</a>` : ''}</div>` : ''}
+                        ${actionLive ? `<div class="news-actions news-actions-inline"><a class="btn btn-primary" href="${escapeHtml(post.action_url)}"${linkAttributes(post.action_url)}>${escapeHtml(post.action_label || 'Learn more')}</a>${post.related_url ? `<a class="btn btn-secondary" href="${escapeHtml(post.related_url)}"${linkAttributes(post.related_url)}>${escapeHtml(post.related_label || 'Related information')}</a>` : ''}</div>` : ''}
                         ${renderDetails(post.key_details || [])}
                         ${post.video ? '' : renderPoster(post.poster)}
                         ${renderGallery(post.gallery || [])}
