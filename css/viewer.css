@@ -109,6 +109,11 @@
     padding: 0.7rem 0.8rem;
 }
 
+/* A pinch-zoomed picture stays inside its own area, above the panel. */
+.glightbox-mobile .gmt-viewer .gslide-media {
+    overflow: hidden;
+}
+
 .glightbox-mobile .gmt-viewer .gslide-image img {
     max-height: calc(100vh - 230px);
     max-height: calc(100dvh - 230px);

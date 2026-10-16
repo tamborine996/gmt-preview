@@ -3,14 +3,13 @@
      (js/viewer.js), with "Download PDF" and, away from the Prayer Times page, "Prayer Times page". Without
      JavaScript, or if the timetable cannot be shown, the button still goes to prayer-times.html.
    - window.GMTTimetables.current() gives this month's entry to the printable timetable on prayer-times.html.
-   This month = the entry for the current London month, or the latest earlier one until it is added.
-   Review aids: ?today=YYYY-MM-DD, or window.GMT_TIMETABLE_TEST_DATE. */
+   This month = the entry for the current London month, or the latest earlier one until it is added. It always
+   follows the real date: the Coming up review aid ?today= does not move it, as the prayer strip beside the button
+   shows the real day's times. Test hook: window.GMT_TIMETABLE_TEST_DATE. */
 (() => {
     'use strict';
 
     function thisMonth() {
-        const requested = new URLSearchParams(window.location.search).get('today');
-        if (/^\d{4}-\d{2}-\d{2}$/.test(requested || '')) return requested.slice(0, 7);
         const date = window.GMT_TIMETABLE_TEST_DATE ? new Date(window.GMT_TIMETABLE_TEST_DATE) : new Date();
         const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit' })
             .formatToParts(date).map(part => [part.type, part.value]));

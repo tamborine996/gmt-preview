@@ -117,3 +117,5 @@ No visible review banner, content revision, redesign, timetable change or image 
   - The month table highlights only today, with "Today" in the day column. Fridays are no longer shaded (the printed PDF keeps its shading).
   - On phones the table starts at today, with "Show 1–15 October" for the earlier days.
 - **Checks:** `a11y-checks.cjs` 27/27 (new checks for the viewer, the strip and the table); `consent-checks.cjs` 23/23.
+
+- **Follow-up (`staging-20261016-home6`):** the Full Timetable pop-up always shows the real month (a review link with `?today=` had opened July); a pinch-zoomed picture stays inside its own area on phones.
