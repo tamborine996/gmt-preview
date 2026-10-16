@@ -26,16 +26,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link rel="stylesheet" href="css/gyaarwee-campaign.css?v=20260908-ribbon-v3&review=staging-20261014-live-0750fcc">
     <link rel="stylesheet" href="css/programme-carousel.css?v=20261012-programmes2&review=staging-20261014-live-0750fcc">
-    <link rel="stylesheet" href="css/hero-two-column.css?v=20261016-hero1&review=staging-20261016-hero1">
-    <link rel="stylesheet" href="css/home-sections.css?v=20261016-home2&review=staging-20261016-home2">
-    <link rel="stylesheet" href="css/home-news.css?v=20261016-home2&review=staging-20261016-home2">
-    <link rel="stylesheet" href="css/home-week.css?v=20261016-home2&review=staging-20261016-home2">
-    <link rel="stylesheet" href="css/home-media.css?v=20261016-home2&review=staging-20261016-home2">
-    <link rel="stylesheet" href="css/home-visit.css?v=20261016-home2&review=staging-20261016-home2">
-    <link rel="stylesheet" href="css/footer-refresh.css?v=20261016-home2&review=staging-20261016-home2">
-    <link rel="stylesheet" href="css/home-donate.css?v=20261016-home2&review=staging-20261016-home2">
+    <link rel="stylesheet" href="css/hero-two-column.css?v=20261016-site3&review=staging-20261016-site3">
+    <link rel="stylesheet" href="css/home-sections.css?v=20261016-site3&review=staging-20261016-site3">
+    <link rel="stylesheet" href="css/home-news.css?v=20261016-site3&review=staging-20261016-site3">
+    <link rel="stylesheet" href="css/home-week.css?v=20261016-site3&review=staging-20261016-site3">
+    <link rel="stylesheet" href="css/home-media.css?v=20261016-site3&review=staging-20261016-site3">
+    <link rel="stylesheet" href="css/home-visit.css?v=20261016-site3&review=staging-20261016-site3">
+    <link rel="stylesheet" href="css/footer-refresh.css?v=20261016-site3&review=staging-20261016-site3">
+    <link rel="stylesheet" href="css/home-donate.css?v=20261016-site3&review=staging-20261016-site3">
 </head>
 <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -169,7 +170,7 @@
     <!-- Hero Section: welcome above the carousel on ivory; exterior photograph on a diagonal.
          Desktop: the photograph is positioned against the section and bleeds to the right edge.
          Below 1024px: carousel, then photograph, then welcome. -->
-    <section class="hero-combined hero-two-column">
+    <section class="hero-combined hero-two-column" id="content" tabindex="-1">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-welcome">
@@ -178,7 +179,7 @@
                     <p class="welcome-subtitle">Serving the local Muslim community with prayers, education, and services since 2009.</p>
                     <div class="welcome-buttons">
                         <a href="what-we-offer.html" class="btn btn-primary">What We Offer</a>
-                        <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+                        <a href="contact.html" class="btn btn-outline">Get in touch</a>
                     </div>
                 </div>
                 <!-- Staging review image: AI-edited clear-day frontage with the real sign composited
@@ -259,28 +260,13 @@
         </div>
     </section>
 
-    <!-- Recent news: one lead story beside two compact ones, from data/facebook-news-preview.json.
-         Posts past their home_until date leave the homepage; calls to action past action_until are hidden. -->
-    <section class="home-section home-section--warm" id="latest-updates-preview" aria-labelledby="home-news-title">
-        <div class="container">
-            <div class="section-intro">
-                <div>
-                    <p class="section-intro-eyebrow">Latest updates</p>
-                    <h2 class="section-intro-title" id="home-news-title">Recent news</h2>
-                </div>
-                <a href="news.html" class="text-link">All news</a>
-            </div>
-            <div class="home-news-grid" id="home-news-root" aria-live="polite"></div>
-        </div>
-    </section>
-
     <!-- What We Offer: weekly schedule and services from data/weekly-schedule.json -->
-    <section class="home-section" id="what-we-offer" aria-labelledby="home-week-title">
+    <section class="home-section home-section--warm" id="what-we-offer" aria-labelledby="home-week-title">
         <div class="container">
             <div class="section-intro">
                 <div>
                     <p class="section-intro-eyebrow">What we offer</p>
-                    <h2 class="section-intro-title" id="home-week-title">Classes and gatherings</h2>
+                    <h2 class="section-intro-title" id="home-week-title">Classes, gatherings, and services</h2>
                 </div>
                 <a href="what-we-offer.html" class="text-link">Everything we offer</a>
             </div>
@@ -290,7 +276,7 @@
         </div>
     </section>
 
-    <!-- Donate Section: photograph beside an emerald appeal panel, Gift Aid band beneath.
+    <!-- Donate Section: interior photograph beside an emerald appeal panel, Gift Aid band beneath.
          Same copy, Hibabox link and Gift Aid wording as the live section. -->
     <section class="donate-feature" id="donate" aria-labelledby="donate-title">
         <div class="donate-feature-main">
@@ -311,7 +297,7 @@
                     <li>Improving community spaces</li>
                 </ul>
                 <p class="donate-feature-more">…and much more.</p>
-                <a href="https://hibabox.com/greenwich-madina-trust/mosque-maintenance" class="donate-feature-button" target="_blank" rel="noopener noreferrer">Donate Now</a>
+                <a href="https://hibabox.com/greenwich-madina-trust/mosque-maintenance" class="donate-feature-button" target="_blank" rel="noopener noreferrer">Donate now</a>
                 <p class="donate-feature-note">Secure donation via Hibabox.</p>
             </div>
         </div>
@@ -331,6 +317,21 @@
                 </div>
             </div>
         </aside>
+    </section>
+
+    <!-- Recent news: one lead story beside two compact ones, from data/facebook-news-preview.json.
+         Posts past their home_until date leave the homepage; calls to action past action_until are hidden. -->
+    <section class="home-section home-section--warm" id="latest-updates-preview" aria-labelledby="home-news-title">
+        <div class="container">
+            <div class="section-intro">
+                <div>
+                    <p class="section-intro-eyebrow">Latest updates</p>
+                    <h2 class="section-intro-title" id="home-news-title">Recent news</h2>
+                </div>
+                <a href="news.html" class="text-link">All news</a>
+            </div>
+            <div class="home-news-grid" id="home-news-root" aria-live="polite"></div>
+        </div>
     </section>
 
     <!-- Media Section: newest video featured, three more beside it; live Instagram feed alongside -->
@@ -409,7 +410,7 @@
             <div class="section-intro">
                 <div>
                     <p class="section-intro-eyebrow">Visit us</p>
-                    <h2 class="section-intro-title" id="home-visit-title">Find us in Plumstead</h2>
+                    <h2 class="section-intro-title" id="home-visit-title">Find us</h2>
                 </div>
                 <a href="contact.html" class="text-link">Contact us</a>
             </div>
@@ -418,7 +419,7 @@
                     <ul class="home-visit-places">
                         <li class="home-visit-place">
                             <h3 class="home-visit-name">Ghousia Masjid</h3>
-                            <p class="home-visit-use">Main mosque for prayers, Jummah, and events</p>
+                            <p class="home-visit-use">Main masjid for prayers, Jum’a, and events</p>
                             <address>56 Camrose Street, London SE2 0JA</address>
                             <a href="https://www.google.com/maps/search/?api=1&query=51.486854553222656,0.10261762142181396" class="text-link" target="_blank" rel="noopener">Get directions</a>
                         </li>
@@ -470,7 +471,7 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/GreenwichMadinaTrust/" target="_blank" aria-label="Facebook">Facebook</a>
                         <a href="https://www.instagram.com/greenwichmadinatrust" target="_blank" aria-label="Instagram">Instagram</a>
-                        <a href="https://mobile.twitter.com/TrustMadina/" target="_blank" aria-label="Twitter">Twitter</a>
+                        <a href="https://mobile.twitter.com/TrustMadina/" target="_blank" aria-label="X (formerly Twitter)">X (Twitter)</a>
                         <a href="https://www.youtube.com/channel/UCTlPBYKq48KKhrdn51A7F5w" target="_blank" aria-label="YouTube">YouTube</a>
                         <a href="https://www.tiktok.com/@greenwichmadinatrust" target="_blank" aria-label="TikTok">TikTok</a>
                     </div>
@@ -582,7 +583,7 @@
                         <p class="home-news-excerpt">${gmtEscapeHtml(gmtNewsExcerpt(lead, 220))}</p>
                         <div class="home-news-actions">
                             ${leadAction ? `<a class="btn btn-primary" href="${gmtEscapeHtml(leadAction.url)}"${gmtLinkAttributes(leadAction.url)}>${gmtEscapeHtml(leadAction.label)}</a>` : ''}
-                            <a class="text-link" href="${lead.newsAnchor}">Read the full story</a>
+                            <a class="text-link" href="${lead.newsAnchor}">Read the story</a>
                         </div>
                     </article>`;
 
@@ -596,7 +597,7 @@
                                 <div>
                                     <p class="home-news-meta"><span>${gmtEscapeHtml(post.eyebrow || 'Update')}</span><time>${gmtEscapeHtml(dateFor(post))}</time></p>
                                     <h3 class="home-news-item-title"><a href="${post.newsAnchor}">${gmtEscapeHtml(post.title)}</a></h3>
-                                    <a class="text-link" href="${post.newsAnchor}" aria-label="Read more: ${gmtEscapeHtml(post.title)}">Read more</a>
+                                    <a class="text-link" href="${post.newsAnchor}" aria-label="Read the story: ${gmtEscapeHtml(post.title)}">Read the story</a>
                                 </div>
                             </li>`;
                         }).join('')}
@@ -609,18 +610,18 @@
         });
     </script>
 
-    <script src="js/prayer-times.js?v=20260929-october-rollover&review=staging-20261014-live-0750fcc"></script>
+    <script src="js/prayer-times.js?v=20261016-site3&review=staging-20261016-site3"></script>
     <script src="js/events.js?v=20260908-ribbon-v3&review=staging-20261014-live-0750fcc"></script>
     <!-- Swiper.js for carousel -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- GLightbox for video modals -->
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-    <script src="js/youtube.js?v=20261016-home2&review=staging-20261016-home2"></script>
-    <script src="js/main.js?v=20260823-rabi-nur-live1&review=staging-20261014-live-0750fcc"></script>
-    <!-- Sizes the square hero poster before Swiper measures it -->
-    <script src="js/hero-two-column.js?v=20261016-hero1&review=staging-20261016-hero1"></script>
-    <!-- Weekly schedule and services -->
-    <script src="js/home-week.js?v=20261016-home2&review=staging-20261016-home2"></script>
+    <script src="js/youtube.js?v=20261016-site3&review=staging-20261016-site3"></script>
+    <script src="js/main.js?v=20261016-site3&review=staging-20261016-site3"></script>
+    <!-- sizes the square poster before Swiper measures it -->
+    <script src="js/hero-two-column.js?v=20261016-site3&review=staging-20261016-site3"></script>
+    <!-- weekly schedule and services -->
+    <script src="js/home-week.js?v=20261016-site3&review=staging-20261016-site3"></script>
     <script>
         // Remove expired campaign cards before Swiper counts or displays them.
         (() => {
@@ -780,5 +781,7 @@
         });
     </script>
     <script src="js/programme-carousel.js?v=20261012-programmes2&review=staging-20261014-live-0750fcc"></script>
+    <!-- pause / play beside the slide dots; focus holds the slides still -->
+    <script src="js/carousel-controls.js?v=20261016-site3&review=staging-20261016-site3"></script>
 </body>
 </html>

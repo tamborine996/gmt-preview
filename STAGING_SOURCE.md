@@ -47,3 +47,28 @@ No visible review banner, content revision, redesign, timetable change or image 
   - New `js/home-week.js`, `data/weekly-schedule.json`, `css/home-{sections,news,week,media,visit,donate}.css`, `css/footer-refresh.css`, `images/donate/ghousia-masjid-mawlid-2026-congregation-{800,1280}.webp`.
 - Evidence: `Mosque admin/release-evidence/staging-home2-20261016/local/` and the prototype README.
 - To remove: revert the staging commit that adds this section.
+
+### 2026-10-16 — every visitor-facing page (`staging-20261016-site3`)
+- **Inner pages in the homepage's style:** compact left-aligned page header, the shared section heading, square cards with a gold rule, emerald calls to action, emerald footer.
+  - News opens on a short index; `#post-N` links still open one story.
+  - Prayer Times shows today and tomorrow, then the month as an HTML table in the printed timetable's columns.
+  - Contact puts quick routes first; arriving from a Janazah link shows the urgent line and preselects Janazah.
+  - Resources and Privacy are restyled; their wording is unchanged.
+- **What We Offer rebuilt:**
+  - Three groups (Services, Educational programmes, Gatherings). Prayer is removed; it lives on Prayer Times and in the strip on every page.
+  - One pattern per item: icon, "At a glance" strip (when, where, who, next step), then the approved description. The Janazah urgent call comes first.
+  - Sticky index beside the content on desktop, marking the item being read.
+  - New icon set `images/icons/offer-icons.svg`: objects from the masjid's own practice, with no people, no rings, and the Qur'an always on a stand. Janazah is a sidr branch in an arch; Milad-un-Nabi is the Na'layn Sharif. The Milad-un-Nabi card carries the Mawlid 2026 photograph.
+  - Class times come from `data/weekly-schedule.json`.
+- **Homepage:** the visit heading is now "Find us" (no district name), and the carousel gains a pause/play control.
+- **Site-wide:**
+  - One house voice: sentence case, British English, Jum'a / Jama'at / masjid, one time format, and "16 October 2026" in the prayer strip.
+  - Accessibility: skip link, Escape closes the menu, question state announced to screen readers.
+  - The standard is `Mosque admin/WEBSITE-STYLE-GUIDE.md`.
+- **Data:** `data/prayer-times-2026.json` adds the 25 October clock-change note.
+- **Wording:** approved wording is unchanged. New short labels on What We Offer await a glance from the Imam.
+- **Build:** `build-staging.cjs` in `Mosque admin/design-reviews/two-column-hero-prototype-20261016/`.
+  - It applies only the permitted differences above.
+  - Changed files carry `?v=20261016-site3&review=staging-20261016-site3`.
+  - The homepage's retired inline styles are dropped (computed styles identical).
+- To remove: revert the staging commit that adds this section.

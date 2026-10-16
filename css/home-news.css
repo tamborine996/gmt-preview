@@ -1,4 +1,4 @@
-/* Homepage "Recent news" (staged 16 Oct 2026): one lead story beside two compact stories,
+/* Homepage "Recent news" (16 Oct 2026): one lead story beside two compact stories,
    replacing the two-up card carousel. Rendered from data/facebook-news-preview.json. */
 
 .home-news-grid {
@@ -33,26 +33,6 @@
 /* Portrait posters sit whole on an emerald stage rather than being cropped. */
 .home-news-lead-media.is-poster img {
     object-fit: contain;
-}
-
-.home-news-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.35rem 0.9rem;
-    margin: 0 0 0.6rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold-muted);
-}
-
-.home-news-meta time {
-    letter-spacing: 0.06em;
-    text-transform: none;
-    font-weight: 400;
-    color: var(--stone);
 }
 
 .home-news-lead-title {

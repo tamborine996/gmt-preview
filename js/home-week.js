@@ -1,4 +1,4 @@
-/* Homepage "What we offer" (staged 16 Oct 2026): renders the weekly schedule and services from
+/* Homepage "What we offer": renders the weekly schedule and services from
    data/weekly-schedule.json. Without the data the section keeps its link to What We Offer. */
 (() => {
     'use strict';

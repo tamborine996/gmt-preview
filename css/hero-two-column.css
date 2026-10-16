@@ -1,4 +1,4 @@
-/* Two-column homepage hero (staged 16 Oct 2026; built from the reviewed prototype in Mosque admin/design-reviews).
+/* (16 Oct 2026) two-column homepage hero.
    Desktop (1024px+): compact welcome above a square carousel on ivory; the real exterior
    photograph fills the right of the section behind a diagonal with a thin gold edge.
    Below 1024px: carousel, then photograph (slanted lower edge), then welcome.
@@ -149,6 +149,37 @@
     outline-offset: 2px;
 }
 
+/* Pause / play, sitting just right of the slide dots and drawn like them. */
+.carousel-toggle {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% + 52px);
+    z-index: 11;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 254, 249, 0.85);
+    cursor: pointer;
+}
+
+.carousel-toggle svg {
+    width: 12px;
+    height: 12px;
+}
+
+.carousel-toggle:hover {
+    color: var(--gold-bright);
+}
+
+.carousel-toggle:focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: -2px;
+}
+
 /* ---------- Photograph ---------- */
 
 .hero-photo {
@@ -169,6 +200,17 @@
     object-fit: cover;
 }
 
+/* Comparison variant (?photo=facebook-cover): that photo's sky is overcast white, so a soft
+   shade from the prayer strip gives it enough tone to hold the diagonal against the ivory page.
+   The default photo has a blue sky and needs no shade. */
+.hero-two-column[data-photo="facebook-cover"] .hero-photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(8, 61, 51, 0.30) 0%, rgba(8, 61, 51, 0.12) 18%, rgba(8, 61, 51, 0) 38%);
+    pointer-events: none;
+}
+
 /* ---------- Desktop ---------- */
 
 @media (min-width: 1024px) {
@@ -179,6 +221,11 @@
     .hero-two-column #hero-carousel .swiper-slide {
         min-height: 0;
         height: var(--hero-poster, 400px);
+    }
+
+    /* Review variant (?order=carousel-first): the carousel leads, the welcome follows. */
+    .hero-two-column[data-order="carousel-first"] .hero-carousel-frame {
+        order: -1;
     }
 
     .hero-photo {
@@ -198,6 +245,18 @@
     /* Keep the sky so the sign has breathing room; crop from the left, where the gate is. */
     .hero-photo img {
         object-position: 72% 0;
+    }
+
+    /* Comparison variants. Facebook cover: crop its empty white sky. Jan 2024: crop to the sign. */
+    .hero-two-column[data-photo="facebook-cover"] .hero-photo img {
+        transform: scale(1.08);
+        transform-origin: 85% 100%;
+    }
+
+    .hero-two-column[data-photo="front-2024"] .hero-photo img {
+        object-position: 45% 30%;
+        transform: scale(1.22);
+        transform-origin: 55% 100%;
     }
 }
 
@@ -238,6 +297,10 @@
 
     .hero-photo img {
         object-position: 62% 30%;
+    }
+
+    .hero-two-column[data-photo="front-2024"] .hero-photo img {
+        object-position: 50% 40%;
     }
 
     .hero-two-column .hero-welcome {

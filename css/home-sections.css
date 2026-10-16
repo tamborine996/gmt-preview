@@ -1,4 +1,28 @@
-/* Shared homepage section pattern (staged 16 Oct 2026).
+/* Skip link: hidden until keyboard focus, then shown above the fixed header. */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 2000;
+    padding: 0.75rem 1.1rem;
+    background: var(--emerald-deep);
+    color: var(--ivory);
+    font-weight: 700;
+    text-decoration: none;
+    border-top: 3px solid var(--gold);
+}
+
+.skip-link:focus {
+    top: 12px;
+    color: var(--ivory);
+}
+
+/* The skip target takes focus without showing an outline box. */
+#content:focus {
+    outline: none;
+}
+
+/* Shared homepage section pattern (16 Oct 2026).
    One heading style for every homepage section, matching the hero welcome: a short gold rule,
    a spaced uppercase eyebrow, a left-aligned serif title, and an optional link on the right. */
 
@@ -59,6 +83,27 @@
     font-size: 1rem;
     line-height: 1.55;
     color: var(--slate);
+}
+
+/* Category and date above a story title (homepage news and the News page). */
+.home-news-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.9rem;
+    margin: 0 0 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+}
+
+.home-news-meta time {
+    letter-spacing: 0.06em;
+    text-transform: none;
+    font-weight: 400;
+    color: var(--stone);
 }
 
 /* Quiet text link with an arrow, used beside section titles and inside items. */

@@ -47,6 +47,52 @@
       "production_blockers": [
         "Add data/weekly-schedule.json to CONTENT-REGISTER.md and correct its stale Qur'an Circle and Dars-e-Quran entries"
       ]
+    },
+    {
+      "marker": "staging-20261016-site3",
+      "date": "2026-10-16",
+      "summary": "Every visitor-facing page in the homepage's style: News index, Prayer Times today/tomorrow and month table, rebuilt What We Offer (three groups, new icon set, sticky index), Resources, task-first Contact, Privacy; one house voice; accessibility fixes",
+      "files": [
+        "index.html",
+        "news.html",
+        "prayer-times.html",
+        "what-we-offer.html",
+        "resources.html",
+        "contact.html",
+        "privacy.html",
+        "css/site-refresh.css",
+        "css/news-page.css",
+        "css/prayer-page.css",
+        "css/what-we-offer.css",
+        "css/resources-page.css",
+        "css/contact-page.css",
+        "css/home-sections.css",
+        "css/home-news.css",
+        "css/home-week.css",
+        "css/home-media.css",
+        "css/home-visit.css",
+        "css/home-donate.css",
+        "css/footer-refresh.css",
+        "css/hero-two-column.css",
+        "js/main.js",
+        "js/prayer-times.js",
+        "js/prayer-page.js",
+        "js/offer-times.js",
+        "js/offer-index.js",
+        "js/carousel-controls.js",
+        "js/home-week.js",
+        "js/hero-two-column.js",
+        "data/prayer-times-2026.json",
+        "data/weekly-schedule.json",
+        "images/icons/offer-icons.svg",
+        "images/offer/ghousia-masjid-mawlid-2026-naat-800.webp",
+        "images/offer/ghousia-masjid-mawlid-2026-naat-1280.webp"
+      ],
+      "production_blockers": [
+        "Imam to confirm 07792 884795 as the urgent Janazah number (the Nikah certificate shows 020 8854 8691)",
+        "Imam to glance at the new short labels on What We Offer (At a glance, When, Where, Who, Next step, Ceremony, Arranging, Confidentiality, Dates, Through the year)",
+        "Open questions in Mosque admin/WEBSITE-STYLE-GUIDE.md section 9 (Fajr start in the strip, class times on the printed timetable, approved wording that differs from the house terms, news categories, privacy policy)"
+      ]
     }
   ]
 }
