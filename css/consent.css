@@ -212,6 +212,81 @@
     border-bottom: 1px solid #C4A962;
 }
 
+/* Street map picture (18 Oct 2026): shows straight away; "Interactive map" swaps in Google's map. */
+.map-consent.find-us-map {
+    display: block;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+}
+
+.find-us-map-picture {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.find-us-map-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    padding: 0.85rem 0.25rem 0.3rem;
+}
+
+.find-us-map-bar .btn {
+    align-self: stretch; /* the filled and outlined buttons match in height */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.78rem;
+}
+
+.find-us-map-live {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.find-us-map-note,
+.find-us-map-credit {
+    font-size: 0.76rem;
+    line-height: 1.45;
+    color: #6a6a6a;
+}
+
+.find-us-map-note {
+    flex: 1 1 14rem;
+}
+
+.find-us-map-credit {
+    margin-left: auto;
+}
+
+.find-us-map-credit a {
+    color: inherit;
+}
+
+/* Phones: the two buttons share the first row; the note and the credit take a row each beneath. */
+@media (max-width: 480px) {
+    .find-us-map-bar .btn {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+    }
+
+    .find-us-map-note,
+    .find-us-map-credit {
+        flex: 1 1 100%;
+        margin-left: 0;
+    }
+}
+
 /* Once shown, the map fills the frame. */
 .map-consent.is-loaded {
     display: block;

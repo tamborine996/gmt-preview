@@ -138,3 +138,15 @@ No visible review banner, content revision, redesign, timetable change or image 
   - **Slimmer strip:** phones are 49px for one event and 66px for two (were 56 and 74); laptops are 38px (were 42).
   - **Link button:** items that link somewhere show a small dark button at the end of their second line ("See details" on laptops, "Details" on phones, or their own `link_label`); unlinked notices have none.
   - **`coming-up.html`:** has "Back to home" above the heading and after the posts. It keeps review settings, and no longer repeats the strip.
+
+### 2026-10-18 — Find us: a street map that shows straight away (`staging-20261018-map1`)
+- **The map:** the homepage "Find us" card and the Contact page show a street map picture of Ghousia Masjid straight away, in place of the "Show map" box.
+  - It is drawn from OpenStreetMap data in the house colours, with nearby road names (`images/map/find-us-{phone,standard,wide}.webp`, made by `map/render-find-us-map.cjs` in the prototype).
+  - It is stored on the site, so nothing loads from Google or anyone else.
+- **Buttons:**
+  - "Get directions" opens Google Maps directions to the masjid.
+  - "Interactive map" loads Google's map in its place, at the same height, as before.
+  - The credit reads "Map © OpenStreetMap contributors".
+- **Road names:** names containing "Plumstead" are not labelled (house rule), so Plumstead High Street is drawn but unnamed for now.
+- **Fixed:** the empty strip under the old map box on laptops.
+- **Checks:** `map-shots.cjs` 17/17 (right picture per size, nothing from Google before the button, no empty strip, button words fit, equal button heights, Google's map at the picture's height); `a11y-checks.cjs` 28/28; `consent-checks.cjs` 23/23.
