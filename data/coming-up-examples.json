@@ -2,7 +2,9 @@
   "about": "REVIEW ONLY (staging): example notices, shown with ?examples=notices or ?examples=important. Every item in a set counts as current; 'real' names items from data/coming-up.json to show alongside. build-staging.cjs copies this file; build-live.cjs does not, so the live site never has it.",
   "sets": {
     "notices": {
-      "real": ["monthly-gyarwee-2026-10"],
+      "real": [
+        "monthly-gyarwee-2026-10"
+      ],
       "items": [
         {
           "id": "example-car-park",
@@ -22,14 +24,30 @@
       ]
     },
     "important": {
-      "real": ["monthly-gyarwee-2026-10"],
+      "real": [],
       "items": [
         {
-          "id": "example-closed",
+          "id": "winter-jumua-2026-10-30",
           "label": "Important",
-          "title": "Masjid closed today until 3pm",
-          "line": "Dhuhr Jama’at at the Educational Centre, 46 Conway Road",
-          "link": null
+          "kind": "Prayer times update",
+          "title": "Winter Jum’a timings",
+          "line": "From 30 October · 1pm & 1:30pm",
+          "when": "From Friday 30 October 2026",
+          "place": "Ghousia Masjid",
+          "text": [
+            "From Friday 30 October 2026, our Jum’a Jama’at times will change to 1pm (first Jama’at) and 1:30pm (second Jama’at).",
+            "Please keep these new timings in mind when planning your visit."
+          ],
+          "details": [
+            {
+              "label": "First Jama’at",
+              "value": "1pm"
+            },
+            {
+              "label": "Second Jama’at",
+              "value": "1:30pm"
+            }
+          ]
         }
       ]
     }
