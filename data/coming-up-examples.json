@@ -24,30 +24,17 @@
       ]
     },
     "important": {
-      "real": [],
+      "about": "Approved notice-only Jumu’a banner spotlight. No details page or button.",
+      "today": "2026-10-25",
       "items": [
         {
           "id": "winter-jumua-2026-10-30",
-          "label": "Important",
-          "kind": "Prayer times update",
-          "title": "Winter Jum’a timings",
+          "label": "Notice",
+          "title": "Jum’a time change",
           "line": "From 30 October · 1pm & 1:30pm",
-          "when": "From Friday 30 October 2026",
-          "place": "Ghousia Masjid",
-          "text": [
-            "From Friday 30 October 2026, our Jum’a Jama’at times will change to 1pm (first Jama’at) and 1:30pm (second Jama’at).",
-            "Please keep these new timings in mind when planning your visit."
-          ],
-          "details": [
-            {
-              "label": "First Jama’at",
-              "value": "1pm"
-            },
-            {
-              "label": "Second Jama’at",
-              "value": "1:30pm"
-            }
-          ]
+          "link": null,
+          "show_from": "2026-10-25",
+          "hide_from": "2026-11-02"
         }
       ]
     }
